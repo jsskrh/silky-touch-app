@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { Store } from "../../utils/Store";
 
 const style = {
   navbar: `flex justify-between items-center p-6`,
@@ -6,9 +8,13 @@ const style = {
   brandName: `text-4xl font-bold uppercase mr-12`,
   navLink: `uppercase p-2 font-bold text-xs`,
   navIcon: `m-2`,
+  cartAmount: `text-sm`,
 };
 
 const Header = () => {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <header>
       <nav className={style.navbar}>
@@ -52,7 +58,14 @@ const Header = () => {
             <span className={style.navIcon}>Profile</span>
           </Link>
           <Link href="/shopping-bag">
-            <span className={style.navIcon}>Shopping Bag</span>
+            <span className={style.navIcon}>
+              Shopping Bag{" "}
+              {cart.cartItems.length > 0 && (
+                <span className={style.cartAmount}>
+                  {cart.cartItems.reduce((a, b) => a + b.quantity, 0)}
+                </span>
+              )}
+            </span>
           </Link>
         </div>
       </nav>

@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Footer from "./Footer/Footer";
-import Header from "./Header/Header";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 const style = {
   wrapper: `flex min-h-screen flex-col justify-between`,
