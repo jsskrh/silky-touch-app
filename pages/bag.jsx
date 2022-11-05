@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import BagContactUs from "../components/Bag/BagContactUs";
@@ -63,4 +64,4 @@ const bag = () => {
   );
 };
 
-export default bag;
+export default dynamic(() => Promise.resolve(bag), { ssr: false });

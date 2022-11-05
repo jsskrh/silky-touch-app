@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Store } from "../../utils/Store";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
@@ -20,6 +20,11 @@ const style = {
 const Header = () => {
   const { state } = useContext(Store);
   const { cart } = state;
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, b) => a + b.quantity, 0));
+  }, []);
 
   return (
     <header className={style.header}>
@@ -74,10 +79,8 @@ const Header = () => {
           <Link href="/bag">
             <span className={style.navIcon}>
               <ShoppingBagIcon className={style.heroIcon}></ShoppingBagIcon>{" "}
-              {cart.cartItems.length > 0 && (
-                <span className={style.cartAmount}>
-                  {cart.cartItems.reduce((a, b) => a + b.quantity, 0)}
-                </span>
+              {cartItemsCount > 0 && (
+                <span className={style.cartAmount}>{cartItemsCount}</span>
               )}
             </span>
           </Link>
