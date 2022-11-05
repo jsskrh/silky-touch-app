@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Store } from "../../utils/Store";
+import { HeartIcon } from "@heroicons/react/24/outline";
+import { ShareIcon } from "@heroicons/react/24/outline";
 
 const style = {
   productActions: `mb-8`,
   addToCartContainer: `mb-8`,
   addToCart: `bg-[#212121] text-[#fafafa] border border-[#212121] px-4 py-[20px] w-full text-sm font-bold uppercase`,
   otherActions: `flex justify-center`,
-  action: `m-4`,
+  action: `m-3`,
+  heroIcon: `h-7 w-7`,
 };
 
 const ProductActions = ({ product }) => {
@@ -39,8 +42,12 @@ const ProductActions = ({ product }) => {
         )}
       </div>
       <div className={style.otherActions}>
-        <div className={style.action}>O</div>
-        <div className={style.action}>O</div>
+        <div className={style.action}>
+          <HeartIcon className={style.heroIcon}></HeartIcon>
+        </div>
+        <div className={style.action}>
+          <ShareIcon className={style.heroIcon}></ShareIcon>
+        </div>
       </div>
     </div>
   );
