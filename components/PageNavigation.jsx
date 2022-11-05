@@ -23,7 +23,7 @@ const PageNavigation = ({ path }) => {
   return (
     <div className={style.navbar}>
       {paths.map((path, index) => (
-        <div>
+        <div key={index}>
           {index !== 0 && <span className={style.divider}>|</span>}
           <Link href={path}>
             <span>
