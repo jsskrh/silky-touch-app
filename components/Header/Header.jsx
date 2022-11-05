@@ -24,7 +24,7 @@ const Header = () => {
 
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, b) => a + b.quantity, 0));
-  }, []);
+  }, [cart.cartItems]);
 
   return (
     <header className={style.header}>
