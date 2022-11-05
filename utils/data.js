@@ -7,6 +7,7 @@ const data = {
       image: "/images/image1.jpg",
       price: 1025,
       brand: "Versace",
+      color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
         "Crafted in a lightweight cotton, this short-sleeved button-down shirt features the La Greca print and a relaxed camp collar.",
@@ -34,6 +35,7 @@ const data = {
       image: "/images/image2.webp",
       price: 1550,
       brand: "Versace",
+      color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
         "Crafted from pure silk this short-sleeved button-down shirt features the signature Barocco print - a beloved house code featuring stylised acanthus leaves.",
@@ -57,6 +59,7 @@ const data = {
       image: "/images/image3.webp",
       price: 925,
       brand: "Versace",
+      color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
         "In a slim silhouette, this short-sleeved cotton T-shirt features Versace's signature Barocco print - a beloved house code featuring stylised acanthus leaves.",
@@ -80,6 +83,7 @@ const data = {
       image: "/images/image4.webp",
       price: 1225,
       brand: "Versace",
+      color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
         "A comfortable design, these knee-length shorts are crafted from pure silk twill in the signature Barocco print.",
@@ -102,6 +106,7 @@ const data = {
       image: "/images/image5.webp",
       price: 625,
       brand: "Versace",
+      color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
         "A contemporary accessory, this bucket hat features the iconic Barocco print.",
@@ -125,6 +130,7 @@ const data = {
       image: "/images/image6.webp",
       price: 1950,
       brand: "Versace",
+      color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
         "A painterly Metropolitano Check motif outlines these tapered formal pants. A tailored style, they are finished with a front pleat and a concealed hook and zip closure.",

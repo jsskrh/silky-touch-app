@@ -12,7 +12,7 @@ const ProductItem = ({ product }) => {
   return (
     <div className={style.product}>
       <div className="productImageContainer">
-        <Link href={`/products//${product.slug}`}>
+        <Link href={`/products/${product.slug}`}>
           <img
             src={product.image}
             alt={product.name}
@@ -23,7 +23,7 @@ const ProductItem = ({ product }) => {
       <div className={style.productInfo}>
         <div className={style.productInfoInner}>
           <div>
-            <Link href={`/products//${product.slug}`}>
+            <Link href={`/products/${product.slug}`}>
               <h3 className={style.productName}>{product.name}</h3>
             </Link>
           </div>
