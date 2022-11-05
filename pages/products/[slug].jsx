@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout/Layout";
+import PageNavigation from "../../components/PageNavigation";
 import ProductContent from "../../components/ProductPage/ProductContent";
 import data from "../../utils/data";
 
 const style = {
-  navbar: `py-4 text-xs`,
   pdpTop: `flex`,
   productImages: `flex-1`,
 };
@@ -23,15 +22,7 @@ const productPage = () => {
 
   return (
     <Layout title={product.name}>
-      <div className={style.navbar}>
-        <Link href="/">
-          <span>Home</span>
-        </Link>
-        <span> | </span>
-        <Link href={path}>
-          <span>{product.name}</span>
-        </Link>
-      </div>
+      <PageNavigation path={path} />
 
       <div className={style.pdpMain}>
         <div className={style.pdpTop}>
