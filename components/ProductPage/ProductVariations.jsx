@@ -17,12 +17,12 @@ const ProductVariations = () => {
     <div className={style.productVariations}>
       <ul>
         <li className={style.attributeSize}>
-          <p className={style.attributeHeader}>
+          <div className={style.attributeHeader}>
             <h3 className={style.attributeTitle}>Size: IT</h3>
-            <div className={style.sizeGuide}>
+            <span className={style.sizeGuide}>
               <Link href="/size-guide">Size Guide</Link>
-            </div>
-          </p>
+            </span>
+          </div>
           <ul className={style.attributeValues}>
             {sizes.map((size) => (
               <li className={style.sizeValueContainer} key={size}>
