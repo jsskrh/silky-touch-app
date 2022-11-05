@@ -42,12 +42,12 @@ const ProductActions = ({ product }) => {
         )}
       </div>
       <div className={style.otherActions}>
-        <div className={style.action}>
+        <button className={style.action}>
           <HeartIcon className={style.heroIcon}></HeartIcon>
-        </div>
-        <div className={style.action}>
+        </button>
+        <button className={style.action}>
           <ShareIcon className={style.heroIcon}></ShareIcon>
-        </div>
+        </button>
       </div>
     </div>
   );

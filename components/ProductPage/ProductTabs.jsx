@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
 const style = {
   productTabs: `border-t botder-[#c0c0c0]`,
   tabGroup: `border-b botder-[#c0c0c0] text-sm`,
-  groupHead: `flex justify-between py-4`,
+  groupHead: `flex justify-between py-4 items-center`,
   groupTitle: `font-bold`,
+  heroIcon: `h-7 w-7`,
   tabContentHeader: `uppercase font-bold mb-4`,
   description: `pb-6`,
   details: `mb-2`,
@@ -18,7 +21,9 @@ const ProductTabs = ({ product }) => {
       <div className={style.tabGroup}>
         <div className={style.groupHead}>
           <h3 className={style.groupTitle}>Details</h3>
-          <span>O</span>
+          <button>
+            <ChevronUpIcon className={style.heroIcon}></ChevronUpIcon>
+          </button>
         </div>
         <div className={style.tabContent}>
           <div className={style.description}>
@@ -36,10 +41,13 @@ const ProductTabs = ({ product }) => {
           </p>
         </div>
       </div>
+
       <div className={style.tabGroup}>
         <div className={style.groupHead}>
           <h3 className={style.groupTitle}>Size & Fit</h3>
-          <span>O</span>
+          <button>
+            <ChevronUpIcon className={style.heroIcon}></ChevronUpIcon>
+          </button>
         </div>
         <div className={style.tabContent}>
           <div className={style.details}>
@@ -49,10 +57,13 @@ const ProductTabs = ({ product }) => {
           </div>
         </div>
       </div>
+
       <div className={style.tabGroup}>
         <div className={style.groupHead}>
           <h3 className={style.groupTitle}>Shipping & Returns</h3>
-          <span>O</span>
+          <button>
+            <ChevronUpIcon className={style.heroIcon}></ChevronUpIcon>
+          </button>
         </div>
         <div className={style.tabContent}>
           <h4 className={style.tabContentHeader}>
