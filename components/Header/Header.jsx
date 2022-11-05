@@ -1,14 +1,20 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { Store } from "../../utils/Store";
+import { HeartIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { UserIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 const style = {
+  header: `sticky top-0 bg-[#fff]`,
   navbar: `flex justify-between items-center p-6`,
   navGrouping: `flex items-center`,
   brandName: `text-4xl font-bold uppercase mr-12`,
   navLink: `uppercase p-2 font-bold text-xs`,
-  navIcon: `m-2`,
-  cartAmount: `text-sm`,
+  navIcon: `flex items-center mx-2`,
+  heroIcon: `h-4 w-4`,
+  cartAmount: `text-xs align-bottom self-end text-end`,
 };
 
 const Header = () => {
@@ -16,7 +22,7 @@ const Header = () => {
   const { cart } = state;
 
   return (
-    <header>
+    <header className={style.header}>
       <nav className={style.navbar}>
         <div className={style.navGrouping}>
           <Link href="/">
@@ -50,16 +56,24 @@ const Header = () => {
           </div>
         </div>
         <div className={style.navGrouping}>
-          <span className={style.navIcon}>Search</span>
+          <span className={style.navIcon}>
+            <MagnifyingGlassIcon
+              className={style.heroIcon}
+            ></MagnifyingGlassIcon>
+          </span>
           <Link href="/wishlist">
-            <span className={style.navIcon}>Wishlist</span>
+            <span className={style.navIcon}>
+              <HeartIcon className={style.heroIcon}></HeartIcon>
+            </span>
           </Link>
           <Link href="/profile">
-            <span className={style.navIcon}>Profile</span>
-          </Link>
-          <Link href="/shopping-bag">
             <span className={style.navIcon}>
-              Shopping Bag{" "}
+              <UserIcon className={style.heroIcon}></UserIcon>
+            </span>
+          </Link>
+          <Link href="/bag">
+            <span className={style.navIcon}>
+              <ShoppingBagIcon className={style.heroIcon}></ShoppingBagIcon>{" "}
               {cart.cartItems.length > 0 && (
                 <span className={style.cartAmount}>
                   {cart.cartItems.reduce((a, b) => a + b.quantity, 0)}
