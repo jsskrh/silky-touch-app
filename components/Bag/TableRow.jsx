@@ -84,7 +84,7 @@ const TableRow = ({ item }) => {
       </td>
       <td className={style.priceContainer}>
         <div className={style.priceInner}>
-          <span>${item.price}</span>
+          <span>${item.price * item.quantity}</span>
         </div>
       </td>
     </tr>
