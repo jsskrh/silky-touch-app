@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout/Layout";
-import PageNavigation from "../../components/PageNavigation";
+import PageNavigation from "../../components/ProductPage/PageNavigation";
 import ProductContent from "../../components/ProductPage/ProductContent";
+import ProductImages from "../../components/ProductPage/ProductImages";
 import data from "../../utils/data";
 
 const style = {
   pdpTop: `flex`,
-  productImages: `flex-1`,
+  pdpLeft: `flex-1`,
 };
 
 const productPage = () => {
@@ -26,7 +27,9 @@ const productPage = () => {
 
       <div className={style.pdpMain}>
         <div className={style.pdpTop}>
-          <div className={style.productImages}></div>
+          <div className={style.pdpLeft}>
+            <ProductImages product={product} />
+          </div>
           <ProductContent product={product} />
         </div>
 
