@@ -7,7 +7,7 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 const style = {
-  header: `sticky top-0 bg-[#fff]`,
+  header: `sticky top-0 bg-[#fff] z-50`,
   navbar: `flex justify-between items-center p-6`,
   navGrouping: `flex items-center`,
   brandName: `text-4xl font-bold uppercase mr-12`,
