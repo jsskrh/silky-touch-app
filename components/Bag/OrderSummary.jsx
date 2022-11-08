@@ -31,7 +31,7 @@ const OrderSummary = ({ cartItems }) => {
       <div className={style.checkoutButton}>
         <button
           className={style.checkoutText}
-          onClick={() => router.push("/shipping")}
+          onClick={() => router.push("login?redirect=/shipping")}
         >
           Secure Checkout
         </button>

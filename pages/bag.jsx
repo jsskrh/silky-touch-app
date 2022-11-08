@@ -5,12 +5,12 @@ import BagContactUs from "../components/Bag/BagContactUs";
 import BagEmpty from "../components/Bag/BagEmpty";
 import BagTable from "../components/Bag/BagTable";
 import OrderSummary from "../components/Bag/OrderSummary";
-import TopContactUs from "../components/Bag/TopContactUs";
+import TopContactUs from "../components/TopContactUs";
 import Layout from "../components/Layout/Layout";
 import { Store } from "../utils/Store";
+import PageTitle from "../components/PageTitle";
 
 const style = {
-  bagTitle: `flex justify-center mb-11 uppercase font-bold text-xl`,
   cartHeader: `flex justify-center text-sm mb-12`,
   bagHead: `mx-2`,
   wlHead: `underline hover:text-[#757575]`,
@@ -32,7 +32,7 @@ const bag = () => {
         <div>
           <TopContactUs />
 
-          <h1 className={style.bagTitle}>Shopping Bag</h1>
+          <PageTitle title="Shopping Bag" />
 
           <div className={style.cartHeader}>
             <h2 className={style.bagHead}>

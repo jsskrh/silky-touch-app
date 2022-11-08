@@ -71,7 +71,7 @@ const Header = () => {
               <HeartIcon className={style.heroIcon}></HeartIcon>
             </span>
           </Link>
-          <Link href="/profile">
+          <Link href="login?redirect=/profile">
             <span className={style.navIcon}>
               <UserIcon className={style.heroIcon}></UserIcon>
             </span>
