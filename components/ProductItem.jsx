@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Slider from "./Slider";
 
 const style = {
-  productImage: `max-w-[100%] max-h-[100%]`,
   productInfo: `w-full pt-4 pb-7 px-[2px]`,
   productInfoInner: `text-xs`,
   productName: `font-bold`,
@@ -13,11 +13,7 @@ const ProductItem = ({ product }) => {
     <div className={style.product}>
       <div className="productImageContainer">
         <Link href={`/products/${product.slug}`}>
-          <img
-            src={product.image}
-            alt={product.name}
-            className={style.productImage}
-          />
+          <Slider images={product.images} name={product.name} />
         </Link>
       </div>
       <div className={style.productInfo}>

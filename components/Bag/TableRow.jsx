@@ -31,7 +31,11 @@ const TableRow = ({ item }) => {
     <tr className={style.tableRow}>
       <td className={style.imageCell}>
         <Link href={`/products/${item.slug}`}>
-          <img src={item.image} alt={item.name} className={style.image} />
+          <img
+            src={item.images.find((image) => "primary" in image).primary}
+            alt={item.name}
+            className={style.image}
+          />
         </Link>
       </td>
       <td className={style.detailsContainer}>
