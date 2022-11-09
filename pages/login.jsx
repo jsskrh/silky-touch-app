@@ -3,8 +3,12 @@ import PageTitle from "../components/PageTitle";
 import TopContactUs from "../components/TopContactUs";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
 import CABenefits from "../components/Login/CABenefits";
 import RememberMe from "../components/Login/RememberMe";
+import { getError } from "../utils/error";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const style = {
   loginContainer: `bg-[#f5f5f5] mb-5 pb-16`,
@@ -27,14 +31,38 @@ const style = {
 };
 
 const login = () => {
+  const { data: session } = useSession();
+
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || "/");
+    }
+  }, [router, session, redirect]);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = ({ email, password }) => {
-    console.log(email, password);
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        // toast.error(result.error);
+        console.log(result.error);
+      }
+    } catch (error) {
+      //   toast.error(getError(err));
+      console.log(getError(err));
+    }
   };
 
   return (

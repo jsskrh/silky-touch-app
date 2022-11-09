@@ -11,6 +11,7 @@ const style = {
 
 const OrderSummary = ({ cartItems }) => {
   const router = useRouter();
+
   return (
     <div className={style.orderSummary}>
       <h2 className={style.title}>Order Summary</h2>

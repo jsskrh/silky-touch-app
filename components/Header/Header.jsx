@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { Store } from "../../utils/Store";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
@@ -18,6 +19,8 @@ const style = {
 };
 
 const Header = () => {
+  const { status, data: session } = useSession();
+
   const { state } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -73,7 +76,13 @@ const Header = () => {
           </Link>
           <Link href="login?redirect=/profile">
             <span className={style.navIcon}>
-              <UserIcon className={style.heroIcon}></UserIcon>
+              {status === "loading" ? (
+                "Loading"
+              ) : session?.user ? (
+                session.user.name
+              ) : (
+                <UserIcon className={style.heroIcon}></UserIcon>
+              )}
             </span>
           </Link>
           <Link href="/bag">
