@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Layout from "../components/Layout/Layout";
 import PageTitle from "../components/PageTitle";
 import TopContactUs from "../components/TopContactUs";
+import Cookies from "js-cookie";
+import { useContext } from "react";
+import { Store } from "../utils/Store";
+import ProfileCard from "../components/Profile/ProfileCard";
 
 const style = {
   profilePage: `bg-[#f5f5f5] pb-4`,
@@ -11,11 +15,6 @@ const style = {
   link: `text-[#212121] hover:text-[#515151] underline`,
   gridContainer: `mb-4`,
   accountGrid: `grid grid-cols-1 gap-[2px] md:grid-cols-3 max-w-4xl mx-auto mb-6`,
-  card: `text-sm`,
-  cardInner: `py-12 px-[19%] text-center bg-[#fff]`,
-  cHeader: `mb-7 uppercase hover:text-[#515151] inline-block`,
-  cText: `mb-9`,
-  cLink: `px-[50px] py-[14px] border border-[#212121] uppercase text-xs font-bold hover:bg-[#212121] hover:text-[#fff]`,
 };
 
 const accountCards = [
@@ -48,6 +47,13 @@ const accountCards = [
 
 const profile = () => {
   const { data: session } = useSession();
+  const { dispatch } = useContext(Store);
+
+  const logoutClickHandler = () => {
+    Cookies.remove("cart");
+    dispatch({ type: "CART_RESET" });
+    signOut({ callbackUrl: "/login" });
+  };
 
   return (
     <Layout title="My Account">
@@ -57,26 +63,14 @@ const profile = () => {
         <div className={style.wbContainer}>
           <span>Welcome, {session?.user.name}</span>
           <span className={style.wbDivider}>|</span>
-          <span className={style.link}>
-            <Link href="/logout">Log out</Link>
-          </span>
+          <button className={style.link} onClick={logoutClickHandler}>
+            Log out
+          </button>
         </div>
         <div className={style.gridContainer}>
           <div className={style.accountGrid}>
             {accountCards.map((card, index) => (
-              <div className={style.card} key={index}>
-                <div className={style.cardInner}>
-                  <h3 className={style.cHeader}>
-                    <Link href={card.link}>{card.header}</Link>
-                  </h3>
-                  <div className={style.cText}>{card.text}</div>
-                  <div className={style.cLinkContainer}>
-                    <Link href={card.link}>
-                      <button className={style.cLink}>View</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <ProfileCard card={card} key={index} />
             ))}
           </div>
         </div>
