@@ -7,7 +7,7 @@ import ProductTabs from "./ProductTabs";
 import ContactUs from "./ContactUs";
 
 const style = {
-  productContent: `ml-6`,
+  productContent: `md:ml-6 mx-auto w-[calc(100%-32px)] md:max-w-md md:grow-1`,
 };
 
 const ProductContent = ({ product }) => {
