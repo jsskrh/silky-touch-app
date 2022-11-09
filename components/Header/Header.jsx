@@ -15,6 +15,7 @@ const style = {
   navLink: `uppercase p-2 font-bold text-xs`,
   navIcon: `flex items-center mx-2`,
   heroIcon: `h-4 w-4`,
+  loggedinUser: `pl-1 text-xs align-bottom`,
   cartAmount: `text-xs align-bottom self-end text-end`,
 };
 
@@ -79,7 +80,12 @@ const Header = () => {
               {status === "loading" ? (
                 "Loading"
               ) : session?.user ? (
-                session.user.name
+                <>
+                  <UserIcon className={style.heroIcon}></UserIcon>
+                  <span className={style.loggedinUser}>
+                    Welcome, {session.user.name}
+                  </span>
+                </>
               ) : (
                 <UserIcon className={style.heroIcon}></UserIcon>
               )}
