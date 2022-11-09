@@ -6,7 +6,7 @@ import ProductImages from "../../components/ProductPage/ProductImages";
 import data from "../../utils/data";
 
 const style = {
-  pdpTop: `flex`,
+  pdpTop: `md:flex`,
   pdpLeft: `flex-1`,
 };
 
