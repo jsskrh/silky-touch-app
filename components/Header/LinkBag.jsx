@@ -29,7 +29,6 @@ const LinkBag = () => {
   return (
     <Menu as="div" className={style.rightMenu}>
       <Menu.Button
-        as={React.Fragment}
         onMouseEnter={() => setIsShowing(true)}
         onMouseLeave={() => setIsShowing(false)}
       >
