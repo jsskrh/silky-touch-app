@@ -6,10 +6,11 @@ const style = {
 const ProductImages = ({ product }) => {
   return (
     <div className={style.productImages}>
-      {product.images.map((image) => (
+      {product.images.map((image, index) => (
         <img
           src={Object.values(image)[0]}
           alt={product.name}
+          key={index}
           className={
             product.images.length % 2 === 1 &&
             image === product.images[product.images.length - 1] &&
