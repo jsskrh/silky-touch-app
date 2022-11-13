@@ -1,5 +1,5 @@
 import { Menu } from "@headlessui/react";
-import MiniBagItem from "./MiniBagItem";
+import MiniBagItem from "../MiniBagItem";
 
 const style = {
   table: `w-full`,
@@ -19,7 +19,7 @@ const MiniBagTable = ({ cartItems }) => {
       <tbody>
         {cartItems.map((item) => (
           <Menu.Item key={item.slug}>
-            <MiniBagItem item={item} />
+            <MiniBagItem item={item} parent="header" />
           </Menu.Item>
         ))}
       </tbody>
