@@ -14,8 +14,8 @@ const CABenefits = () => {
         an account:
       </p>
       <ul className={style.benefitsList}>
-        {benefits.map((benefit) => (
-          <li>
+        {benefits.map((benefit, index) => (
+          <li key={index}>
             <span className={style.listMarker}>-</span>
             <span>{benefit}</span>
           </li>
