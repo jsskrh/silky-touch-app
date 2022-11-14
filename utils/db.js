@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connection = {};
 const uri = process.env.MONGODB_URI;
-const localURI = "mongodb://localhost:27017/luxury-store-app";
+const localURI = "mongodb://127.0.0.1:27017/luxury_store_app";
 
 const connect = async () => {
   if (connection.isConnected) {
@@ -17,7 +17,7 @@ const connect = async () => {
     }
     await mongoose.disconnect();
   }
-  const db = await mongoose.connect(uri);
+  const db = await mongoose.connect(localURI);
   console.log("New Connection");
   connection.isConnected = db.connections[0].readyState;
 };
