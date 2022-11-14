@@ -13,8 +13,9 @@ const ProductImages = ({ product }) => {
           key={index}
           className={
             product.images.length % 2 === 1 &&
-            image === product.images[product.images.length - 1] &&
-            style.oddImage
+            image === product.images[product.images.length - 1]
+              ? style.oddImage
+              : ""
           }
         />
       ))}

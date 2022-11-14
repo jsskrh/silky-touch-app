@@ -3,22 +3,25 @@ import Layout from "../../components/Layout/Layout";
 import PageNavigation from "../../components/ProductPage/PageNavigation";
 import ProductContent from "../../components/ProductPage/ProductContent";
 import ProductImages from "../../components/ProductPage/ProductImages";
-import data from "../../utils/data";
+import Product from "../../models/product";
+import db from "../../utils/db";
 
 const style = {
   pdpTop: `md:flex`,
   pdpLeft: `flex-1`,
 };
 
-const productPage = () => {
+const productPage = ({ product }) => {
   const router = useRouter();
-  const { slug } = router.query;
-  const product = data.products.find((product) => product.slug === slug);
   // Fix path error in console
   const path = router.asPath;
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <Layout title="Product not found">
+        <div>Product not found</div>
+      </Layout>
+    );
   }
 
   return (
@@ -38,5 +41,17 @@ const productPage = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+
+  return {
+    props: { product: product ? db.convertDocsToObj(product) : null },
+  };
+}
 
 export default productPage;
