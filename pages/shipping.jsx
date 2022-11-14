@@ -5,7 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import CheckboxLayout from "../components/CheckboxLayout";
 import Layout from "../components/Layout/Layout";
 import CheckoutProgress from "../components/Shipping/CheckoutProgress";
-import OrderSummary from "../components/Shipping/OrderSummary";
+import OrderSummary from "../components/OrderSummary";
 import { Store } from "../utils/Store";
 import PrefixBox from "../components/Shipping/PrefixBox";
 import CountryBox from "../components/Shipping/CountryBox";
@@ -86,7 +86,7 @@ const shipping = () => {
         },
       })
     );
-    router.push("/billing");
+    router.push("/payment");
   };
 
   return (
@@ -260,4 +260,5 @@ const shipping = () => {
 };
 
 shipping.auth = true;
+
 export default shipping;
