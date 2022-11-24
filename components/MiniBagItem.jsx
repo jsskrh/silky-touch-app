@@ -16,7 +16,7 @@ const style = {
   heroIcon: `h-5 w-5`,
 };
 
-const MiniBagItem = ({ item, parent }) => {
+const MiniBagItem = ({ item, parent, orderItems }) => {
   const { dispatch } = useContext(Store);
 
   const removeItemHandler = () => {
@@ -42,14 +42,16 @@ const MiniBagItem = ({ item, parent }) => {
           <div className={`${parent === "header" && style.name}`}>
             <Link href={`/products/${item.slug}`}>{item.name}</Link>
           </div>
-          <div className={style.attribute}>
-            <span>Colour:</span>{" "}
-            <span>
-              {item.color.map((colour) => (
-                <span key={colour}>{colour} </span>
-              ))}
-            </span>
-          </div>
+          {!orderItems && (
+            <div className={style.attribute}>
+              <span>Colour:</span>{" "}
+              <span>
+                {item.color.map((colour) => (
+                  <span key={colour}>{colour} </span>
+                ))}
+              </span>
+            </div>
+          )}
           <div className={style.attribute}>
             <span>Size:</span> <span>56</span>
           </div>

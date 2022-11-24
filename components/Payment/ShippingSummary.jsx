@@ -3,27 +3,32 @@ import { useContext } from "react";
 import { Store } from "../../utils/Store";
 
 const style = {
-  shippingSummary: `mt-[22px] px-[22px] py-[27px] bg-[#f5f5f5] text-[0.80rem]`,
+  shippingSummary: `mb-[22px] px-[22px] py-[27px] bg-[#f5f5f5] text-[0.80rem]`,
   ssHeader: `mb-[30px] flex justify-between`,
   ssTitle: `uppercase font-bold`,
   ssLink: `underline font-base`,
-  details: ``,
   detail: `mb-1`,
 };
 
-const ShippingSummary = () => {
+const ShippingSummary = ({ orderShippingAddress }) => {
   const { state } = useContext(Store);
-  const {
+  let {
     cart: { shippingAddress },
   } = state;
+
+  if (orderShippingAddress) {
+    shippingAddress = orderShippingAddress;
+  }
 
   return (
     <div className={style.shippingSummary}>
       <header className={style.ssHeader}>
         <span className={style.ssTitle}>Shipping Summary</span>
-        <span className={style.ssLink}>
-          <Link href="/shipping">Edit</Link>
-        </span>
+        {!orderShippingAddress && (
+          <span className={style.ssLink}>
+            <Link href="/shipping">Edit</Link>
+          </span>
+        )}
       </header>
       <div className={style.details}>
         <p className={style.detail}>

@@ -44,8 +44,13 @@ function reducer(state, action) {
           cartItems: [],
           shippingAddress: { location: {} },
           paymentMethod: "",
+          priceSummary: {},
         },
       };
+      break;
+
+    case "CART_CLEAR_ITEMS":
+      return { ...state, cart: { ...state.cart, cartItems: [] } };
       break;
 
     case "SAVE_SHIPPING_ADDRESS":

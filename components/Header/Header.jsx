@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { HeartIcon } from "@heroicons/react/24/outline";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import LinkBag from "./LinkBag";
 import LinkProfile from "./LinkProfile";
 import LinkWishlist from "./LinkWishlist";
 import LinkSearch from "./LinkSearch";
 
 const style = {
-  header: `sticky top-0 bg-[#fff] z-50`,
+  header: `sticky top-0 z-50`,
   navbar: `flex justify-between items-center p-6`,
   navGrouping: `flex`,
   brandName: `text-4xl font-bold uppercase mr-12`,

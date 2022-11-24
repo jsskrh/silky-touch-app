@@ -4,12 +4,13 @@ import { useContext, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CheckboxLayout from "../components/CheckboxLayout";
 import Layout from "../components/Layout/Layout";
-import CheckoutProgress from "../components/Shipping/CheckoutProgress";
+import CheckoutProgress from "../components/CheckoutProgress";
 import OrderSummary from "../components/OrderSummary";
 import { Store } from "../utils/Store";
 import PrefixBox from "../components/Shipping/PrefixBox";
 import CountryBox from "../components/Shipping/CountryBox";
 import InputContainer from "../components/Shipping/InputContainer";
+import SecureLayout from "../components/Layout/SecureLayout";
 
 const style = {
   pageContent: `md:flex text-xs`,
@@ -30,6 +31,7 @@ const shipping = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
+  const { cartItems } = cart;
   const { shippingAddress } = cart;
 
   const {
@@ -89,8 +91,16 @@ const shipping = () => {
     router.push("/payment");
   };
 
+  const roundCurrency = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
+
+  const subtotal = roundCurrency(
+    cartItems.reduce((a, b) => a + b.quantity * b.price, 0)
+  );
+  const estimatedShipping = roundCurrency(0);
+  const estimatedTotal = roundCurrency(subtotal + estimatedShipping);
+
   return (
-    <Layout title="Delivery Details | Checkout">
+    <SecureLayout title="Delivery Details | Checkout">
       <div className={style.checkoutContainer}>
         <CheckoutProgress activeStep={1} />
         <div className={style.pageContent}>
@@ -251,11 +261,15 @@ const shipping = () => {
           </div>
 
           <div className={style.rightSection}>
-            <OrderSummary />
+            <OrderSummary
+              subtotal={subtotal}
+              estimatedShipping={estimatedShipping}
+              estimatedTotal={estimatedTotal}
+            />
           </div>
         </div>
       </div>
-    </Layout>
+    </SecureLayout>
   );
 };
 

@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CheckboxLayout from "../components/CheckboxLayout";
-import Layout from "../components/Layout/Layout";
 import PaymentRadioGroup from "../components/Payment/PaymentRadioGroup";
 import ShippingSummary from "../components/Payment/ShippingSummary";
-import CheckoutProgress from "../components/Shipping/CheckoutProgress";
+import CheckoutProgress from "../components/CheckoutProgress";
 import OrderSummary from "../components/OrderSummary";
 import { Store } from "../utils/Store";
+import SecureLayout from "../components/Layout/SecureLayout";
 
 const style = {
   pageContent: `md:flex text-xs`,
@@ -29,6 +29,7 @@ const style = {
 const payment = () => {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
+  const { cartItems } = cart;
   const { shippingAddress, paymentMethod } = cart;
 
   const router = useRouter();
@@ -46,7 +47,7 @@ const payment = () => {
       "cart",
       JSON.stringify({ ...cart, paymentMethod: paymentMethod })
     );
-    router.push("/place-order");
+    router.push("/confirm-order");
   };
 
   useEffect(() => {
@@ -56,8 +57,17 @@ const payment = () => {
     setValue("paymentMethod", paymentMethod);
   }, [setValue, paymentMethod]);
 
+  const roundCurrency = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
+
+  const subtotal = roundCurrency(
+    cartItems.reduce((a, b) => a + b.quantity * b.price, 0)
+  );
+  const shippingPrice = roundCurrency(0);
+  const tax = roundCurrency(0);
+  const totalPrice = roundCurrency(subtotal + shippingPrice + tax);
+
   return (
-    <Layout title="Payment & Billing | Checkout">
+    <SecureLayout title="Payment & Billing | Checkout">
       <div className={style.paymentContainer}>
         <CheckoutProgress activeStep={2} />
         <div className={style.pageContent}>
@@ -128,12 +138,17 @@ const payment = () => {
           </div>
 
           <div className={style.rightSection}>
-            <OrderSummary payment />
+            <OrderSummary
+              subtotal={subtotal}
+              shippingPrice={shippingPrice}
+              totalPrice={totalPrice}
+              tax={tax}
+            />
             <ShippingSummary />
           </div>
         </div>
       </div>
-    </Layout>
+    </SecureLayout>
   );
 };
 
