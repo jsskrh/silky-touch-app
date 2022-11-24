@@ -22,6 +22,7 @@ const style = {
 
 const OrderSummary = ({
   confirmation,
+  orderSummary,
   estimatedShipping,
   shippingPrice,
   tax,
@@ -42,75 +43,81 @@ const OrderSummary = ({
   return (
     <div className={style.orderSummary}>
       <header className={style.checkoutOSHeader}>
-        <span className={style.osTitle}>Order Summary</span>
-        {!orderItems && (
+        <span className={style.osTitle}>
+          {orderItems ? "Order Items" : "Order Summary"}
+        </span>
+        {!orderItems && !orderSummary && (
           <span className={style.osLink}>
             <Link href="/bag">Edit</Link>
           </span>
         )}
       </header>
-      <div className={style.checkoutMiniCart}>
-        <div
-          className={`${style.checkoutMiniCartInner} ${
-            confirmation ? style.miniCartConfirm : ""
-          }`}
-        >
-          <table className={style.table}>
-            <thead className={style.tableHead}>
-              <tr>
-                <th>Image</th>
-                <th>Details</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartItems.map((item) => (
-                <MiniBagItem
-                  key={item.slug}
-                  item={item}
-                  orderItems={orderItems}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div className={style.checkoutOrderTotal}>
-        <div className={style.modContainer}>
-          <div className={style.modifier}>
-            <span>Subtotal</span>
-            <span>${subtotal}</span>
+      {!orderSummary && (
+        <div className={style.checkoutMiniCart}>
+          <div
+            className={`${style.checkoutMiniCartInner} ${
+              confirmation ? style.miniCartConfirm : ""
+            }`}
+          >
+            <table className={style.table}>
+              <thead className={style.tableHead}>
+                <tr>
+                  <th>Image</th>
+                  <th>Details</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems.map((item) => (
+                  <MiniBagItem
+                    key={item.slug}
+                    item={item}
+                    orderItems={orderItems}
+                  />
+                ))}
+              </tbody>
+            </table>
           </div>
-          {estimatedShipping ? (
+        </div>
+      )}
+      {(!orderItems || orderSummary) && (
+        <div className={style.checkoutOrderTotal}>
+          <div className={style.modContainer}>
             <div className={style.modifier}>
-              <span>Estimated Shipping</span>
-              <span>from ${estimatedShipping}</span>
+              <span>Subtotal</span>
+              <span>${subtotal}</span>
+            </div>
+            {estimatedShipping ? (
+              <div className={style.modifier}>
+                <span>Estimated Shipping</span>
+                <span>from ${estimatedShipping}</span>
+              </div>
+            ) : (
+              <>
+                <div className={style.modifier}>
+                  <span>Shipping</span>
+                  <span>${shippingPrice}</span>
+                </div>
+                <div className={`${style.modifier} ${style.taxModifier}`}>
+                  <span>TAX</span>
+                  <span>${tax}</span>
+                </div>
+              </>
+            )}
+          </div>
+          {totalPrice ? (
+            <div className={style.totalContainer}>
+              <span>Total</span>
+              <span>${totalPrice}</span>
             </div>
           ) : (
-            <>
-              <div className={style.modifier}>
-                <span>Shipping</span>
-                <span>${shippingPrice}</span>
-              </div>
-              <div className={`${style.modifier} ${style.taxModifier}`}>
-                <span>TAX</span>
-                <span>${tax}</span>
-              </div>
-            </>
+            <div className={style.totalContainer}>
+              <span>Estimated Total</span>
+              <span>${estimatedTotal}</span>
+            </div>
           )}
         </div>
-        {totalPrice ? (
-          <div className={style.totalContainer}>
-            <span>Total</span>
-            <span>${totalPrice}</span>
-          </div>
-        ) : (
-          <div className={style.totalContainer}>
-            <span>Estimated Total</span>
-            <span>${estimatedTotal}</span>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 };
