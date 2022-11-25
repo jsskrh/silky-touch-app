@@ -10,6 +10,10 @@ const handler = async (req, res) => {
   const { user } = session;
   await db.connect();
   const newOrder = new Order({ ...req.body, user: user._id });
+  if (newOrder.paymentResult.status === "COMPLETED") {
+    newOrder.isPaid = true;
+    newOrder.paidAt = Date.now();
+  }
   const order = await newOrder.save();
   res.status(201).send(order);
 };

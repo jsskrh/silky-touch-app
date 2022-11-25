@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const progress = ["login", "shipping", "billing", "confirmation"];
+const progress = ["login", "shipping", "payment", "confirmation"];
 
 const style = {
   checkoutProgress: `md:h-28 flex items-center`,

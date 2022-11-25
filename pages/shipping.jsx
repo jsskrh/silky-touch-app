@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CheckboxLayout from "../components/CheckboxLayout";
 import Layout from "../components/Layout/Layout";
-import CheckoutProgress from "../components/CheckoutProgress";
+import CheckoutProgress from "../components/Shipping/CheckoutProgress";
 import OrderSummary from "../components/OrderSummary";
 import { Store } from "../utils/Store";
 import PrefixBox from "../components/Shipping/PrefixBox";
