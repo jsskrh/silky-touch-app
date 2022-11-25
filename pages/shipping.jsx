@@ -141,7 +141,6 @@ const shipping = () => {
                       type="text"
                       className={style.input}
                       id="firstName"
-                      autoFocus
                       placeholder="Please enter your first name"
                       {...register("firstName", {
                         required: "Please enter your first name",
@@ -158,7 +157,6 @@ const shipping = () => {
                       type="text"
                       className={style.input}
                       id="lastName"
-                      autoFocus
                       placeholder="Please enter your last name"
                       {...register("lastName", {
                         required: "Please enter your last name",
@@ -175,7 +173,6 @@ const shipping = () => {
                       type="text"
                       className={style.input}
                       id="phoneNumber"
-                      autoFocus
                       placeholder="Please enter your phone number"
                       {...register("phoneNumber", {
                         required: "Please enter your phone number",
@@ -211,7 +208,6 @@ const shipping = () => {
                       type="text"
                       className={style.input}
                       id="address"
-                      autoFocus
                       placeholder="Please enter your address"
                       {...register("address", {
                         required: "Please enter your address",
@@ -232,7 +228,6 @@ const shipping = () => {
                       type="text"
                       className={style.input}
                       id="postalCode"
-                      autoFocus
                       placeholder="Please enter your postal code"
                       {...register("postalCode", {
                         required: "Please enter your postal code",

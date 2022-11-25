@@ -9,28 +9,27 @@ import RememberMe from "../components/Login/RememberMe";
 import { getError } from "../utils/error";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
+import CheckboxLayout from "../components/CheckboxLayout";
 
 const style = {
   loginContainer: `bg-[#f5f5f5] mb-5 pb-16`,
-  pageContent: `flex max-w-screen-md mx-auto text-sm`,
-  formContainer: `border-r md:pr-16 border-[#dcdcdc] md:w-1/2`,
+  pageContent: `max-w-screen-md mx-auto text-sm`,
+  formInstruction: `flex justify-end`,
   inputContainer: `mb-5`,
   label: `mb-[5px]`,
   input: `w-full bg-[#fff] px-[15px] py-[10px] border border-[#f5f5f5] hover:border-[#515151]`,
   errorMessage: `mt-1 text-[#bf2d2d]`,
   errorHandler: `pb-7`,
   headerText: `pb-14 uppercase text-sm font-bold`,
-  caContainer: `md:pl-16 md:w-1/2 flex flex-col`,
-  boxContent: `flex flex-col justify-between grow`,
   buttonContainer: `mb-8`,
   loginButton: `bg-[#212121] border-[#212121] text-[#ededed] hover:bg-[#000] hover:border-[#000] hover:text-[#fff]`,
-  createButton: `hover:bg-[#212121] hover:text-[#fafafa] text-[#212121] border-[#212121]`,
   button: `transition-all border px-[30px] py-[13px] w-full text-xs font-bold uppercase`,
   buttonLink: `mt-9 flex justify-center`,
   buttonLinkText: `text-[#212121] hover:text-[#515151] underline transition-all`,
 };
 
-const login = () => {
+const register = () => {
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -45,37 +44,65 @@ const login = () => {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = async ({ email, password }) => {
+  const submitHandler = async ({ name, email, password }) => {
     try {
+      await axios.post("/api/auth/signup", {
+        name,
+        email,
+        password,
+      });
+
       const result = await signIn("credentials", {
         redirect: false,
         email,
         password,
       });
+
       if (result.error) {
         // toast.error(result.error);
-        console.log(result.error);
+        console.log(result.error, "res");
       }
     } catch (error) {
       //   toast.error(getError(err));
-      console.log(getError(err));
+      console.log(getError(error), "get");
     }
   };
 
   return (
-    <Layout title="Sign in">
+    <Layout title="New User">
       <div className={style.loginContainer}>
         <TopContactUs />
-        <PageTitle title="Sign in" />
+        <PageTitle title="Registration" />
         <div className={style.pageContent}>
           <div className={style.formContainer}>
             <form className={style.form} onSubmit={handleSubmit(submitHandler)}>
-              <header>
-                <h2 className={style.headerText}>Returning Customers</h2>
+              <header className={style.formInstruction}>
+                <span>* Required fields</span>
               </header>
+              <div className={style.inputContainer}>
+                <label className={style.label} htmlFor="name">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  {...register("name", {
+                    required: "Please enter your name",
+                  })}
+                  className={style.input}
+                  autoFocus
+                />
+                {errors.name && (
+                  <div className={style.errorMessage}>
+                    {errors.name.message}
+                  </div>
+                )}
+              </div>
+
               <div className={style.inputContainer}>
                 <label className={style.label} htmlFor="email">
                   Email Address *
@@ -99,6 +126,7 @@ const login = () => {
                   </div>
                 )}
               </div>
+
               <div className={style.inputContainer}>
                 <label className={style.label} htmlFor="password">
                   Password *
@@ -106,7 +134,7 @@ const login = () => {
                 <input
                   type="password"
                   {...register("password", {
-                    required: "Please enter your Password",
+                    required: "Please enter your password",
                     minLength: {
                       value: 6,
                       message: "Password is more than 5 characters",
@@ -122,46 +150,50 @@ const login = () => {
                   </div>
                 )}
               </div>
-              <RememberMe />
+
+              <div className={style.inputContainer}>
+                <label className={style.label} htmlFor="confirmPassword">
+                  Confirm Password *
+                </label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  {...register("confirmPassword", {
+                    required: "Please confirm your password",
+                    validate: (value) => value === getValues("password"),
+                    minLength: {
+                      value: 6,
+                      message: "Password is more than 5 characters",
+                    },
+                  })}
+                  className={style.input}
+                  autoFocus
+                />
+                {errors.confirmPassword && (
+                  <div className={style.errorMessage}>
+                    {errors.confirmPassword.message}
+                  </div>
+                )}
+                {errors.confirmPassword &&
+                  errors.confirmPassword.type === "validate" && (
+                    <div className={style.errorMessage}>
+                      Passwords do not match
+                    </div>
+                  )}
+              </div>
+              {/* <CheckboxLayout>
+                I consent to commercial promotion activities related to Versace
+                by e-mail and/or text messages according to our Privacy Policy.
+              </CheckboxLayout> */}
               <div className={style.errorHandler}></div>
               <div className={style.loginButtonContainer}>
                 <div className={style.buttonContainer}>
                   <button className={`${style.button} ${style.loginButton}`}>
-                    Sign in
+                    Register
                   </button>
-                </div>
-                <div className={style.buttonLink}>
-                  <Link href="/forgotten-password">
-                    <span className={style.buttonLinkText}>
-                      Forgotten Password
-                    </span>
-                  </Link>
                 </div>
               </div>
             </form>
-          </div>
-
-          <div className={style.caContainer}>
-            <header>
-              <h2 className={style.headerText}>Create an account</h2>
-            </header>
-            <div className={style.boxContent}>
-              <CABenefits />
-              <div className={style.caButtonContainer}>
-                <div className={style.buttonContainer}>
-                  <Link href={`/create-account?redirect=${redirect || "/"}`}>
-                    <button className={`${style.button} ${style.createButton}`}>
-                      Create Account
-                    </button>
-                  </Link>
-                </div>
-                <div className={style.buttonLink}>
-                  <Link href="/privacy-policy">
-                    <span className={style.buttonLinkText}>Privacy Policy</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -169,4 +201,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default register;
