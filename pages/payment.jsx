@@ -69,84 +69,94 @@ const payment = () => {
   return (
     <SecureLayout title="Payment & Billing | Checkout">
       <div className={style.paymentContainer}>
-        <CheckoutProgress activeStep={2} />
-        <div className={style.pageContent}>
-          <div className={style.leftSection}>
-            <form onSubmit={handleSubmit(submitHandler)}>
-              <div className={style.header}>
-                <h2 className={style.headerTitle}>Payment Method</h2>
-                <div className={style.formInstruction}>
-                  <span>* Required fields</span>
-                </div>
-              </div>
-
-              <div className={style.paymentMethods}>
-                <Controller
-                  name="paymentMethod"
-                  control={control}
-                  defaultValue=""
-                  rules={{
-                    required: "Please select a payment method",
-                  }}
-                  render={({ field }) => <PaymentRadioGroup {...field} />}
-                />
-                {errors.paymentMethod && (
-                  <div className={style.errorMessage}>
-                    {errors.paymentMethod.message}
+        {cartItems.length === 0 ? (
+          <div className={style.emptyBag}>
+            <BagEmpty />
+          </div>
+        ) : (
+          <>
+            <CheckoutProgress activeStep={2} />
+            <div className={style.pageContent}>
+              <div className={style.leftSection}>
+                <form onSubmit={handleSubmit(submitHandler)}>
+                  <div className={style.header}>
+                    <h2 className={style.headerTitle}>Payment Method</h2>
+                    <div className={style.formInstruction}>
+                      <span>* Required fields</span>
+                    </div>
                   </div>
-                )}
+
+                  <div className={style.paymentMethods}>
+                    <Controller
+                      name="paymentMethod"
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: "Please select a payment method",
+                      }}
+                      render={({ field }) => <PaymentRadioGroup {...field} />}
+                    />
+                    {errors.paymentMethod && (
+                      <div className={style.errorMessage}>
+                        {errors.paymentMethod.message}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={style.checkboxContainer}>
+                    <CheckboxLayout id="consentAds">
+                      I consent to commercial promotion activities related to
+                      Luxury by e-mail and/or text messages according to our{" "}
+                      <Link href="/privacy-policy">
+                        <span>Privacy Policy</span>
+                      </Link>
+                      .
+                    </CheckboxLayout>
+                  </div>
+
+                  <div className={style.checkboxContainer}>
+                    <CheckboxLayout id="consentProfiling">
+                      I consent to profiling activities to obtain offers based
+                      on my preferences.
+                    </CheckboxLayout>
+                  </div>
+
+                  <div className={style.checkboxContainer}>
+                    <p>
+                      By placing an order, you confirm that you agree to the{" "}
+                      <Link href="/terms-conditions">
+                        <span>Terms & Conditions</span>
+                      </Link>{" "}
+                      and have read and understood the Versace{" "}
+                      <Link href="/privacy-policy">
+                        <span>Privacy Policy</span>
+                      </Link>
+                      .
+                    </p>
+                  </div>
+
+                  <div className={style.buttonContainer}>
+                    <button
+                      className={`${style.button} ${style.continueButton}`}
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </form>
               </div>
 
-              <div className={style.checkboxContainer}>
-                <CheckboxLayout id="consentAds">
-                  I consent to commercial promotion activities related to Luxury
-                  by e-mail and/or text messages according to our{" "}
-                  <Link href="/privacy-policy">
-                    <span>Privacy Policy</span>
-                  </Link>
-                  .
-                </CheckboxLayout>
+              <div className={style.rightSection}>
+                <OrderSummary
+                  subtotal={subtotal}
+                  shippingPrice={shippingPrice}
+                  totalPrice={totalPrice}
+                  tax={tax}
+                />
+                <ShippingSummary />
               </div>
-
-              <div className={style.checkboxContainer}>
-                <CheckboxLayout id="consentProfiling">
-                  I consent to profiling activities to obtain offers based on my
-                  preferences.
-                </CheckboxLayout>
-              </div>
-
-              <div className={style.checkboxContainer}>
-                <p>
-                  By placing an order, you confirm that you agree to the{" "}
-                  <Link href="/terms-conditions">
-                    <span>Terms & Conditions</span>
-                  </Link>{" "}
-                  and have read and understood the Versace{" "}
-                  <Link href="/privacy-policy">
-                    <span>Privacy Policy</span>
-                  </Link>
-                  .
-                </p>
-              </div>
-
-              <div className={style.buttonContainer}>
-                <button className={`${style.button} ${style.continueButton}`}>
-                  Continue
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <div className={style.rightSection}>
-            <OrderSummary
-              subtotal={subtotal}
-              shippingPrice={shippingPrice}
-              totalPrice={totalPrice}
-              tax={tax}
-            />
-            <ShippingSummary />
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </SecureLayout>
   );

@@ -102,167 +102,178 @@ const shipping = () => {
   return (
     <SecureLayout title="Delivery Details | Checkout">
       <div className={style.checkoutContainer}>
-        <CheckoutProgress activeStep={1} />
-        <div className={style.pageContent}>
-          <div className={style.leftSection}>
-            <form onSubmit={handleSubmit(submitHandler)}>
-              <legend className={style.header}>
-                <h2 className={style.headerTitle}>Shipping Address</h2>
-              </legend>
-              <div className={style.checkoutPanel}>
-                <div className={style.formInstruction}>
-                  <span>* Required fields</span>
-                </div>
-                <div className={style.shippingAddressContainer}>
-                  <InputContainer
-                    id="title"
-                    label="Title"
-                    error={errors.prefix && errors.prefix.message}
-                  >
-                    <Controller
-                      name="prefix"
-                      control={control}
-                      defaultValue="Please select"
-                      rules={{
-                        required: "Please select a prefix",
-                        validate: (value) =>
-                          value !== "Please select" || "Please select a prefix",
-                      }}
-                      render={({ field }) => <PrefixBox {...field} />}
-                    />
-                  </InputContainer>
-
-                  <InputContainer
-                    id="firstName"
-                    label="First Name"
-                    error={errors.firstName && errors.firstName.message}
-                  >
-                    <input
-                      type="text"
-                      className={style.input}
-                      id="firstName"
-                      placeholder="Please enter your first name"
-                      {...register("firstName", {
-                        required: "Please enter your first name",
-                      })}
-                    />
-                  </InputContainer>
-
-                  <InputContainer
-                    id="lastName"
-                    label="Last Name"
-                    error={errors.lastName && errors.lastName.message}
-                  >
-                    <input
-                      type="text"
-                      className={style.input}
-                      id="lastName"
-                      placeholder="Please enter your last name"
-                      {...register("lastName", {
-                        required: "Please enter your last name",
-                      })}
-                    />
-                  </InputContainer>
-
-                  <InputContainer
-                    id="phoneNumber"
-                    label="Phone Number"
-                    error={errors.phoneNumber && errors.phoneNumber.message}
-                  >
-                    <input
-                      type="text"
-                      className={style.input}
-                      id="phoneNumber"
-                      placeholder="Please enter your phone number"
-                      {...register("phoneNumber", {
-                        required: "Please enter your phone number",
-                      })}
-                    />
-                  </InputContainer>
-
-                  <InputContainer
-                    id="country"
-                    label="Country or Region"
-                    error={errors.country && errors.country.message}
-                  >
-                    <Controller
-                      name="country"
-                      control={control}
-                      defaultValue="Please select"
-                      rules={{
-                        required: "Please select a country",
-                        validate: (value) =>
-                          value !== "Please select" ||
-                          "Please enter your country",
-                      }}
-                      render={({ field }) => <CountryBox {...field} />}
-                    />
-                  </InputContainer>
-
-                  <InputContainer
-                    id="address"
-                    label="Address"
-                    error={errors.address && errors.address.message}
-                  >
-                    <input
-                      type="text"
-                      className={style.input}
-                      id="address"
-                      placeholder="Please enter your address"
-                      {...register("address", {
-                        required: "Please enter your address",
-                        minLength: {
-                          value: 7,
-                          message: "Address is more than 6 characters",
-                        },
-                      })}
-                    />
-                  </InputContainer>
-
-                  <InputContainer
-                    id="postalCode"
-                    label="Postal Code"
-                    error={errors.postalCode && errors.postalCode.message}
-                  >
-                    <input
-                      type="text"
-                      className={style.input}
-                      id="postalCode"
-                      placeholder="Please enter your postal code"
-                      {...register("postalCode", {
-                        required: "Please enter your postal code",
-                        minLength: {
-                          value: 6,
-                          message: "Postal Code is more than 5 characters",
-                        },
-                      })}
-                    />
-                  </InputContainer>
-                </div>
-              </div>
-
-              <div className={style.checkboxContainer}>
-                <CheckboxLayout id="useSaAsBa">
-                  Use this shipping address as your billing address
-                </CheckboxLayout>
-              </div>
-
-              <div className={style.buttonContainer}>
-                <button className={`${style.button} ${style.continueButton}`}>
-                  Continue
-                </button>
-              </div>
-            </form>
+        {cartItems.length === 0 ? (
+          <div className={style.emptyBag}>
+            <BagEmpty />
           </div>
+        ) : (
+          <>
+            <CheckoutProgress activeStep={1} />
+            <div className={style.pageContent}>
+              <div className={style.leftSection}>
+                <form onSubmit={handleSubmit(submitHandler)}>
+                  <legend className={style.header}>
+                    <h2 className={style.headerTitle}>Shipping Address</h2>
+                  </legend>
+                  <div className={style.checkoutPanel}>
+                    <div className={style.formInstruction}>
+                      <span>* Required fields</span>
+                    </div>
+                    <div className={style.shippingAddressContainer}>
+                      <InputContainer
+                        id="title"
+                        label="Title"
+                        error={errors.prefix && errors.prefix.message}
+                      >
+                        <Controller
+                          name="prefix"
+                          control={control}
+                          defaultValue="Please select"
+                          rules={{
+                            required: "Please select a prefix",
+                            validate: (value) =>
+                              value !== "Please select" ||
+                              "Please select a prefix",
+                          }}
+                          render={({ field }) => <PrefixBox {...field} />}
+                        />
+                      </InputContainer>
 
-          <div className={style.rightSection}>
-            <OrderSummary
-              subtotal={subtotal}
-              estimatedShipping={estimatedShipping}
-              estimatedTotal={estimatedTotal}
-            />
-          </div>
-        </div>
+                      <InputContainer
+                        id="firstName"
+                        label="First Name"
+                        error={errors.firstName && errors.firstName.message}
+                      >
+                        <input
+                          type="text"
+                          className={style.input}
+                          id="firstName"
+                          placeholder="Please enter your first name"
+                          {...register("firstName", {
+                            required: "Please enter your first name",
+                          })}
+                        />
+                      </InputContainer>
+
+                      <InputContainer
+                        id="lastName"
+                        label="Last Name"
+                        error={errors.lastName && errors.lastName.message}
+                      >
+                        <input
+                          type="text"
+                          className={style.input}
+                          id="lastName"
+                          placeholder="Please enter your last name"
+                          {...register("lastName", {
+                            required: "Please enter your last name",
+                          })}
+                        />
+                      </InputContainer>
+
+                      <InputContainer
+                        id="phoneNumber"
+                        label="Phone Number"
+                        error={errors.phoneNumber && errors.phoneNumber.message}
+                      >
+                        <input
+                          type="text"
+                          className={style.input}
+                          id="phoneNumber"
+                          placeholder="Please enter your phone number"
+                          {...register("phoneNumber", {
+                            required: "Please enter your phone number",
+                          })}
+                        />
+                      </InputContainer>
+
+                      <InputContainer
+                        id="country"
+                        label="Country or Region"
+                        error={errors.country && errors.country.message}
+                      >
+                        <Controller
+                          name="country"
+                          control={control}
+                          defaultValue="Please select"
+                          rules={{
+                            required: "Please select a country",
+                            validate: (value) =>
+                              value !== "Please select" ||
+                              "Please enter your country",
+                          }}
+                          render={({ field }) => <CountryBox {...field} />}
+                        />
+                      </InputContainer>
+
+                      <InputContainer
+                        id="address"
+                        label="Address"
+                        error={errors.address && errors.address.message}
+                      >
+                        <input
+                          type="text"
+                          className={style.input}
+                          id="address"
+                          placeholder="Please enter your address"
+                          {...register("address", {
+                            required: "Please enter your address",
+                            minLength: {
+                              value: 7,
+                              message: "Address is more than 6 characters",
+                            },
+                          })}
+                        />
+                      </InputContainer>
+
+                      <InputContainer
+                        id="postalCode"
+                        label="Postal Code"
+                        error={errors.postalCode && errors.postalCode.message}
+                      >
+                        <input
+                          type="text"
+                          className={style.input}
+                          id="postalCode"
+                          placeholder="Please enter your postal code"
+                          {...register("postalCode", {
+                            required: "Please enter your postal code",
+                            minLength: {
+                              value: 6,
+                              message: "Postal Code is more than 5 characters",
+                            },
+                          })}
+                        />
+                      </InputContainer>
+                    </div>
+                  </div>
+
+                  <div className={style.checkboxContainer}>
+                    <CheckboxLayout id="useSaAsBa">
+                      Use this shipping address as your billing address
+                    </CheckboxLayout>
+                  </div>
+
+                  <div className={style.buttonContainer}>
+                    <button
+                      className={`${style.button} ${style.continueButton}`}
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <div className={style.rightSection}>
+                <OrderSummary
+                  subtotal={subtotal}
+                  estimatedShipping={estimatedShipping}
+                  estimatedTotal={estimatedTotal}
+                />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </SecureLayout>
   );
