@@ -13,7 +13,7 @@ import axios from "axios";
 import CheckboxLayout from "../components/CheckboxLayout";
 
 const style = {
-  loginContainer: `bg-[#f5f5f5] mb-5 pb-16`,
+  loginContainer: `mb-5 pb-16`,
   pageContent: `max-w-screen-md mx-auto text-sm`,
   formInstruction: `flex justify-end`,
   inputContainer: `mb-5`,
@@ -73,7 +73,7 @@ const register = () => {
   };
 
   return (
-    <Layout title="New User">
+    <Layout title="New User" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.loginContainer}>
         <TopContactUs />
         <PageTitle title="Registration" />

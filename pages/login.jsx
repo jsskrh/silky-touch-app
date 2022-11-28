@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 const style = {
-  loginContainer: `bg-[#f5f5f5] mb-5 pb-16`,
+  loginContainer: `mb-5 pb-16`,
   pageContent: `flex max-w-screen-md mx-auto text-sm`,
   formContainer: `border-r md:pr-16 border-[#dcdcdc] md:w-1/2`,
   inputContainer: `mb-5`,
@@ -66,7 +66,7 @@ const login = () => {
   };
 
   return (
-    <Layout title="Sign in">
+    <Layout title="Sign in" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.loginContainer}>
         <TopContactUs />
         <PageTitle title="Sign in" />
