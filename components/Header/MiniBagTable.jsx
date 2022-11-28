@@ -1,5 +1,5 @@
 import { Menu } from "@headlessui/react";
-import MiniBagItem from "../MiniBagItem";
+import MiniBagItem from "./MiniBagItem";
 
 const style = {
   table: `w-full`,
