@@ -6,7 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import CheckboxLayout from "../components/CheckboxLayout";
 import PaymentRadioGroup from "../components/Payment/PaymentRadioGroup";
 import ShippingSummary from "../components/Payment/ShippingSummary";
-import CheckoutProgress from "../components/CheckoutProgress";
+import CheckoutProgress from "../components/Shipping/CheckoutProgress";
 import OrderSummary from "../components/OrderSummary";
 import { Store } from "../utils/Store";
 import SecureLayout from "../components/Layout/SecureLayout";

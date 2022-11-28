@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { Store } from "../utils/Store";
-import MiniBagItem from "./MiniBagItem";
+import MiniBagItem from "./Header/MiniBagItem";
 
 const style = {
   orderSummary: `bg-[#f5f5f5] text-[0.80rem] mb-[22px]`,

@@ -9,8 +9,10 @@ import ShippingSummary from "../components/Payment/ShippingSummary";
 import PaymentMethod from "../components/Confirmation/PaymentMethod";
 import OrderSummary from "../components/OrderSummary";
 import SecureCheckoutLayout from "../components/Layout/SecureLayout";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import BagEmpty from "../components/Bag/BagEmpty";
+import PaystackPayment from "../components/Confirmation/PaystackPayment";
+import PaypalPayment from "../components/Confirmation/PaypalPayment";
+import StripePayment from "../components/Confirmation/StripePayment";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -49,8 +51,6 @@ const confirmation = () => {
   const { cartItems, shippingAddress, paymentMethod } = cart;
   const router = useRouter();
 
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
-
   const [loading, setLoading] = useState(false);
 
   const [{ loadingPay, successPay }, reducerDispatch] = useReducer(reducer, {});
@@ -59,19 +59,7 @@ const confirmation = () => {
     if (!paymentMethod) {
       router.push("./payment");
     }
-    const loadPaypalScript = async () => {
-      const { data: clientId } = await axios.get("api/keys/paypal");
-      paypalDispatch({
-        type: "resetOptions",
-        value: {
-          "client-id": clientId,
-          currency: "USD",
-        },
-      });
-      paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-    };
-    loadPaypalScript();
-  }, [paymentMethod, router, paypalDispatch, successPay]);
+  }, [paymentMethod, router]);
 
   const roundCurrency = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
@@ -82,80 +70,34 @@ const confirmation = () => {
   const tax = roundCurrency(0);
   const totalPrice = roundCurrency(subtotal + shippingPrice + tax);
 
-  const confirmOrderHandler = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.post("/api/orders", {
-        orderItems: cartItems,
-        shippingAddress,
-        paymentMethod,
-        subtotal,
-        shippingPrice,
-        tax,
-        totalPrice,
-      });
-      setLoading(false);
-      dispatch({ type: "CART_CLEAR_ITEMS" });
-      Cookies.set("cart", JSON.stringify({ ...cart, cartItems: [] }));
-      router.push(`/orders/${data._id}`);
-    } catch (error) {
-      setLoading(false);
-      console.log(getError(error));
-    }
-  };
-
-  const createOrder = (data, actions) => {
-    return actions.order
-      .create({
-        purchase_units: [{ amount: { value: totalPrice } }],
-      })
-      .then((orderID) => {
-        return orderID;
-      });
-  };
-
-  const onApprove = (data, actions) => {
-    return actions.order.capture().then(async (details) => {
-      try {
-        setLoading(true);
-
-        dispatch({ type: "PAY_REQUEST" });
-        // const { data } = await axios.put(
-        //   `/api/orders/${order._id}/pay`,
-        //   details
-        // );
-        const paymentResult = {
-          id: details.id,
-          status: details.status,
-          email_address: details.payer.email_address,
-        };
-        const { data } = await axios.post("/api/orders", {
-          orderItems: cartItems,
-          shippingAddress,
-          paymentMethod,
-          subtotal,
-          shippingPrice,
-          tax,
-          totalPrice,
-          paymentResult,
-        });
-        reducerDispatch({ type: "PAY_SUCCESS", payload: data });
-        console.log("Order paid successfully");
-        setLoading(false);
-        dispatch({ type: "CART_CLEAR_ITEMS" });
-        Cookies.set("cart", JSON.stringify({ ...cart, cartItems: [] }));
-        router.push(`/orders/${data._id}`);
-      } catch (error) {
-        reducerDispatch({ type: "PAY_FAIL", payload: getError(error) });
-        console.log(getError(error));
-        console.log(details);
-      }
+  const saveOrder = async (paymentResult) => {
+    const { data } = await axios.post("/api/orders", {
+      orderItems: cartItems,
+      shippingAddress,
+      paymentMethod,
+      subtotal,
+      shippingPrice,
+      tax,
+      totalPrice,
+      paymentResult,
     });
+    setLoading(true);
+    router.push(`/orders/${data._id}`);
+    reducerDispatch({ type: "PAY_SUCCESS", payload: data });
+    dispatch({ type: "CART_CLEAR_ITEMS" });
+    Cookies.set("cart", JSON.stringify({ ...cart, cartItems: [] }));
   };
 
-  const onError = (error) => {
+  const successInit = () => {
+    dispatch({ type: "PAY_REQUEST" });
+  };
+
+  const handleError = (error) => {
+    reducerDispatch({ type: "PAY_FAIL", payload: getError(error) });
     console.log(getError(error));
   };
+
+  const email = "qwerty@qwerty.com";
 
   return (
     <SecureCheckoutLayout title="Confirmation | Checkout">
@@ -182,25 +124,37 @@ const confirmation = () => {
                 <PaymentMethod />
                 <div className={style.buttonContainer}>
                   {paymentMethod === "Paypal" ? (
-                    <>
-                      {isPending ? (
-                        <div>Loading...</div>
-                      ) : (
-                        <PayPalButtons
-                          createOrder={createOrder}
-                          onApprove={onApprove}
-                          onError={onError}
-                        ></PayPalButtons>
-                      )}
-                      {loadingPay && <div>Loading</div>}
-                    </>
+                    <PaypalPayment
+                      saveOrder={saveOrder}
+                      handleError={handleError}
+                      successInit={successInit}
+                      setLoading={setLoading}
+                      loading={loading}
+                      loadingPay={loadingPay}
+                      successPay={successPay}
+                      totalPrice={totalPrice}
+                      style={style}
+                    />
+                  ) : paymentMethod === "Paystack" ? (
+                    <PaystackPayment
+                      saveOrder={saveOrder}
+                      handleError={handleError}
+                      successInit={successInit}
+                      totalPrice={totalPrice}
+                      email={email}
+                      style={style}
+                    />
                   ) : (
-                    <button
-                      className={`${style.button} ${style.continueButton}`}
-                      onClick={confirmOrderHandler}
-                    >
-                      Confirm Order
-                    </button>
+                    <StripePayment
+                      saveOrder={saveOrder}
+                      handleError={handleError}
+                      successInit={successInit}
+                      router={router}
+                      totalPrice={totalPrice}
+                      setLoading={setLoading}
+                      loading={loading}
+                      style={style}
+                    />
                   )}
                 </div>
               </div>
