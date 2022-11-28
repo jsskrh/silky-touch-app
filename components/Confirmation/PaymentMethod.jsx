@@ -12,7 +12,7 @@ const style = {
   button: `transition-all border px-[10px] py-[10px] text-xs font-bold uppercase bg-[#212121] border-[#212121] text-[#ededed] hover:bg-[#000] hover:border-[#000] hover:text-[#fff]`,
 };
 
-const PaymentMethod = ({ orderPaymentMethod, isPaid, paidAt, convertDate }) => {
+const PaymentMethod = ({ orderPaymentMethod, isPaid, paidAt, formatDate }) => {
   const { state } = useContext(Store);
   let {
     cart: { paymentMethod },
@@ -43,7 +43,7 @@ const PaymentMethod = ({ orderPaymentMethod, isPaid, paidAt, convertDate }) => {
         </p>
         {isPaid && (
           <p className={`${style.detail} ${style.paymentTime}`}>
-            Paid at {convertDate(paidAt)}
+            Paid at {formatDate(paidAt)}
           </p>
         )}
       </div>

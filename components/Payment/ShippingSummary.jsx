@@ -16,7 +16,7 @@ const ShippingSummary = ({
   orderShippingAddress,
   isDelivered,
   deliveredAt,
-  convertDate,
+  formatDate,
 }) => {
   const { state } = useContext(Store);
   let {
@@ -56,7 +56,7 @@ const ShippingSummary = ({
         <p className={style.detailsItem}>Shipping Type: Lorem Ipsom</p>
         {isDelivered && (
           <p className={`${style.detail} ${style.deliveryTime}`}>
-            Delivered at {convertDate(deliveredAt)}
+            Delivered at {formatDate(deliveredAt)}
           </p>
         )}
       </div>
