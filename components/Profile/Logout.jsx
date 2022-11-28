@@ -6,7 +6,7 @@ import { Store } from "../../utils/Store";
 const style = {
   container: `flex justify-center mb-16 text-sm`,
   divider: `px-2`,
-  link: `text-[#212121] hover:text-[#515151] relative after:bg-[#212121] hover:after:bg-[#515151] after:absolute after:content-[''] after:w-full after:bottom-[-2px] after:h-[1px] after:left-0 after:right-0`,
+  link: `text-[#212121] hover:text-[#515151] relative after:bg-[#212121] hover:after:bg-[#515151] after:absolute after:content-[''] after:w-full after:bottom-[-1px] after:h-[1px] after:left-0 after:right-0`,
 };
 
 const Logout = () => {
