@@ -59,7 +59,6 @@ const StripePayment = ({
       return;
     }
     setLoading(true);
-    console.log("test");
     successInit();
     const data = async () => {
       try {
