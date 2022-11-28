@@ -5,10 +5,10 @@ import Header from "../Header/Header";
 const style = {
   wrapper: `flex min-h-screen flex-col justify-between`,
   mainContainer: `w-full my-auto px-4 mt-0`,
-  mainInner: `container m-auto bg-white text-[#212121]`,
+  mainInner: `container m-auto text-[#212121]`,
 };
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, children, bgColor }) => {
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ const Layout = ({ title, children }) => {
       <div className={style.wrapper}>
         <Header />
 
-        <main className={style.mainContainer}>
+        <main className={`${style.mainContainer} ${bgColor ? bgColor : ""}`}>
           <div className={style.mainInner}>{children}</div>
         </main>
 

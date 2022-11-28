@@ -11,7 +11,6 @@ import { Store } from "../utils/Store";
 import PageTitle from "../components/PageTitle";
 
 const style = {
-  bagContainer: `bg-[#f5f5f5]`,
   cartHeader: `flex justify-center text-sm mb-12`,
   bagHead: `mx-2`,
   wlHead: `underline hover:text-[#757575]`,
@@ -28,7 +27,7 @@ const bag = () => {
   } = state;
 
   return (
-    <Layout title="Your shopping bag">
+    <Layout title="Your shopping bag" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.bagContainer}>
         <div>
           <TopContactUs />
