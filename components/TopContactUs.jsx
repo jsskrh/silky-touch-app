@@ -2,7 +2,7 @@ const style = {
   bagContainer: `pt-5 bg-[#f5f5f5]`,
   helpContainer: `pb-7 text-sm`,
   helpWrapper: `flex flex-col items-end`,
-  helpTitle: `mb-1`,
+  helpTitle: `mb-1 mt-6`,
   underline: `underline hover:text-[#757575]`,
 };
 
