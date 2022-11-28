@@ -1,6 +1,7 @@
 import { XCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { forwardRef, useContext } from "react";
+import { formatCurrency } from "../../utils/currency";
 import { Store } from "../../utils/Store";
 
 const style = {
@@ -21,14 +22,6 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
 
   const removeItemHandler = () => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
-  };
-
-  const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
-    return price;
   };
 
   return (

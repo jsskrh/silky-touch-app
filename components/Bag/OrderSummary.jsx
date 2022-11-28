@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { formatCurrency } from "../../utils/currency";
 
 const style = {
   orderSummary: `bg-[#fff] py-[38px] px-[22px] mb-4 text-sm`,
@@ -11,14 +12,6 @@ const style = {
 
 const OrderSummary = ({ cartItems }) => {
   const router = useRouter();
-
-  const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
-    return price;
-  };
 
   return (
     <div className={style.orderSummary}>

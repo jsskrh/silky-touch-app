@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { formatCurrency } from "../../utils/currency";
 
 const style = {
   table: `w-full md:w-[85%] table-fixed`,
@@ -32,14 +33,6 @@ const Table = ({ orders }) => {
       return strTime;
     };
     return gbDate + " at " + convertTime(date);
-  };
-
-  const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
-    return price;
   };
 
   return (

@@ -1,4 +1,5 @@
 import { Menu } from "@headlessui/react";
+import { formatCurrency } from "../../utils/currency";
 import MiniBagTable from "./MiniBagTable";
 
 const style = {
@@ -13,14 +14,6 @@ const style = {
 
 const MenuItems = ({ cartItemsCount, cartItems }) => {
   const roundCurrency = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
-
-  const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
-    return price;
-  };
 
   return (
     <Menu.Items className={style.rightMenuItems}>

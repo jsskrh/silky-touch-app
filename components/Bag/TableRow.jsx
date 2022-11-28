@@ -3,6 +3,7 @@ import { XCircleIcon } from "@heroicons/react/24/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { useContext } from "react";
 import { Store } from "../../utils/Store";
+import { formatCurrency } from "../../utils/currency";
 
 const style = {
   tableRow: `border-b border-[#dcdcdc] text-sm`,
@@ -25,14 +26,6 @@ const TableRow = ({ item }) => {
 
   const removeItemHandler = () => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
-  };
-
-  const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
-    return price;
   };
 
   return (

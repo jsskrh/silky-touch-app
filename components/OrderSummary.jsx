@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { Store } from "../utils/Store";
 import MiniBagItem from "./Header/MiniBagItem";
+import { formatCurrency } from "../utils/currency";
 
 const style = {
   orderSummary: `bg-[#f5f5f5] text-[0.80rem] mb-[22px]`,
@@ -39,14 +40,6 @@ const OrderSummary = ({
   if (orderItems) {
     cartItems = orderItems;
   }
-
-  const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
-    return price;
-  };
 
   return (
     <div className={style.orderSummary}>
