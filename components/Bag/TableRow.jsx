@@ -27,6 +27,14 @@ const TableRow = ({ item }) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
 
+  const formatCurrency = (number) => {
+    const price = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(number);
+    return price;
+  };
+
   return (
     <tr className={style.tableRow}>
       <td className={style.imageCell}>
@@ -88,7 +96,7 @@ const TableRow = ({ item }) => {
       </td>
       <td className={style.priceContainer}>
         <div className={style.priceInner}>
-          <span>${item.price * item.quantity}</span>
+          <span>{formatCurrency(item.price * item.quantity)}</span>
         </div>
       </td>
     </tr>

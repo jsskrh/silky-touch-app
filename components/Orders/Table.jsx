@@ -35,7 +35,7 @@ const Table = ({ orders }) => {
   };
 
   const formatCurrency = (number) => {
-    const price = new Intl.NumberFormat("en-GB", {
+    const price = new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
     }).format(number);

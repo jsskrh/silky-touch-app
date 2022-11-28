@@ -40,6 +40,14 @@ const OrderSummary = ({
     cartItems = orderItems;
   }
 
+  const formatCurrency = (number) => {
+    const price = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(number);
+    return price;
+  };
+
   return (
     <div className={style.orderSummary}>
       <header className={style.checkoutOSHeader}>
@@ -85,22 +93,22 @@ const OrderSummary = ({
           <div className={style.modContainer}>
             <div className={style.modifier}>
               <span>Subtotal</span>
-              <span>${subtotal}</span>
+              <span>{formatCurrency(subtotal)}</span>
             </div>
             {estimatedShipping ? (
               <div className={style.modifier}>
                 <span>Estimated Shipping</span>
-                <span>from ${estimatedShipping}</span>
+                <span>from {formatCurrency(estimatedShipping)}</span>
               </div>
             ) : (
               <>
                 <div className={style.modifier}>
                   <span>Shipping</span>
-                  <span>${shippingPrice}</span>
+                  <span>{formatCurrency(shippingPrice)}</span>
                 </div>
                 <div className={`${style.modifier} ${style.taxModifier}`}>
                   <span>TAX</span>
-                  <span>${tax}</span>
+                  <span>{formatCurrency(tax)}</span>
                 </div>
               </>
             )}
@@ -108,12 +116,12 @@ const OrderSummary = ({
           {totalPrice ? (
             <div className={style.totalContainer}>
               <span>Total</span>
-              <span>${totalPrice}</span>
+              <span>{formatCurrency(totalPrice)}</span>
             </div>
           ) : (
             <div className={style.totalContainer}>
               <span>Estimated Total</span>
-              <span>${estimatedTotal}</span>
+              <span>{formatCurrency(estimatedTotal)}</span>
             </div>
           )}
         </div>

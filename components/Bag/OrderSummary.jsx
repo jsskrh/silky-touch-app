@@ -12,6 +12,14 @@ const style = {
 const OrderSummary = ({ cartItems }) => {
   const router = useRouter();
 
+  const formatCurrency = (number) => {
+    const price = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(number);
+    return price;
+  };
+
   return (
     <div className={style.orderSummary}>
       <h2 className={style.title}>Order Summary</h2>
@@ -19,13 +27,17 @@ const OrderSummary = ({ cartItems }) => {
         <div className={style.modContainer}>
           <span>Subtotal</span>
           <span>
-            ${cartItems.reduce((a, b) => a + b.quantity * b.price, 0)}
+            {formatCurrency(
+              cartItems.reduce((a, b) => a + b.quantity * b.price, 0)
+            )}
           </span>
         </div>
         <div className={style.totalContainer}>
           <span>Estimated Total</span>
           <span>
-            ${cartItems.reduce((a, b) => a + b.quantity * b.price, 0)}
+            {formatCurrency(
+              cartItems.reduce((a, b) => a + b.quantity * b.price, 0)
+            )}
           </span>
         </div>
       </div>

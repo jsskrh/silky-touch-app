@@ -14,6 +14,14 @@ const style = {
 const MenuItems = ({ cartItemsCount, cartItems }) => {
   const roundCurrency = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
+  const formatCurrency = (number) => {
+    const price = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(number);
+    return price;
+  };
+
   return (
     <Menu.Items className={style.rightMenuItems}>
       <div className={style.rightMenuItemsInner}>
@@ -40,9 +48,10 @@ const MenuItems = ({ cartItemsCount, cartItems }) => {
           <div className={style.miniCartSubtotal}>
             <span className={style.label}>Subtotal</span>
             <span className={style.value}>
-              $
-              {roundCurrency(
-                cartItems.reduce((a, b) => a + b.quantity * b.price, 0)
+              {formatCurrency(
+                roundCurrency(
+                  cartItems.reduce((a, b) => a + b.quantity * b.price, 0)
+                )
               )}
             </span>
           </div>
