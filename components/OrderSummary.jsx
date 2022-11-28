@@ -68,9 +68,9 @@ const OrderSummary = ({
                 </tr>
               </thead>
               <tbody>
-                {cartItems.map((item) => (
+                {cartItems.map((item, index) => (
                   <MiniBagItem
-                    key={item.slug}
+                    key={index}
                     item={item}
                     orderItems={orderItems}
                   />

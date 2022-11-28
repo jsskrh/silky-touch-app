@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 const style = {
   wrapper: `flex min-h-screen flex-col justify-between`,
   mainContainer: `w-full my-auto px-4 mt-0`,
-  mainInner: `container m-auto text-[#212121]`,
+  mainInner: `container m-auto text-[#212121] mb-16`,
 };
 
 const Layout = ({ title, children, bgColor }) => {
