@@ -6,7 +6,7 @@ import LinkSearch from "./LinkSearch";
 
 const style = {
   header: `sticky top-0 z-50`,
-  navbar: `flex justify-between items-center p-6`,
+  navbar: `flex justify-between items-center p-6 bg-white`,
   navGrouping: `flex`,
   brandName: `text-4xl font-bold uppercase mr-12`,
   navLinks: `items-center`,
