@@ -8,6 +8,7 @@ import NavIcon from "./NavIcon";
 const style = {
   cartAmount: `text-xs align-bottom self-end text-end`,
   rightMenu: `relative`,
+  menuButton: `align-top`,
   heroIcon: `h-4 w-4`,
   iconAndText: `flex`,
 };
@@ -31,6 +32,7 @@ const LinkBag = () => {
       <Menu.Button
         onMouseEnter={() => setIsShowing(true)}
         onMouseLeave={() => setIsShowing(false)}
+        className={style.menuButton}
       >
         <NavIcon link="/bag">
           <div className={style.iconAndText}>
