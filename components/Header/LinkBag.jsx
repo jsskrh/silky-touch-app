@@ -13,7 +13,7 @@ const style = {
   iconAndText: `flex`,
 };
 
-const LinkBag = () => {
+const LinkBag = ({ title }) => {
   const { state } = useContext(Store);
   const { cart } = state;
   const {
@@ -45,7 +45,7 @@ const LinkBag = () => {
       </Menu.Button>
 
       <Transition
-        show={isShowing}
+        show={title === "Your shopping bag" ? false : isShowing}
         onMouseEnter={() => setIsShowing(true)}
         onMouseLeave={() => setIsShowing(false)}
       >

@@ -16,7 +16,7 @@ const style = {
   heroIcon: `h-4 w-4`,
 };
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
     <header className={style.header}>
       <nav className={style.navbar}>
@@ -55,7 +55,7 @@ const Header = () => {
           <LinkSearch />
           <LinkWishlist />
           <LinkProfile />
-          <LinkBag />
+          <LinkBag title={title} />
         </div>
       </nav>
     </header>

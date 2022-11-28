@@ -18,7 +18,7 @@ const Layout = ({ title, children, bgColor }) => {
       </Head>
 
       <div className={style.wrapper}>
-        <Header />
+        <Header title={title} />
 
         <main className={`${style.mainContainer} ${bgColor ? bgColor : ""}`}>
           <div className={style.mainInner}>{children}</div>
