@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import Layout from "../../components/Layout/Layout";
-import PageNavigation from "../../components/ProductPage/PageNavigation";
-import ProductContent from "../../components/ProductPage/ProductContent";
-import ProductImages from "../../components/ProductPage/ProductImages";
-import Product from "../../models/product";
-import db from "../../utils/db";
+import Layout from "../../../../components/Layout/Layout";
+import PageNavigation from "../../../../components/ProductPage/PageNavigation";
+import ProductContent from "../../../../components/ProductPage/ProductContent";
+import ProductImages from "../../../../components/ProductPage/ProductImages";
+import Product from "../../../../models/product";
+import db from "../../../../utils/db";
 
 const style = {
   pdpTop: `md:flex`,

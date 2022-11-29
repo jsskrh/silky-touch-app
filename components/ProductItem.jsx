@@ -12,7 +12,9 @@ const ProductItem = ({ product }) => {
   return (
     <div className={style.product}>
       <div className="productImageContainer">
-        <Link href={`/products/${product.slug}`}>
+        <Link
+          href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+        >
           <Slider images={product.images} name={product.name} />
         </Link>
       </div>
