@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const style = {
   navbar: `py-4 text-xs flex capitalize items-center`,
-  divider: `px-1`,
+  divider: `px-2`,
 };
 
 const PageNavigation = ({ path }) => {
