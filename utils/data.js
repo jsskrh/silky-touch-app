@@ -19,43 +19,57 @@ const data = {
   catalogue: {
     men: {
       accessories: {
-        text: "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman of Versace.",
+        title: "Men's Accessories",
+        subtitle:
+          "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman of Versace.",
       },
       clothing: {
-        text: "A fashionable selection of menswear - an array of suits, shirts, T-shirts, coats, jackets, pants and jeans for men with impeccable style.",
+        title: "Men's Clothing",
+        subtitle:
+          "A fashionable selection of menswear - an array of suits, shirts, T-shirts, coats, jackets, pants and jeans for men with impeccable style.",
         "pants-shorts": {
           title: "Men's Pants and Shorts",
-          text: "Versace pants and shorts for men in an array of styles and fits, from tailored formal pants to comfortable sweatpants and print silk shorts.",
+          subtitle:
+            "Versace pants and shorts for men in an array of styles and fits, from tailored formal pants to comfortable sweatpants and print silk shorts.",
         },
         shirts: {
           title: "Men's Shirts",
-          text: "Crafted from smooth silk or cotton, Versace shirts for men bring elegance and personality. Various designs are enhanced by bold prints and heritage embellishments. Crisp formal button shirts complete a business formal or casual look when paired with a blazer or tie.",
+          subtitle:
+            "Crafted from smooth silk or cotton, Versace shirts for men bring elegance and personality. Various designs are enhanced by bold prints and heritage embellishments. Crisp formal button shirts complete a business formal or casual look when paired with a blazer or tie.",
         },
         sweatshirts: {
           title: "Men's Sweatshirts and Hoodies",
-          text: "A casual yet Very Versace look—the Versace collection of luxury sweatshirts and hoodies for men featuring logo sweatshirts and signature printed hoodies.",
+          subtitle:
+            "A casual yet Very Versace look—the Versace collection of luxury sweatshirts and hoodies for men featuring logo sweatshirts and signature printed hoodies.",
         },
         "t-shirts-polos": {
           title: "Men's T-Shirts & Polos",
-          text: "Browse a selection of t-shirts and polo shirts for men, crafted from comfortable and fine fabrics and embellished with signature prints. Slip on a t-shirt with a pair of Versace jeans and shoes .",
+          subtitle:
+            "Browse a selection of t-shirts and polo shirts for men, crafted from comfortable and fine fabrics and embellished with signature prints. Slip on a t-shirt with a pair of Versace jeans and shoes .",
         },
       },
     },
 
     women: {
       clothing: {
+        title: "Women's Clothing",
+        subtitle: "",
         "t-shirts-sweatshirts": {
           title: "Men's T-Shirts and Sweatshirts",
-          text: "Simply Versace—a selection of Versace women's t-shirts, sweatshirts and hoodies. Explore the possibilities of seasonal prints and brand codes like the GV Signature and La Medusa.",
+          subtitle:
+            "Simply Versace—a selection of Versace women's t-shirts, sweatshirts and hoodies. Explore the possibilities of seasonal prints and brand codes like the GV Signature and La Medusa.",
         },
       },
     },
 
     unisex: {
       accessories: {
+        title: "Accessories",
+        subtitle: "",
         "soft-accessories": {
           title: "Men's Soft Accessories",
-          text: "The Versace soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
+          subtitle:
+            "The Versace soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
         },
       },
     },

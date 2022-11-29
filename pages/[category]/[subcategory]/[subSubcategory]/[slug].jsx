@@ -25,9 +25,7 @@ const productPage = ({ product }) => {
   }
 
   return (
-    <Layout title={product.name}>
-      <PageNavigation path={path} />
-
+    <Layout title={product.name} path={path} productPage>
       <div className={style.pdpMain}>
         <div className={style.pdpTop}>
           <div className={style.pdpLeft}>

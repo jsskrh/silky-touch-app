@@ -1,18 +1,19 @@
 import { useRouter } from "next/router";
-import Layout from "../../../../components/Layout/Layout";
-import ProductItem from "../../../../components/ProductItem";
-import PageNavigation from "../../../../components/ProductPage/PageNavigation";
-import Product from "../../../../models/product";
-import data from "../../../../utils/data";
-import db from "../../../../utils/db";
+import React from "react";
+import Layout from "../../../components/Layout/Layout";
+import ProductItem from "../../../components/ProductItem";
+import Product from "../../../models/product";
+import data from "../../../utils/data";
+import db from "../../../utils/db";
 
 const style = {
   queryBar: `px-6 font-bold text-xs border-y border-[#bdbdbd]`,
   queryBarInner: `py-6 flex justify-between`,
   productsGrid: `pt-4 grid grid-cols-1 gap-1 md:grid-cols-3 lg:grid-cols-4`,
+  heroContainer: `md:col-span-2`,
 };
 
-const subSubcategory = ({ products }) => {
+const subcategory = ({ products }) => {
   const router = useRouter();
   // Fix path error in console
   const path = router.asPath;
@@ -20,15 +21,14 @@ const subSubcategory = ({ products }) => {
 
   const category = data.catalogue[query.category];
   const subcategory = category[query.subcategory];
-  const subSubcategory = subcategory[query.subSubcategory];
 
   //   console.log(router.query);
 
   return (
     <Layout
       path={path}
-      title={subSubcategory.title}
-      subtitle={subSubcategory.text}
+      title={subcategory.title}
+      subtitle={subcategory.subtitle}
       productsCatalogue
     >
       <div className={style.queryBar}>
@@ -39,8 +39,16 @@ const subSubcategory = ({ products }) => {
         </div>
       </div>
       <div className={style.productsGrid}>
-        {products.map((product) => (
-          <ProductItem product={product} key={product.slug} />
+        {products.map((product, index) => (
+          <>
+            {index === 2 && (
+              <>
+                <div className={style.heroContainer}></div>
+                <div className={style.heroContainer}></div>
+              </>
+            )}
+            <ProductItem product={product} key={product.slug} />
+          </>
         ))}
       </div>
     </Layout>
@@ -49,13 +57,12 @@ const subSubcategory = ({ products }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { category, subcategory, subSubcategory } = params;
+  const { category, subcategory } = params;
 
   await db.connect();
   const products = await Product.find({
     category,
     subcategory,
-    subSubcategory,
   })
     .sort({ createdAt: -1 })
     .lean();
@@ -65,4 +72,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default subSubcategory;
+export default subcategory;

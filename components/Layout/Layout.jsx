@@ -6,6 +6,7 @@ import PageNavigation from "../ProductPage/PageNavigation";
 const style = {
   wrapper: `flex min-h-screen flex-col justify-between`,
   mainContainer: `w-full my-auto mt-0`,
+  pageNav: `px-6`,
   pageHeader: `bg-[#fafafa] text-xs px-6`,
   pageHead: `flex justify-center`,
   headInner: `p-4 pt-6 flex flex-col items-center md:w-[70%]`,
@@ -21,6 +22,7 @@ const Layout = ({
   bgColor,
   path,
   productsCatalogue,
+  productPage,
 }) => {
   return (
     <>
@@ -34,6 +36,11 @@ const Layout = ({
         <Header title={title} />
 
         <main className={`${style.mainContainer} ${bgColor ? bgColor : ""}`}>
+          {productPage && (
+            <div className={style.pageNav}>
+              <PageNavigation path={path} />
+            </div>
+          )}
           {productsCatalogue && (
             <div className={style.pageHeader}>
               <PageNavigation path={path} />
