@@ -3,6 +3,7 @@ import Layout from "../../../../components/Layout/Layout";
 import ProductItem from "../../../../components/ProductItem";
 import PageNavigation from "../../../../components/ProductPage/PageNavigation";
 import Product from "../../../../models/product";
+import data from "../../../../utils/data";
 import db from "../../../../utils/db";
 
 const style = {
@@ -16,12 +17,20 @@ const subSubcategory = ({ products }) => {
   // Fix path error in console
   const path = router.asPath;
   const query = router.query;
-  const pageTitle = `${query.category}'s ${query.subSubcategory}`;
 
-  console.log(router.query);
+  const category = data.catalogue[query.category];
+  const subcategory = category[query.subcategory];
+  const subSubcategory = subcategory[query.subSubcategory];
+
+  //   console.log(router.query);
 
   return (
-    <Layout path={path} title={pageTitle} productsDisplay>
+    <Layout
+      path={path}
+      title={subSubcategory.title}
+      subtitle={subSubcategory.text}
+      productsCatalogue
+    >
       <div className={style.queryBar}>
         <div className={style.queryBarInner}>
           <span>Show Filters</span>

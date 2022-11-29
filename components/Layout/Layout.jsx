@@ -14,7 +14,14 @@ const style = {
   mainInner: `container m-auto text-[#212121] mb-16`,
 };
 
-const Layout = ({ title, children, bgColor, path, productsDisplay }) => {
+const Layout = ({
+  title,
+  subtitle,
+  children,
+  bgColor,
+  path,
+  productsCatalogue,
+}) => {
   return (
     <>
       <Head>
@@ -27,18 +34,13 @@ const Layout = ({ title, children, bgColor, path, productsDisplay }) => {
         <Header title={title} />
 
         <main className={`${style.mainContainer} ${bgColor ? bgColor : ""}`}>
-          {productsDisplay && (
+          {productsCatalogue && (
             <div className={style.pageHeader}>
               <PageNavigation path={path} />
               <div className={style.pageHead}>
                 <div className={style.headInner}>
                   <h1 className={style.title}>{title}</h1>
-                  <p className={style.subtitle}>
-                    Browse a selection of t-shirts and polo shirts for men,
-                    crafted from comfortable and fine fabrics and embellished
-                    with signature prints. Slip on a t-shirt with a pair of
-                    Versace jeans and shoes .
-                  </p>
+                  <p className={style.subtitle}>{subtitle}</p>
                 </div>
               </div>
             </div>
