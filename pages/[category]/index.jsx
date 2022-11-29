@@ -9,7 +9,6 @@ const style = {
   queryBar: `px-6 font-bold text-xs border-y border-[#bdbdbd]`,
   queryBarInner: `py-6 flex justify-between`,
   productsGrid: `pt-4 grid grid-cols-1 gap-1 md:grid-cols-3 lg:grid-cols-4`,
-  heroContainer: `md:col-span-2`,
 };
 
 const category = ({ products }) => {
@@ -38,7 +37,12 @@ const category = ({ products }) => {
       </div>
       <div className={style.productsGrid}>
         {products.map((product, index) => (
-          <ProductItem product={product} key={product.slug} />
+          <>
+            {(index + 1) % 6 === 0 && (
+              <div className={style.heroContainer}></div>
+            )}
+            <ProductItem product={product} key={product.slug} />
+          </>
         ))}
       </div>
     </Layout>
@@ -47,7 +51,7 @@ const category = ({ products }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { category, subcategory } = params;
+  const { category } = params;
 
   await db.connect();
   const products = await Product.find({
