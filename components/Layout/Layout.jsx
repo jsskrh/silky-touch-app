@@ -8,9 +8,9 @@ const style = {
   mainContainer: `w-full my-auto mt-0`,
   pageHeader: `bg-[#fafafa] text-xs px-6`,
   pageHead: `flex justify-center`,
-  headInner: `p-4 pt-6 flex flex-col items-center`,
+  headInner: `p-4 pt-6 flex flex-col items-center md:w-[70%]`,
   title: `mb-6 font-bold text-3xl uppercase`,
-  subtitle: `mb-2`,
+  subtitle: `mb-2 text-center`,
   mainInner: `container m-auto text-[#212121] mb-16`,
 };
 
