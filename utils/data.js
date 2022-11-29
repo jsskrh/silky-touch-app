@@ -18,6 +18,9 @@ const data = {
 
   catalogue: {
     men: {
+      title: "Men's Collection",
+      subtitle:
+        "Get the quintessential Versace look by pairing the latest runway styles with a statement bag and modern shoes. For the finishing touch, browse an array of luxurious accessories.",
       accessories: {
         title: "Men's Accessories",
         subtitle:
@@ -51,9 +54,13 @@ const data = {
     },
 
     women: {
+      title: "Women's Collection",
+      subtitle:
+        "For the ultimate Versace look, pair the latest runway styles with a luxurious handbag and expertly crafted shoes. Add statement accessories for a perfect finishing touch.",
       clothing: {
         title: "Women's Clothing",
-        subtitle: "",
+        subtitle:
+          "Find the perfect style for a modern look. Shop this season's most glamorous ready-to-wear from dresses, blouses, trousers and jackets. Elegant T-shirts, knitwear, beachwear and lingerie for a stylish wardrobe.",
         "t-shirts-sweatshirts": {
           title: "Men's T-Shirts and Sweatshirts",
           subtitle:
@@ -63,6 +70,8 @@ const data = {
     },
 
     unisex: {
+      title: "Collection",
+      subtitle: "",
       accessories: {
         title: "Accessories",
         subtitle: "",

@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
-import React from "react";
-import Layout from "../../../components/Layout/Layout";
-import ProductItem from "../../../components/ProductItem";
-import Product from "../../../models/product";
-import data from "../../../utils/data";
-import db from "../../../utils/db";
+import Layout from "../../components/Layout/Layout";
+import ProductItem from "../../components/ProductItem";
+import Product from "../../models/product";
+import data from "../../utils/data";
+import db from "../../utils/db";
 
 const style = {
   queryBar: `px-6 font-bold text-xs border-y border-[#bdbdbd]`,
@@ -13,22 +12,21 @@ const style = {
   heroContainer: `md:col-span-2`,
 };
 
-const subcategory = ({ products }) => {
+const category = ({ products }) => {
   const router = useRouter();
   // Fix path error in console
   const path = router.asPath;
   const query = router.query;
 
   const category = data.catalogue[query.category];
-  const subcategory = category[query.subcategory];
 
   //   console.log(router.query);
 
   return (
     <Layout
       path={path}
-      title={subcategory.title}
-      subtitle={subcategory.subtitle}
+      title={category.title}
+      subtitle={category.subtitle}
       productsCatalogue
     >
       <div className={style.queryBar}>
@@ -40,12 +38,7 @@ const subcategory = ({ products }) => {
       </div>
       <div className={style.productsGrid}>
         {products.map((product, index) => (
-          <>
-            {index === 2 && <div className={style.heroContainer}></div>}
-            {index === 6 && <div className={style.heroContainer}></div>}
-
-            <ProductItem product={product} key={product.slug} />
-          </>
+          <ProductItem product={product} key={product.slug} />
         ))}
       </div>
     </Layout>
@@ -59,7 +52,6 @@ export async function getServerSideProps(context) {
   await db.connect();
   const products = await Product.find({
     category,
-    subcategory,
   })
     .sort({ createdAt: -1 })
     .lean();
@@ -69,4 +61,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default subcategory;
+export default category;
