@@ -10,7 +10,7 @@ const style = {
   navGrouping: `flex`,
   brandName: `text-4xl font-bold uppercase mr-12`,
   navLinks: `items-center`,
-  navLink: `uppercase p-2 font-bold text-xs`,
+  navLink: `uppercase p-2 font-bold text-xs text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:bottom-1 hover:after:h-[1px] after:left-0 after:right-0`,
   navIcons: `h-4 items-start`,
   navIcon: `flex items-center mx-2 pb-8`,
   heroIcon: `h-4 w-4`,
