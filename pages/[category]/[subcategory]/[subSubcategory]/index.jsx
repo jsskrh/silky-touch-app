@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Layout from "../../../../components/Layout/Layout";
-import ProductItem from "../../../../components/ProductItem";
+import ProductItem from "../../../../components/ProductCatalogue/ProductItem";
 import PageNavigation from "../../../../components/ProductPage/PageNavigation";
 import Product from "../../../../models/product";
 import data from "../../../../utils/data";

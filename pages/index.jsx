@@ -1,5 +1,5 @@
 import Layout from "../components/Layout/Layout";
-import ProductItem from "../components/ProductItem";
+import ProductItem from "../components/ProductCatalogue/ProductItem";
 import Product from "../models/product";
 import db from "../utils/db";
 
@@ -21,7 +21,7 @@ export default function Home({ products }) {
 
 export async function getServerSideProps() {
   await db.connect();
-  const products = await Product.find().lean();
+  const products = await Product.find({ category: "shoes" }).lean();
 
   return {
     props: { products: products.map(db.convertDocsToObj) },
