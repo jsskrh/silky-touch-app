@@ -10,10 +10,10 @@ const style = {
   emphasizedLink: `hover:text-[#757575] underline`,
 };
 
-const ProductTabs = ({ product }) => {
+const ProductTabs = ({ product, tabState, setTabState }) => {
   return (
     <div className={style.productTabs}>
-      <TabLayout title="Details">
+      <TabLayout title="Details" tabState={tabState} setTabState={setTabState}>
         <div className={style.description}>
           <p>{product.description}</p>
         </div>
@@ -29,7 +29,11 @@ const ProductTabs = ({ product }) => {
         </p>
       </TabLayout>
 
-      <TabLayout title="Size & Fit">
+      <TabLayout
+        title="Size & Fit"
+        tabState={tabState}
+        setTabState={setTabState}
+      >
         <div className={style.details}>
           <ul>
             <li>- All sizes fit Italian standards</li>
@@ -37,7 +41,11 @@ const ProductTabs = ({ product }) => {
         </div>
       </TabLayout>
 
-      <TabLayout title="Shipping & Returns">
+      <TabLayout
+        title="Shipping & Returns"
+        tabState={tabState}
+        setTabState={setTabState}
+      >
         <h4 className={style.tabContentHeader}>
           COMPLIMENTARY GROUND SHIPPING ON ALL ORDERS.
         </h4>

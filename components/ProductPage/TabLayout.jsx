@@ -1,5 +1,6 @@
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Fragment } from "react";
 
 const style = {
   tabGroup: `border-b botder-[#c0c0c0] text-sm`,
@@ -10,12 +11,19 @@ const style = {
   tabContent: `pb-4`,
 };
 
-const TabLayout = ({ children, title }) => {
+const TabLayout = ({ children, title, setTabState, tabState }) => {
   return (
     <Disclosure as="div" className={style.tabGroup}>
       {({ open }) => (
         <>
-          <Disclosure.Button className={style.groupHead}>
+          <Disclosure.Button
+            className={style.groupHead}
+            onClick={() => {
+              setTimeout(() => {
+                setTabState(tabState + 1);
+              }, 250);
+            }}
+          >
             <h3 className={style.groupTitle}>{title}</h3>
             <span>
               <ChevronDownIcon
@@ -23,9 +31,18 @@ const TabLayout = ({ children, title }) => {
               ></ChevronDownIcon>
             </span>
           </Disclosure.Button>
-          <Disclosure.Panel className={style.tabContent}>
-            {children}
-          </Disclosure.Panel>
+          <Transition
+            enter={`transition-all duration-200 ease-in transform`}
+            enterFrom={`h-0 scale-95 opacity-50`}
+            enterTo={`h-full scale-100 opacity-100`}
+            leave={`transition-all duration-200 ease-out`}
+            leaveFrom={`h-full scale-100 opacity-100`}
+            leaveTo={`h-0 scale-95 opacity-50`}
+          >
+            <Disclosure.Panel className={style.tabContent}>
+              {children}
+            </Disclosure.Panel>
+          </Transition>
         </>
       )}
     </Disclosure>
