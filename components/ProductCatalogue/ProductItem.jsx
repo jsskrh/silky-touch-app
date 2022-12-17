@@ -2,6 +2,8 @@ import Link from "next/link";
 import Slider from "./Slider";
 
 const style = {
+  product: `flex flex-col justify-between`,
+  productImageContainer: `flex flex-col flex-1`,
   productInfo: `w-full pt-4 pb-7 px-[2px]`,
   productInfoInner: `text-xs`,
   productName: `font-bold`,
@@ -11,12 +13,13 @@ const style = {
 const ProductItem = ({ product, slider }) => {
   return (
     <div className={style.product}>
-      <div className="productImageContainer">
+      <div className={style.productImageContainer}>
         {slider ? (
           <Slider images={product.images} name={product.name} slider={slider} />
         ) : (
           <Link
             href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+            className={style.productImageContainer}
           >
             <Slider images={product.images} name={product.name} />
           </Link>

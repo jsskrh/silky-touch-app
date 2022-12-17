@@ -10,3 +10,7 @@ select,
 textarea {
   @apply outline-none;
 }
+
+.original-height {
+  height: intrinsic;
+}

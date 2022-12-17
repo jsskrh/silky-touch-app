@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Slide from "./Slide";
 
 const style = {
-  content: `flex ease-out`,
+  content: `flex ease-out h-full`,
   transition: ` transition-transform duration-[1500ms] delay-700`,
   returnTransition: ` transition-transform duration-[1500ms]`,
 };

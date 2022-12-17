@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import Indicator from "./Indicator";
 import SliderContent from "./SliderContent";
 
-const style = { slider: `overflow-hidden relative group` };
+const style = {
+  slider: `overflow-hidden relative group h-full`,
+};
 
 const Slider = ({ images, name, slider }) => {
   const [transition, setTransition] = useState(0);
@@ -13,11 +15,6 @@ const Slider = ({ images, name, slider }) => {
   useEffect(() => {
     setWidth(sliderRef.current.offsetWidth);
   }, []);
-
-  // let imageArr = [];
-  // images.slice(0, 3).forEach((image) => {
-  //   imageArr.push(Object.values(image));
-  // });
 
   return (
     <div className={style.slider} ref={sliderRef}>
