@@ -35,7 +35,7 @@ const TabLayout = ({ children, title, setTabState, tabState }) => {
             enter={`transition-all duration-200 ease-in transform`}
             enterFrom={`h-0 scale-95 opacity-50`}
             enterTo={`h-full scale-100 opacity-100`}
-            leave={`transition-all duration-200 ease-out`}
+            leave={`transition-all duration-250 ease-out`}
             leaveFrom={`h-full scale-100 opacity-100`}
             leaveTo={`h-0 scale-95 opacity-50`}
           >
