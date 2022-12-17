@@ -28,7 +28,7 @@ const subSubcategory = ({ products }) => {
     <Layout
       path={path}
       title={subSubcategory.title}
-      subtitle={subSubcategory.text}
+      subtitle={subSubcategory.subtitle}
       productsCatalogue
     >
       <div className={style.queryBar}>
