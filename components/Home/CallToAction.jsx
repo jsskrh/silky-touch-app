@@ -21,7 +21,7 @@ const CallToAction = ({ homeRef }) => {
   const contentRef = useRef();
 
   useEffect(() => {
-    const context = containerRef.current;
+    const context = containerRef?.current;
 
     gsap.registerPlugin(ScrollTrigger);
 

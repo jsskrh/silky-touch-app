@@ -34,7 +34,7 @@ const productPage = ({ product }) => {
   const productAllRef = useRef();
 
   useEffect(() => {
-    const context = productPageRef.current;
+    const context = productPageRef?.current;
 
     let testHeight = productContentRef.current.clientHeight;
 
