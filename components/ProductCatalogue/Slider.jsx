@@ -14,15 +14,15 @@ const Slider = ({ images, name, slider }) => {
     setWidth(sliderRef.current.offsetWidth);
   }, []);
 
-  let imageArr = [];
-  images.slice(0, 3).forEach((image) => {
-    imageArr.push(Object.values(image));
-  });
+  // let imageArr = [];
+  // images.slice(0, 3).forEach((image) => {
+  //   imageArr.push(Object.values(image));
+  // });
 
   return (
     <div className={style.slider} ref={sliderRef}>
       <SliderContent
-        images={imageArr}
+        images={Object.values(images).slice(0, 3)}
         name={name}
         width={width}
         transition={slider ? false : transition}

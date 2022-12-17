@@ -4,16 +4,17 @@ const style = {
 };
 
 const ProductImages = ({ product }) => {
+  const imagesArr = Object.values(product.images);
   return (
     <div className={style.productImages}>
-      {product.images.map((image, index) => (
+      {imagesArr.map((image, index) => (
         <img
-          src={Object.values(image)[0]}
+          src={image}
           alt={product.name}
           key={index}
           className={
-            product.images.length % 2 === 1 &&
-            image === product.images[product.images.length - 1]
+            imagesArr.length % 2 === 1 &&
+            image === imagesArr[imagesArr.length - 1]
               ? style.oddImage
               : ""
           }
