@@ -15,7 +15,7 @@ const heroes = [
 ];
 
 const style = {
-  carouselContainer: `w-full md:h-[608px] 2xl:h-[730px] relative overflow-hidden`,
+  carouselContainer: `w-full md:h-[608px] 2xl:h-[730px] relative overflow-hidden mb-[15%]`,
   carouselSlide: `absolute top-0 invisible`,
   outer: `w-full h-full overflow-y-hidden`,
   carouselImage: `max-w-full max-h-full`,
@@ -51,15 +51,14 @@ const MainCarousel = ({ homeRef }) => {
     gsap.registerPlugin(ScrollTrigger);
 
     let ctx = gsap.context(() => {
-      // gsap.set(indicatorRef, { yPercent: -100 });
+      gsap.set(carouselContainerRef.current, { y: 88 });
       const tl = gsap
         .timeline({
           scrollTrigger: {
-            trigger: homeRef.current,
+            trigger: carouselContainerRef.current,
             scrub: true,
             pin: true,
-            markers: true,
-            start: "top 88",
+            start: "top-=88 88",
             end: "+=200%",
           },
         })
@@ -67,11 +66,11 @@ const MainCarousel = ({ homeRef }) => {
           carouselContainer,
           {
             scale: 1.5,
-            top: 88,
             ease: "none",
           },
           "scroll"
         )
+        .to(carouselContainer, { y: 0 }, "scroll")
         .from(
           captionContainer,
           {
@@ -80,6 +79,7 @@ const MainCarousel = ({ homeRef }) => {
           },
           "scroll"
         );
+      // .fromTo(carouselContainer, { top: 88 }, { top: 0 }, "scroll");
       // .from(
       //   indicatorRef.current,
       //   {
@@ -158,7 +158,7 @@ const MainCarousel = ({ homeRef }) => {
 
       const goToSlide = (index, direction) => {
         const slideIndex = wrap(index);
-        console.log(slideIndex, currentSlide, slide);
+        // console.log(slideIndex, currentSlide, slide);
         setAnimating(true);
         let fromTop = slide < currentSlide;
         let dFactor = fromTop ? -1 : 1;

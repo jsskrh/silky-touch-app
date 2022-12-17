@@ -8,15 +8,19 @@ const style = {
   productPrice: `pt-2`,
 };
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, slider }) => {
   return (
     <div className={style.product}>
       <div className="productImageContainer">
-        <Link
-          href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
-        >
-          <Slider images={product.images} name={product.name} />
-        </Link>
+        {slider ? (
+          <Slider images={product.images} name={product.name} slider={slider} />
+        ) : (
+          <Link
+            href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+          >
+            <Slider images={product.images} name={product.name} />
+          </Link>
+        )}
       </div>
       <div className={style.productInfo}>
         <div className={style.productInfoInner}>

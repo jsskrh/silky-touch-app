@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import BrandGrid from "../components/Home/BrandGrid";
 import MainCarousel from "../components/Home/MainCarousel";
+import CallToAction from "../components/Home/CallToAction";
 import Layout from "../components/Layout/Layout";
 import ProductItem from "../components/ProductCatalogue/ProductItem";
 import Product from "../models/product";
@@ -9,7 +11,7 @@ const style = {
   productsGrid: `grid grid-cols-1 gap-1 md:grid-cols-3 lg:grid-cols-4`,
 };
 
-export default function Home({ products }) {
+export default function Home({ products, activeBrand }) {
   const homeRef = useRef();
 
   // useEffect(() => {
@@ -32,6 +34,10 @@ export default function Home({ products }) {
       <div ref={homeRef}>
         <MainCarousel homeRef={homeRef} />
 
+        <BrandGrid activeBrand={activeBrand} brand="gucci" />
+
+        <CallToAction homeRef={homeRef} />
+
         {/* <div className={style.productsCarousel}>
         {products.map((product) => (
           <ProductItem product={product} key={product.slug} />
@@ -44,9 +50,18 @@ export default function Home({ products }) {
 
 export async function getServerSideProps() {
   await db.connect();
-  const products = await Product.find({ subcategory: "shoes" }).lean();
+  const products = await Product.find({
+    subSubcategory: "shirts",
+  }).lean();
+
+  const activeBrand = await Product.find({
+    brand: "Gucci",
+  }).lean();
 
   return {
-    props: { products: products.map(db.convertDocsToObj) },
+    props: {
+      products: products.map(db.convertDocsToObj),
+      activeBrand: activeBrand.map(db.convertDocsToObj),
+    },
   };
 }

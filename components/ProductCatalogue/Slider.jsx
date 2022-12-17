@@ -4,7 +4,7 @@ import SliderContent from "./SliderContent";
 
 const style = { slider: `overflow-hidden relative group` };
 
-const Slider = ({ images, name }) => {
+const Slider = ({ images, name, slider }) => {
   const [transition, setTransition] = useState(0);
   const [width, setWidth] = useState(0);
 
@@ -25,10 +25,10 @@ const Slider = ({ images, name }) => {
         images={imageArr}
         name={name}
         width={width}
-        transition={transition}
+        transition={slider ? false : transition}
         setTransition={setTransition}
       />
-      <Indicator transition={transition} />
+      <Indicator transition={slider ? false : transition} />
     </div>
   );
 };
