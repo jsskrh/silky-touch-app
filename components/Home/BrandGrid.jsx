@@ -1,16 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const brandContent = {
-  title: "Gucci",
-  link: "/men",
-  images: [
-    "/homePage/brandGrid/grid1.avif",
-    "/homePage/brandGrid/grid2.avif",
-    "/homePage/brandGrid/grid3.avif",
-    "/homePage/brandGrid/grid4.avif",
-  ],
-};
+import BrandGridSlider from "./BrandGridSlider";
 
 const style = {
   sectionContainer: `py-10 mb-20`,
@@ -25,19 +15,24 @@ const style = {
 const BrandGrid = ({ activeBrand, brand }) => {
   return (
     <div className={style.sectionContainer}>
+      <BrandGridSlider brand={activeBrand} />
       <div className={style.brandGrid}>
         {activeBrand.map((product, index) => (
-          <div className={style.imageContainer} key={index}>
-            <img
-              src={
-                product.images.modelShowcaseFront
-                  ? product.images.modelShowcaseFront
-                  : product.images.modelFront
-              }
-              alt={product.name}
-              className={style.image}
-            />
-          </div>
+          <Link
+            href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+          >
+            <div className={style.imageContainer} key={index}>
+              <img
+                src={
+                  product.images.modelShowcaseFront
+                    ? product.images.modelShowcaseFront
+                    : product.images.modelFront
+                }
+                alt={product.name}
+                className={style.image}
+              />
+            </div>
+          </Link>
         ))}
       </div>
       <div className={style.brandDetails}>
