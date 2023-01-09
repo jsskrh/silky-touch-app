@@ -43,7 +43,7 @@ const BrandGridSlider = ({ brand }) => {
     );
     return () => {
       window.removeEventListener("resize", () =>
-        setSliderWidth(sliderRef.current.offsetWidth)
+        setSliderWidth(sliderRef?.current.offsetWidth)
       );
     };
   }, []);

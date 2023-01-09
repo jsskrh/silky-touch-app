@@ -25,7 +25,7 @@ const CallToAction = ({ homeRef }) => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: contentRef.current,
         scrub: true,
@@ -37,9 +37,7 @@ const CallToAction = ({ homeRef }) => {
       });
     }, context);
 
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
