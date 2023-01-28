@@ -3,6 +3,9 @@ import LinkBag from "./LinkBag";
 import LinkProfile from "./LinkProfile";
 import LinkWishlist from "./LinkWishlist";
 import LinkSearch from "./LinkSearch";
+import { useEffect, useRef, useState } from "react";
+import data from "../../utils/data";
+import NavCatalogue from "./NavCatalogue";
 
 const style = {
   header: `sticky top-0 z-50`,
@@ -10,39 +13,44 @@ const style = {
   navGrouping: `flex`,
   brandName: `text-4xl font-bold uppercase mr-12`,
   navLinks: `items-center`,
-  navLink: `uppercase p-2 font-bold text-xs text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:bottom-1 hover:after:h-[1px] after:left-0 after:right-0`,
+  navLink: `uppercase pt-0 p-2 font-bold text-xs flex pb-8 text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:top-5 hover:after:h-[1px] after:left-0 after:right-0`,
   navIcons: `h-4 items-start`,
   navIcon: `flex items-center mx-2 pb-8`,
   heroIcon: `h-4 w-4`,
 };
 
 const Header = ({ title }) => {
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    setHeaderHeight(headerRef.current.clientHeight);
+  }, []);
+
+  const catalogueData = data.catalogue.men;
+  delete catalogueData.title;
+  delete catalogueData.subtitle;
+  const catalogueKeys = Object.keys(catalogueData);
+
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className={style.header}>
+    <header className={style.header} ref={headerRef}>
       <nav className={style.navbar}>
         <div className={`${style.navGrouping} ${style.navLinks}`}>
           <Link href="/">
             <h1 className={style.brandName}>Luxury</h1>
           </Link>
-          <div>
+          <div className="flex h-4 items-start">
             <Link href="/bags">
               <span className={style.navLink}>Bags</span>
             </Link>
-            <Link href="/women">
-              <span className={style.navLink}>Women</span>
-            </Link>
-            <Link href="/men">
-              <span className={style.navLink}>Men</span>
-            </Link>
-            <Link href="/home-decor">
-              <span className={style.navLink}>Home Décor</span>
-            </Link>
-            <Link href="/children">
+            <NavCatalogue category="women" />
+            <NavCatalogue category="men" />
+            {/* <Link href="/children">
               <span className={style.navLink}>Children</span>
-            </Link>
-            <Link href="/jeans">
-              <span className={style.navLink}>Jeans Couture</span>
-            </Link>
+            </Link> */}
             <Link href="/stories">
               <span className={style.navLink}>Stories</span>
             </Link>

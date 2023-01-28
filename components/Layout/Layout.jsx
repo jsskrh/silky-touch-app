@@ -47,7 +47,7 @@ const Layout = ({
               <div className={style.pageHead}>
                 <div className={style.headInner}>
                   <h1 className={style.title}>{title}</h1>
-                  <p className={style.subtitle}>{subtitle}</p>
+                  {subtitle && <p className={style.subtitle}>{subtitle}</p>}
                 </div>
               </div>
             </div>

@@ -21,39 +21,123 @@ const data = {
       title: "Men's Collection",
       subtitle:
         "Get the quintessential Versace look by pairing the latest runway styles with a statement bag and modern shoes. For the finishing touch, browse an array of luxurious accessories.",
-      accessories: {
-        title: "Men's Accessories",
-        subtitle:
-          "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman of Versace.",
-      },
       clothing: {
+        name: "Clothing",
         title: "Men's Clothing",
         subtitle:
           "A fashionable selection of menswear - an array of suits, shirts, T-shirts, coats, jackets, pants and jeans for men with impeccable style.",
         "pants-shorts": {
+          name: "Pants & Shorts",
+          slug: "pants-shorts",
           title: "Men's Pants and Shorts",
           subtitle:
             "Versace pants and shorts for men in an array of styles and fits, from tailored formal pants to comfortable sweatpants and print silk shorts.",
         },
         shirts: {
+          name: "Shirts",
+          slug: "shirts",
           title: "Men's Shirts",
           subtitle:
             "Crafted from smooth silk or cotton, Versace shirts for men bring elegance and personality. Various designs are enhanced by bold prints and heritage embellishments. Crisp formal button shirts complete a business formal or casual look when paired with a blazer or tie.",
         },
         sweatshirts: {
+          name: "Sweatshirts",
+          slug: "sweatshirts",
           title: "Men's Sweatshirts and Hoodies",
           subtitle:
             "A casual yet Very Versace look—the Versace collection of luxury sweatshirts and hoodies for men featuring logo sweatshirts and signature printed hoodies.",
         },
         "t-shirts-polos": {
+          name: "T-Shirts",
+          slug: "t-shirts-polos",
           title: "Men's T-Shirts & Polos",
           subtitle:
             "Browse a selection of t-shirts and polo shirts for men, crafted from comfortable and fine fabrics and embellished with signature prints. Slip on a t-shirt with a pair of Versace jeans and shoes .",
         },
         "jackets-coats": {
+          name: "Jackets & coats",
+          slug: "jackets-coats",
           title: "Men's Jackets & Coats",
           subtitle:
             "Discover our wide selection of stylish jackets and coats for men: from leather jackets to bombers, vests, peacoats and puffer jackets.",
+        },
+      },
+      bags: {
+        name: "Bags",
+        title: "Men's Bags",
+        subtitle:
+          "Complete your look with a selection of luxury bags, including backpacks, belt bags and totes.",
+      },
+      shoes: {
+        name: "Shoes",
+        title: "Men's Shoes",
+        subtitle:
+          "Stride in style with finely crafted shoes for men - choose from a range of elegant styles from monk straps to oxfords, derbys, moccasins and driving shoes. Luxurious comfort - find the right sneakers from low top to high top or slip ons, or leather sandals and pool slides for a casual look.",
+        sneakers: {
+          name: "Sneakers",
+          slug: "sneakers",
+          title: "Men's Sneakers",
+          subtitle:
+            "Discover our newest collection of luxury sneakers for men in a wide range of styles: from the Chain Reaction and Trigreca , to other high top and low top sneakers embellished with signature motifs.",
+        },
+        "derby-shoes": {
+          name: "Derby Shoes",
+          slug: "derby-shoes",
+          title: "Men's Derby Shoes",
+          subtitle:
+            "The Versace shoe collection for men includes lace-up Derby styles enriched with La Greca, Barocco and Medusa accents.",
+        },
+        "loafers-slippers": {
+          name: "Loafers & Slippers",
+          slug: "loafers-slippers",
+          title: "Men's Loafers and Slippers",
+          subtitle:
+            "The Versace shoe collection for men includes slip-on loafers and slippers made from leather, suede, and velvet, enriched with La Greca motifs and Medusa hardware.",
+        },
+        boots: {
+          name: "Boots",
+          slug: "boots",
+          title: "Men's Boots",
+          subtitle:
+            "Complete your look with Versace's luxury boots for men - Made in Italy from the finest materials.",
+        },
+        "sandals-slides": {
+          name: "Sandals & Slides",
+          slug: "sandals-slides",
+          title: "Men's Sandals and Slides",
+          subtitle:
+            "Add a luxurious touch to your summer - explore Versace's selection of fashion slides and leather sandals in an array of styles and Medusa and Barocco embellishments. Pair your logo slides with Versace swimwear.",
+        },
+      },
+      accessories: {
+        name: "Accessories",
+        title: "Men's Accessories",
+        subtitle:
+          "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman of Versace.",
+        belts: {
+          name: "Belts",
+          slug: "belts",
+          title: "Men's Belts",
+          subtitle:
+            "Add a touch of luxury to your look - crafted in Italy from the finest materials, Versace's fine leather belts are embellished with iconic buckles inspired by the House's rich heritage.",
+        },
+        wallets: {
+          name: "Wallets",
+          slug: "wallets",
+          title: "Men's Wallets",
+          subtitle:
+            "Keep your credit cards and essential documents at hand - browse our selection of card holders and wallets crafted from the finest materials in a wide range of colours and heritage prints.",
+        },
+      },
+      "underwear-beachwear": {
+        name: "Underwear and Beachwear",
+        title: "Men's Underwear and Beachwear",
+        "bathrobes-robes": {
+          name: "Bathrobes",
+          slug: "bathrobes-robes",
+          title: "Men's Bathrobes",
+          subtitle:
+            "Bring iconic Versace prints and motifs to the beach, the pool or the bedroom. Browse the collection of luxury bathrobes for men, made from smooth silk and soft cotton.",
         },
       },
     },
@@ -63,15 +147,18 @@ const data = {
       subtitle:
         "For the ultimate Versace look, pair the latest runway styles with a luxurious handbag and expertly crafted shoes. Add statement accessories for a perfect finishing touch.",
       clothing: {
+        name: "Clothing",
         title: "Women's Clothing",
         subtitle:
           "Find the perfect style for a modern look. Shop this season's most glamorous ready-to-wear from dresses, blouses, trousers and jackets. Elegant T-shirts, knitwear, beachwear and lingerie for a stylish wardrobe.",
         "blouses-tops": {
+          name: "Blouses & Tops",
           title: "Women's Shirts and Tops",
           subtitle:
             "A true expression of Versace attitude—discover shirts, tops and bodysuits for women in the latest prints and styles, from silk shirts to lace bralette tops.",
         },
         "t-shirts-sweatshirts": {
+          name: "T-Shirts & Sweatshirts",
           title: "Men's T-Shirts and Sweatshirts",
           subtitle:
             "Simply Versace—a selection of Versace women's t-shirts, sweatshirts and hoodies. Explore the possibilities of seasonal prints and brand codes like the GV Signature and La Medusa.",
@@ -86,6 +173,7 @@ const data = {
         title: "Accessories",
         subtitle: "",
         "soft-accessories": {
+          name: "Soft Accessories",
           title: "Men's Soft Accessories",
           subtitle:
             "The Versace soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
@@ -660,7 +748,7 @@ const data = {
       brand: "Versace",
       category: "men",
       subcategory: "shoes",
-      subSubcategory: "trigreca-sneakers",
+      subSubcategory: "sneakers",
       color: ["Fuchsia", "Turquoise"],
       countInStock: 20,
       description:
@@ -696,7 +784,7 @@ const data = {
       brand: "Versace",
       category: "men",
       subcategory: "shoes",
-      subSubcategory: "greca-sneakers",
+      subSubcategory: "sneakers",
       color: ["Blue", "White"],
       countInStock: 20,
       description:
@@ -728,7 +816,7 @@ const data = {
       brand: "Versace",
       category: "men",
       subcategory: "shoes",
-      subSubcategory: "odissea-sneakers",
+      subSubcategory: "sneakers",
       color: ["Blue", "White"],
       countInStock: 20,
       description:
