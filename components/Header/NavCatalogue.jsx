@@ -10,9 +10,7 @@ const style = {
 const NavCatalogue = ({ category }) => {
   const contRef = useRef();
 
-  const catalogueData = data.catalogue[category];
-  delete catalogueData.title;
-  delete catalogueData.subtitle;
+  const catalogueData = data.catalogue[category].categories;
   const catalogueKeys = Object.keys(catalogueData);
 
   const [open, setOpen] = useState(false);
@@ -56,19 +54,21 @@ const NavCatalogue = ({ category }) => {
               <li className="ml-8 w-44 box-content">
                 <Link href={`/men/${levelOne}`}>
                   <h3 className="uppercase mb-3 font-bold text-xs hover:text-[#757575]">
-                    {catalogueData[levelOne].name}
+                    {catalogueData[levelOne].metadata.name}
                   </h3>
                 </Link>
                 <ul>
-                  {Object.values(catalogueData[levelOne]).map((levelTwo) => (
-                    // levelTwo !== "title" &&
-                    // levelTwo !== "subtitle" &&
-                    <li className="capitalize text-[0.735rem] mb-2 hover:text-[#757575]">
-                      <Link href={`/men/${levelOne}/${levelTwo.slug}`}>
-                        {levelTwo.name}
-                      </Link>
-                    </li>
-                  ))}
+                  {Object.values(catalogueData[levelOne].categories).map(
+                    (levelTwo) => (
+                      // levelTwo !== "title" &&
+                      // levelTwo !== "subtitle" &&
+                      <li className="capitalize text-[0.735rem] mb-2 hover:text-[#757575]">
+                        <Link href={`/men/${levelOne}/${levelTwo.slug}`}>
+                          {levelTwo.name}
+                        </Link>
+                      </li>
+                    )
+                  )}
                 </ul>
               </li>
             ))}

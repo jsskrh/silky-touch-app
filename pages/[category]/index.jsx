@@ -24,8 +24,8 @@ const category = ({ products }) => {
   return (
     <Layout
       path={path}
-      title={category.title}
-      subtitle={category.subtitle}
+      title={category.metadata.title}
+      subtitle={category.metadata.subtitle}
       productsCatalogue
     >
       <div className={style.queryBar}>

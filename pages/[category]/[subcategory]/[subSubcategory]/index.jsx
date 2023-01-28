@@ -19,8 +19,8 @@ const subSubcategory = ({ products }) => {
   const query = router.query;
 
   const category = data.catalogue[query.category];
-  const subcategory = category[query.subcategory];
-  const subSubcategory = subcategory[query.subSubcategory];
+  const subcategory = category.categories[query.subcategory];
+  const subSubcategory = subcategory.categories[query.subSubcategory];
 
   //   console.log(router.query);
 
