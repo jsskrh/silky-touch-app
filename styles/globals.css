@@ -14,3 +14,7 @@ textarea {
 .original-height {
   height: intrinsic;
 }
+
+.screen-overlay {
+  box-shadow: 0 -120px 47px -70px rgba(0, 0, 0, 0.3) inset;
+}

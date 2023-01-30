@@ -45,8 +45,8 @@ const Header = ({ title }) => {
 
   const [isMobile, setIsMobile] = useState();
 
-  const [showSidebar, setShowSidebar] = useState(true);
-  const [showFullOverlay, setShowFullOverlay] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [showFullOverlay, setShowFullOverlay] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {

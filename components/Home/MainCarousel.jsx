@@ -9,18 +9,23 @@ const heroes = [
     link: "/",
     caption: "Timeless Bags for Men",
   },
-  { image: "/heroImages/hero2.jpg", link: "/", caption: "Horsebit Mini Bags" },
-  { image: "/heroImages/hero3.jpg", link: "/", caption: "GG Belts" },
-  { image: "/heroImages/hero4.jpg", link: "/", caption: "Supreme Flora" },
+  {
+    image: "/heroImages/hero2.jpg",
+    link: "/bags",
+    caption: "Horsebit Mini Bags",
+  },
+  { image: "/heroImages/hero3.jpg", link: "/bags", caption: "GG Belts" },
+  { image: "/heroImages/hero4.jpg", link: "/bags", caption: "Supreme Flora" },
+  { image: "/heroImages/hero5.avif", link: "/bags", caption: "Resort 2023" },
 ];
 
 const style = {
-  carouselContainer: `w-full md:h-[608px] 2xl:h-[730px] relative overflow-hidden mb-[15%]`,
-  carouselSlide: `absolute top-0 invisible`,
-  outer: `w-full h-full overflow-y-hidden`,
-  carouselImage: `max-w-full max-h-full`,
-  //   captionContainer: `sticky top-0 left-0 text-[#fff] text-[4rem] max-w-[550px] uppercase font-['Cormorant-Garamond']`,
-  captionContainer: `absolute bottom-10 left-10 text-[#fff] text-[4rem] max-w-[550px] uppercase font-['Cormorant-Garamond']`,
+  carouselContainer: `absolute top-[68px] md:top-[88px] right-0 left-0 w-screen h-[calc(100vh-68px)] md:h-[calc(100vh-88px)] overflow-hidden`,
+  carouselSlide: `absolute top-0 invisible h-full`,
+  outer: `h-full overflow-y-hidden`,
+  carouselImage: `max-h-full h-full w-full object-cover`,
+  // carouselSlide: `absolute top-0 invisible`,
+  captionContainer: `absolute bottom-20 left-10 text-[#fff] text-[3rem] lg:text-[4rem] max-w-[550px] uppercase font-['Cormorant-Garamond']`,
   captionWord: `inline-block mr-4`,
   captionChar: `inline-block mr-1`,
   carouselIndicatorContainer: `absolute bottom-0 left-0 right-0 flex z-10`,
@@ -30,7 +35,11 @@ const style = {
   activeBox: `h-3 w-3 border border-[#fff]`,
 };
 
-const MainCarousel = ({ homeRef }) => {
+// background: linear-gradient(to bottom,#25211e 0,rgba(37,33,30,0) 100%);
+// bg-[linear-gradient(to_bottom,#25211e_0,rgba(37,33,30,0)_20%)]
+// box-shadow: 0 -120px 47px -70px rgba(0,0,0,.3) inset;
+
+const MainCarousel = ({ homeRef, isMobile }) => {
   const [slide, setSlide] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(-1);
   const [splitCaptions, setSplitCaptions] = useState([]);
@@ -40,76 +49,6 @@ const MainCarousel = ({ homeRef }) => {
   const captionContainerRef = useRef();
 
   const indicatorRef = useRef();
-
-  useEffect(() => {
-    const context = homeRef.current;
-
-    const carouselContainer = context.querySelector(".carousel-container");
-    const captionContainer = context.querySelectorAll(".caption-container");
-    const indicator = context.querySelectorAll(".carousel-container");
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    let ctx = gsap.context(() => {
-      gsap.set(carouselContainerRef.current, { y: 88 });
-      const tl = gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: carouselContainerRef.current,
-            scrub: true,
-            pin: true,
-            start: "top-=88 88",
-            end: "+=200%",
-          },
-        })
-        .from(
-          carouselContainer,
-          {
-            scale: 1.5,
-            ease: "none",
-          },
-          "scroll"
-        )
-        .to(carouselContainer, { y: 0 }, "scroll")
-        .from(
-          captionContainer,
-          {
-            bottom: 100,
-            left: 180,
-          },
-          "scroll"
-        );
-      // .fromTo(carouselContainer, { top: 88 }, { top: 0 }, "scroll");
-      // .from(
-      //   indicatorRef.current,
-      //   {
-      //     ScrollTrigger: {
-      //       trigger: carouselContainer[slide],
-      //       end: "bottom bottom",
-      //       pin: true,
-      //       markers: true,
-      //     },
-      //   },
-      //   "scroll"
-      // );
-
-      //   ScrollTrigger.create({
-      //     trigger: ".screen-overlay",
-      //     start: "bottom bottom-=100px",
-      //     markers: true,
-      //     onEnter: () => {
-      //       gsap.set(carouselContainer, { position: "absolute" });
-      //     },
-      //     onLeaveBack: () => {
-      //       gsap.set(carouselContainer, { position: "fixed" });
-      //     },
-      //   });
-    }, context);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
 
   useEffect(() => {
     let captions = [];
@@ -246,43 +185,46 @@ const MainCarousel = ({ homeRef }) => {
       // onClick={() => !animating && setSlide(slide + 1)}
     >
       <div className="fixed w-screen h-screen z-0 screen-overlay"></div>
-      {heroes.map((hero, index) => (
-        <Link href={hero.link} key={index}>
-          <div className={`${style.carouselSlide} slide`}>
-            <div className={`${style.outer} outer`}>
-              <div className={`${style.outer} inner`}>
-                <img
-                  src={hero.image}
-                  alt="hero image"
-                  className={`${style.carouselImage} carousel-image`}
-                />
-                <div
-                  className={`absolute top-0 bottom-0 right-0 left-0 h-full w-full`}
-                >
+      {
+        /* isMobile && */
+        heroes.map((hero, index) => (
+          <Link href={hero.link} key={index}>
+            <div className={`${style.carouselSlide} slide`}>
+              <div className={`${style.outer} outer`}>
+                <div className={`${style.outer} inner`}>
+                  <img
+                    src={hero.image}
+                    alt="hero image"
+                    className={`${style.carouselImage} carousel-image`}
+                  />
                   <div
-                    className={`${style.captionContainer} caption-container`}
+                    className={`absolute top-0 bottom-0 right-0 left-0 h-full w-full`}
                   >
-                    <h1 className={`caption`}>
-                      {splitCaptions[index]?.map((word, index) => (
-                        <div className={style.captionWord} key={index}>
-                          {word?.map((char, index) => (
-                            <span
-                              key={index}
-                              className={`${style.captionChar} caption-char`}
-                            >
-                              {char}
-                            </span>
-                          ))}
-                        </div>
-                      ))}
-                    </h1>
+                    <div
+                      className={`${style.captionContainer} caption-container`}
+                    >
+                      <h1 className={`caption`}>
+                        {splitCaptions[index]?.map((word, index) => (
+                          <div className={style.captionWord} key={index}>
+                            {word?.map((char, index) => (
+                              <span
+                                key={index}
+                                className={`${style.captionChar} caption-char`}
+                              >
+                                {char}
+                              </span>
+                            ))}
+                          </div>
+                        ))}
+                      </h1>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))
+      }
       <div className={style.carouselIndicatorContainer} ref={indicatorRef}>
         <div className={style.carouselIndicator}>
           {heroes.map((hero, index) => (

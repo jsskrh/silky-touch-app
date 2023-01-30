@@ -38,13 +38,24 @@ const BrandGridSlider = ({ brand }) => {
   }, [sliderWidth]);
 
   useEffect(() => {
-    window.addEventListener("resize", () =>
-      setSliderWidth(sliderRef.current.offsetWidth)
-    );
+    // window.addEventListener("resize", () =>
+    //   setSliderWidth(sliderRef.current.offsetWidth)
+    // );
+    // return () => {
+    //   window.removeEventListener("resize", () =>
+    //     setSliderWidth(sliderRef?.current.offsetWidth)
+    //   );
+    // };
+
+    const handleResize = () => {
+      setSliderWidth(sliderRef?.current.offsetWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      window.removeEventListener("resize", () =>
-        setSliderWidth(sliderRef?.current.offsetWidth)
-      );
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
