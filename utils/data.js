@@ -17,8 +17,57 @@ const data = {
   ],
 
   catalogue: {
+    bags: {
+      metadata: {
+        slug: "bags",
+        name: "Bags",
+        title: "Bag Collection",
+        subtitle:
+          "Crafted in the finest calfskin, Versace bags for women are made of supple luxury. Find this season's IT bag. Designer bag lovers will enjoy fine nappa leather crossbody bags and a range of styles and colors of handbags, clutches, shoulder bags and sport-infused luxury backpacks.",
+      },
+      categories: {},
+    },
+
+    women: {
+      metadata: {
+        slug: "women",
+        name: "Women",
+        title: "Women's Collection",
+        subtitle:
+          "For the ultimate Versace look, pair the latest runway styles with a luxurious handbag and expertly crafted shoes. Add statement accessories for a perfect finishing touch.",
+      },
+      categories: {
+        clothing: {
+          metadata: {
+            slug: "clothing",
+            name: "Clothing",
+            title: "Women's Clothing",
+            subtitle:
+              "Find the perfect style for a modern look. Shop this season's most glamorous ready-to-wear from dresses, blouses, trousers and jackets. Elegant T-shirts, knitwear, beachwear and lingerie for a stylish wardrobe.",
+          },
+          categories: {
+            "blouses-tops": {
+              slug: "blouses-tops",
+              name: "Blouses & Tops",
+              title: "Women's Shirts and Tops",
+              subtitle:
+                "A true expression of Versace attitude—discover shirts, tops and bodysuits for women in the latest prints and styles, from silk shirts to lace bralette tops.",
+            },
+            "t-shirts-sweatshirts": {
+              slug: "t-shirts-sweatshirts",
+              name: "T-Shirts & Sweatshirts",
+              title: "Men's T-Shirts and Sweatshirts",
+              subtitle:
+                "Simply Versace—a selection of Versace women's t-shirts, sweatshirts and hoodies. Explore the possibilities of seasonal prints and brand codes like the GV Signature and La Medusa.",
+            },
+          },
+        },
+      },
+    },
+
     men: {
       metadata: {
+        slug: "men",
         name: "Men",
         title: "Men's Collection",
         subtitle:
@@ -27,6 +76,7 @@ const data = {
       categories: {
         clothing: {
           metadata: {
+            slug: "clothing",
             name: "Clothing",
             title: "Men's Clothing",
             subtitle:
@@ -72,6 +122,7 @@ const data = {
         },
         bags: {
           metadata: {
+            slug: "bags",
             name: "Bags",
             title: "Men's Bags",
             subtitle:
@@ -81,6 +132,7 @@ const data = {
         },
         shoes: {
           metadata: {
+            slug: "shoes",
             name: "Shoes",
             title: "Men's Shoes",
             subtitle:
@@ -126,6 +178,7 @@ const data = {
         },
         accessories: {
           metadata: {
+            slug: "accessories",
             name: "Accessories",
             title: "Men's Accessories",
             subtitle:
@@ -150,6 +203,7 @@ const data = {
         },
         "underwear-beachwear": {
           metadata: {
+            slug: "underwear-beachwear",
             name: "Underwear and Beachwear",
             title: "Men's Underwear and Beachwear",
           },
@@ -166,53 +220,31 @@ const data = {
       },
     },
 
-    women: {
+    shoes: {
       metadata: {
-        name: "Women",
-        title: "Women's Collection",
+        slug: "shoes",
+        name: "Shoes",
+        title: "Shoe Collection",
         subtitle:
-          "For the ultimate Versace look, pair the latest runway styles with a luxurious handbag and expertly crafted shoes. Add statement accessories for a perfect finishing touch.",
+          "Crafted in the finest calfskin, Versace bags for women are made of supple luxury. Find this season's IT bag. Designer bag lovers will enjoy fine nappa leather crossbody bags and a range of styles and colors of handbags, clutches, shoulder bags and sport-infused luxury backpacks.",
       },
-      categories: {
-        clothing: {
-          metadata: {
-            name: "Clothing",
-            title: "Women's Clothing",
-            subtitle:
-              "Find the perfect style for a modern look. Shop this season's most glamorous ready-to-wear from dresses, blouses, trousers and jackets. Elegant T-shirts, knitwear, beachwear and lingerie for a stylish wardrobe.",
-          },
-          categories: {
-            "blouses-tops": {
-              name: "Blouses & Tops",
-              title: "Women's Shirts and Tops",
-              subtitle:
-                "A true expression of Versace attitude—discover shirts, tops and bodysuits for women in the latest prints and styles, from silk shirts to lace bralette tops.",
-            },
-            "t-shirts-sweatshirts": {
-              name: "T-Shirts & Sweatshirts",
-              title: "Men's T-Shirts and Sweatshirts",
-              subtitle:
-                "Simply Versace—a selection of Versace women's t-shirts, sweatshirts and hoodies. Explore the possibilities of seasonal prints and brand codes like the GV Signature and La Medusa.",
-            },
-          },
-        },
-      },
+      categories: {},
     },
 
-    unisex: {
-      title: "Collection",
-      subtitle: "",
-      accessories: {
-        title: "Accessories",
-        subtitle: "",
-        "soft-accessories": {
-          name: "Soft Accessories",
-          title: "Men's Soft Accessories",
-          subtitle:
-            "The Versace soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
-        },
-      },
-    },
+    // unisex: {
+    //   title: "Collection",
+    //   subtitle: "",
+    //   accessories: {
+    //     title: "Accessories",
+    //     subtitle: "",
+    //     "soft-accessories": {
+    //       name: "Soft Accessories",
+    //       title: "Men's Soft Accessories",
+    //       subtitle:
+    //         "The Versace soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
+    //     },
+    //   },
+    // },
   },
 
   products: [

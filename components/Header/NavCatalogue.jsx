@@ -4,7 +4,7 @@ import Link from "next/link";
 import gsap from "gsap";
 
 const style = {
-  navLink: `uppercase pt-0 p-2 font-bold text-xs flex pb-8 text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:top-5 hover:after:h-[1px] after:left-0 after:right-0`,
+  navLink: `uppercase pt-0 p-2 font-bold text-xs flex pb-9 text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:top-5 hover:after:h-[1px] after:left-0 after:right-0`,
 };
 
 const NavCatalogue = ({ category }) => {
