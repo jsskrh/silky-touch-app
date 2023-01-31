@@ -184,47 +184,43 @@ const MainCarousel = ({ homeRef, isMobile }) => {
       ref={carouselContainerRef}
       // onClick={() => !animating && setSlide(slide + 1)}
     >
-      <div className="fixed w-screen h-screen z-0 screen-overlay"></div>
-      {
-        /* isMobile && */
-        heroes.map((hero, index) => (
-          <Link href={hero.link} key={index}>
-            <div className={`${style.carouselSlide} slide`}>
-              <div className={`${style.outer} outer`}>
-                <div className={`${style.outer} inner`}>
-                  <img
-                    src={hero.image}
-                    alt="hero image"
-                    className={`${style.carouselImage} carousel-image`}
-                  />
+      {heroes.map((hero, index) => (
+        <Link href={hero.link} key={index}>
+          <div className={`${style.carouselSlide} slide`}>
+            <div className={`${style.outer} outer`}>
+              <div className={`${style.outer} inner`}>
+                <img
+                  src={hero.image}
+                  alt="hero image"
+                  className={`${style.carouselImage} carousel-image`}
+                />
+                <div
+                  className={`absolute top-0 bottom-0 right-0 left-0 h-full w-full`}
+                >
                   <div
-                    className={`absolute top-0 bottom-0 right-0 left-0 h-full w-full`}
+                    className={`${style.captionContainer} caption-container`}
                   >
-                    <div
-                      className={`${style.captionContainer} caption-container`}
-                    >
-                      <h1 className={`caption`}>
-                        {splitCaptions[index]?.map((word, index) => (
-                          <div className={style.captionWord} key={index}>
-                            {word?.map((char, index) => (
-                              <span
-                                key={index}
-                                className={`${style.captionChar} caption-char`}
-                              >
-                                {char}
-                              </span>
-                            ))}
-                          </div>
-                        ))}
-                      </h1>
-                    </div>
+                    <h1 className={`caption`}>
+                      {splitCaptions[index]?.map((word, index) => (
+                        <div className={style.captionWord} key={index}>
+                          {word?.map((char, index) => (
+                            <span
+                              key={index}
+                              className={`${style.captionChar} caption-char`}
+                            >
+                              {char}
+                            </span>
+                          ))}
+                        </div>
+                      ))}
+                    </h1>
                   </div>
                 </div>
               </div>
             </div>
-          </Link>
-        ))
-      }
+          </div>
+        </Link>
+      ))}
       <div className={style.carouselIndicatorContainer} ref={indicatorRef}>
         <div className={style.carouselIndicator}>
           {heroes.map((hero, index) => (

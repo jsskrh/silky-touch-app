@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import PageNavigation from "../ProductPage/PageNavigation";
 
 const style = {
-  wrapper: `flex min-h-screen flex-col justify-between overflow-x-hidden`,
+  wrapper: `flex min-h-screen flex-col justify-between`,
   mainContainer: `w-full my-auto mt-0 z-10`,
   pageNav: `px-6`,
   pageHeader: `bg-[#fafafa] text-xs px-6`,

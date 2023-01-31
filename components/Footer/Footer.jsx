@@ -6,7 +6,7 @@ import { DocumentTextIcon } from "@heroicons/react/24/outline";
 
 const style = {
   footer: `flex flex-col bg-[#212121] text-[#fff] pt-14 pb-10 z-10`,
-  top: `flex container m-auto px-6 pb-8 justify-between`,
+  top: `flex flex-col lg:flex-row container m-auto px-6 pb-8 justify-between`,
   topLeft: `flex`,
   listContainer: `w-48 text-xs`,
   heroIcon: `h-4 w-4 mr-1`,
