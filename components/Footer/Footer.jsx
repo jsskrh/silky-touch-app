@@ -3,7 +3,6 @@ import { MapPinIcon } from "@heroicons/react/24/outline";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import { PhoneIcon } from "@heroicons/react/24/outline";
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
-import icons from "../../assets";
 
 const style = {
   footer: `flex flex-col bg-[#212121] text-[#fff] md:pt-14 pb-10 z-10`,
