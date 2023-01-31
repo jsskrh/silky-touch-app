@@ -5,7 +5,7 @@ import BrandGridSlider from "./BrandGridSlider";
 const style = {
   sectionContainer: `py-10 mb-20`,
   brandGrid: `grid md:grid-cols-2 md:gap-5 mb-10`,
-  imageContainer: `w-full h-[630px] overflow-hidden`,
+  imageContainer: `w-full max-h-[630px] overflow-hidden`,
   image: `max-w-full`,
   brandDetails: `text-center`,
   title: `text-4xl uppercase`,
