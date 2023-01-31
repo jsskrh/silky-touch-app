@@ -11,7 +11,7 @@ const style = {
   pageHead: `flex justify-center`,
   headInner: `p-4 pt-6 flex flex-col items-center md:w-[70%]`,
   title: `mb-6 font-bold text-3xl uppercase text-center`,
-  subtitle: `mb-2 text-center`,
+  subtitle: `mb-2 text-center md:block hidden`,
   mainInner: `container m-auto text-[#212121] mb-16`,
 };
 

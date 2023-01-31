@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const style = {
-  navbar: `py-4 text-xs flex capitalize items-center`,
+  navbar: `py-4 text-xs hidden md:flex capitalize items-center`,
   divider: `px-2`,
 };
 

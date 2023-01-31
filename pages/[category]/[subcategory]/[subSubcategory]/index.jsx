@@ -5,11 +5,10 @@ import PageNavigation from "../../../../components/ProductPage/PageNavigation";
 import Product from "../../../../models/product";
 import data from "../../../../utils/data";
 import db from "../../../../utils/db";
+import QueryBar from "../../../../components/ProductCatalogue/QueryBar";
 
 const style = {
-  queryBar: `px-6 font-bold text-xs border-y border-[#bdbdbd]`,
-  queryBarInner: `py-6 flex justify-between`,
-  productsGrid: `pt-4 grid grid-cols-1 gap-1 md:grid-cols-3 lg:grid-cols-4`,
+  productsGrid: `pt-4 mx-4 grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4`,
 };
 
 const subSubcategory = ({ products }) => {
@@ -31,13 +30,7 @@ const subSubcategory = ({ products }) => {
       subtitle={subSubcategory.subtitle}
       productsCatalogue
     >
-      <div className={style.queryBar}>
-        <div className={style.queryBarInner}>
-          <span>Show Filters</span>
-          <span>{products.length} Products</span>
-          <span>Sort By</span>
-        </div>
-      </div>
+      <QueryBar productNo={products.length} />
       <div className={style.productsGrid}>
         {products.map((product) => (
           <ProductItem product={product} key={product.slug} />
