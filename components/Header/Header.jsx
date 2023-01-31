@@ -90,9 +90,6 @@ const Header = ({ title }) => {
             </Link>
             <NavCatalogue category="women" />
             <NavCatalogue category="men" />
-            {/* <Link href="/children">
-              <span className={style.navLink}>Children</span>
-            </Link> */}
             <Link href="/stories">
               <span className={style.navLink}>Stories</span>
             </Link>
@@ -113,18 +110,20 @@ const Header = ({ title }) => {
         </div>
       </nav>
       {isMobile && (
-        <Sidebar
-          showSidebar={showSidebar}
-          setShowSidebar={setShowSidebar}
-          setShowFullOverlay={setShowFullOverlay}
-        />
+        <>
+          <Sidebar
+            showSidebar={showSidebar}
+            setShowSidebar={setShowSidebar}
+            setShowFullOverlay={setShowFullOverlay}
+          />
+          <FullOverlay
+            setShowSidebar={setShowSidebar}
+            showFullOverlay={showFullOverlay}
+            setShowFullOverlay={setShowFullOverlay}
+            contRef={headerRef}
+          />
+        </>
       )}
-      <FullOverlay
-        setShowSidebar={setShowSidebar}
-        showFullOverlay={showFullOverlay}
-        setShowFullOverlay={setShowFullOverlay}
-        contRef={headerRef}
-      />
     </header>
   );
 };

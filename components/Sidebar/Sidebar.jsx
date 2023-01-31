@@ -44,15 +44,17 @@ const Sidebar = ({ showSidebar, setShowSidebar, setShowFullOverlay }) => {
           ))}
         </ul>
         <ul>
-          <li link="login?redirect=/profile" className={style.userListItem}>
-            <UserIcon className={style.heroIcon} />
-            {status === "loading" ? (
-              <span>Loading</span>
-            ) : session?.user ? (
-              <span>Welcome, {session.user.name}</span>
-            ) : (
-              <span>Sign in</span>
-            )}
+          <li>
+            <Link href="login?redirect=/profile" className={style.userListItem}>
+              <UserIcon className={style.heroIcon} />
+              {status === "loading" ? (
+                <span>Loading</span>
+              ) : session?.user ? (
+                <span>Welcome, {session.user.name}</span>
+              ) : (
+                <span>Sign in</span>
+              )}
+            </Link>
           </li>
           <li className={style.userListItem}>
             <HeartIcon className={style.heroIcon} />
