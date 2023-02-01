@@ -7,7 +7,7 @@ import { signIn, useSession } from "next-auth/react";
 import CABenefits from "../components/Login/CABenefits";
 import RememberMe from "../components/Login/RememberMe";
 import { getError } from "../utils/error";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import CheckboxLayout from "../components/CheckboxLayout";
@@ -15,6 +15,7 @@ import CheckboxLayout from "../components/CheckboxLayout";
 const style = {
   loginContainer: `mb-5 pb-16`,
   pageContent: `max-w-screen-md mx-auto text-sm`,
+  form: `mx-5`,
   formInstruction: `flex justify-end`,
   inputContainer: `mb-5`,
   label: `mb-[5px]`,
@@ -34,6 +35,8 @@ const register = () => {
 
   const router = useRouter();
   const { redirect } = router.query;
+
+  const [isMobile, setIsMobile] = useState();
 
   useEffect(() => {
     if (session?.user) {
@@ -72,10 +75,27 @@ const register = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Layout title="New User" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.loginContainer}>
-        <TopContactUs />
+        {!isMobile && <TopContactUs />}
         <PageTitle title="Registration" />
         <div className={style.pageContent}>
           <div className={style.formContainer}>
@@ -196,6 +216,7 @@ const register = () => {
             </form>
           </div>
         </div>
+        {isMobile && <TopContactUs isMobile />}
       </div>
     </Layout>
   );

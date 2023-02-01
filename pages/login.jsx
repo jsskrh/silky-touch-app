@@ -7,24 +7,24 @@ import { signIn, useSession } from "next-auth/react";
 import CABenefits from "../components/Login/CABenefits";
 import RememberMe from "../components/Login/RememberMe";
 import { getError } from "../utils/error";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const style = {
   loginContainer: `mb-5 pb-16`,
-  pageContent: `flex max-w-screen-md mx-auto text-sm`,
-  formContainer: `border-r md:pr-16 border-[#dcdcdc] md:w-1/2`,
+  pageContent: `flex md:flex-row flex-col max-w-screen-md mx-auto text-sm`,
+  formContainer: `md:border-r md:pr-8 lg:pr-16 border-[#dcdcdc] md:w-1/2 mx-5 md:mr-0 lg:mx-0 pb-3 border-b mb-5 md:pb-0 md:border-b-0 md:mb-0`,
   inputContainer: `mb-5`,
   label: `mb-[5px]`,
   input: `w-full bg-[#fff] px-[15px] py-[10px] border border-[#f5f5f5] hover:border-[#515151]`,
   errorMessage: `mt-1 text-[#bf2d2d]`,
   errorHandler: `pb-7`,
-  headerText: `pb-14 uppercase text-sm font-bold`,
-  caContainer: `md:pl-16 md:w-1/2 flex flex-col`,
+  headerText: `pb-14 uppercase text-sm font-bold text-center md:text-start`,
+  caContainer: `md:pl-8 lg:pl-16 md:w-1/2 flex flex-col mx-5 md:ml-0 lg:mx-0`,
   boxContent: `flex flex-col justify-between grow`,
   buttonContainer: `mb-8`,
   loginButton: `bg-[#212121] border-[#212121] text-[#ededed] hover:bg-[#000] hover:border-[#000] hover:text-[#fff]`,
-  createButton: `hover:bg-[#212121] hover:text-[#fafafa] text-[#212121] border-[#212121]`,
+  createButton: `hover:bg-[#212121] hover:text-[#fafafa] text-[#212121] border-[#212121] mt-10`,
   button: `transition-all border px-[30px] py-[13px] w-full text-xs font-bold uppercase`,
   buttonLink: `mt-9 flex justify-center`,
   buttonLinkText: `text-[#212121] hover:text-[#515151] underline transition-all`,
@@ -35,6 +35,8 @@ const login = () => {
 
   const router = useRouter();
   const { redirect } = router.query;
+
+  const [isMobile, setIsMobile] = useState();
 
   useEffect(() => {
     if (session?.user) {
@@ -65,10 +67,27 @@ const login = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Layout title="Sign in" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.loginContainer}>
-        <TopContactUs />
+        {!isMobile && <TopContactUs />}
         <PageTitle title="Sign in" />
         <div className={style.pageContent}>
           <div className={style.formContainer}>
@@ -163,6 +182,8 @@ const login = () => {
               </div>
             </div>
           </div>
+
+          {isMobile && <TopContactUs isMobile />}
         </div>
       </div>
     </Layout>
