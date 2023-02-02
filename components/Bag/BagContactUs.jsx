@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const style = {
-  contactUs: `text-sm px-6 py-5 mb-4`,
+  contactUs: `text-sm md:px-6 mt-16 md:mt-0 md:py-5 mb-4 mx-5 md:mx-0`,
   head: `font-bold mb-2`,
   text: `mb-2`,
 };

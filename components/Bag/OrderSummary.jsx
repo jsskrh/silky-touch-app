@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { formatCurrency } from "../../utils/currency";
 
 const style = {
-  orderSummary: `bg-[#fff] py-[38px] px-[22px] mb-4 text-sm`,
+  orderSummary: `bg-[#fff] py-[38px] px-[22px] mb-4 text-sm mt-10 md:mt-0`,
   title: `pb-[38px] mb-[20px] border-b border-[#d7d7d7] uppercase text-lg font-bold`,
   modContainer: `flex justify-between pb-5 mb-5 border-b border-[#d7d7d7]`,
   totalContainer: `pb-[20px] font-bold flex justify-between`,
