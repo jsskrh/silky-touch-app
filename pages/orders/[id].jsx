@@ -29,6 +29,7 @@ function reducer(state, action) {
 }
 
 const style = {
+  pageContainer: `mx-5`,
   header: `py-5`,
   pageTitle: `font-bold uppercase text-lg capitalize`,
   createdAt: `text-xs`,
@@ -95,7 +96,7 @@ const OrderPage = () => {
       ) : error ? (
         <div>{error}</div>
       ) : (
-        <div>
+        <div className={style.pageContainer}>
           <PageNavigation path={path} />
 
           <div className={style.header}>

@@ -1,7 +1,7 @@
 import InputLabel from "./InputLabel";
 
 const style = {
-  inputContainer: `mb-6 w-1/2`,
+  inputContainer: `mb-6 md:w-1/2`,
   errorMessage: `mt-1 text-[#bf2d2d]`,
 };
 

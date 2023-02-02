@@ -20,7 +20,7 @@ const style = {
   errorMessage: `mt-1 text-[#bf2d2d]`,
   formInstruction: `inline-block`,
   checkboxContainer: `mb-9`,
-  buttonContainer: `mb-8 w-1/2`,
+  buttonContainer: `mb-8 md:w-1/2`,
   button: `transition-all border px-[30px] py-[13px] w-full text-xs font-bold uppercase`,
   continueButton: `bg-[#212121] border-[#212121] text-[#ededed] hover:bg-[#000] hover:border-[#000] hover:text-[#fff]`,
   rightSection: `md:ml-10 md:w-96`,

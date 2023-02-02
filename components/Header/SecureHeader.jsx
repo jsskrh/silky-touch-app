@@ -1,18 +1,20 @@
 import Link from "next/link";
-import { LockClosedIcon } from "@heroicons/react/24/solid";
+import { LockClosedIcon, PhoneIcon } from "@heroicons/react/24/solid";
 
 const style = {
   header: `sticky top-0 z-50 border-b border-[#e6e6e6] bg-[#fdfdfd]`,
-  navbar: `items-center py-9 container mx-auto grid md:grid-cols-3 text-[0.86rem]`,
+  navbar: `items-center py-5 lg:py-9 container mx-auto grid grid-cols-3 text-[0.86rem] px-5 lg:px-0`,
   navStart: `flex justify-start items-center`,
   heroIcon: `h-6 w-6 mr-2`,
-  secureText: `uppercase`,
+  secureText: `uppercase hidden md:flex`,
   navCenter: `flex justify-center`,
-  brandName: `text-4xl font-bold uppercase`,
+  brandName: `text-3xl lg:text-4xl font-bold uppercase`,
   navIcons: `h-4 items-start`,
   navIcon: `flex items-center mx-2 pb-8`,
-  helpText: `text-end`,
+  helpText: `text-end hidden lg:block`,
   linkText: `underline`,
+  navEnd: `flex justify-end lg:block`,
+  mobileIcon: `h-6 w-6 text-end block lg:hidden`,
 };
 
 const SecureHeader = () => {
@@ -40,6 +42,7 @@ const SecureHeader = () => {
               08000000000
             </Link>
           </p>
+          <PhoneIcon className={style.mobileIcon} />
         </div>
       </nav>
     </header>

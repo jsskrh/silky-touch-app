@@ -6,6 +6,7 @@ const style = {
   checkboxLabel: `flex items-center cursor-pointer`,
   realCheckbox: `absolute w-0 opacity-0`,
   fakeCheckbox: `border border-[#212121] h-4 w-4 mr-1 bg-[#eee]`,
+  checkboxText: `flex-1`,
 };
 
 const CheckboxLayout = ({ children, id }) => {
@@ -23,7 +24,7 @@ const CheckboxLayout = ({ children, id }) => {
         <div className={style.fakeCheckbox}>
           {checkbox && <CheckIcon className={style.heroIcon} />}
         </div>
-        <span>{children}</span>
+        <span className={style.checkboxText}>{children}</span>
       </label>
     </div>
   );
