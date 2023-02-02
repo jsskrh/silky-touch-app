@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Store } from "../../utils/Store";
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -11,6 +11,7 @@ const style = {
   otherActions: `flex justify-center`,
   action: `m-3`,
   heroIcon: `h-7 w-7`,
+  mobileButtonContainer: `fixed bottom-0 left-0 right-0 flex md:hidden`,
 };
 
 const ProductActions = ({ product }) => {
@@ -30,9 +31,27 @@ const ProductActions = ({ product }) => {
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
   };
 
+  const [isVisible, setIsVisible] = useState(true);
+
+  const buttonRef = useRef();
+
+  useEffect(() => {
+    const targetDiv = buttonRef.current;
+    const handleScroll = () => {
+      const targetDivRect = targetDiv.getBoundingClientRect();
+      if (targetDivRect.top > window.innerHeight && targetDivRect.bottom >= 0) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className={style.productActions}>
-      <div className={style.addToCartContainer}>
+      <div className={style.addToCartContainer} ref={buttonRef}>
         {product.countInStock >= 1 ? (
           <button className={style.addToCart} onClick={addToCartHandler}>
             Add To Bag
@@ -51,6 +70,20 @@ const ProductActions = ({ product }) => {
           <ShareIcon className={style.heroIcon}></ShareIcon>
         </button>
       </div>
+
+      {isVisible && (
+        <div className={style.mobileButtonContainer}>
+          {product.countInStock >= 1 ? (
+            <button className={style.addToCart} onClick={addToCartHandler}>
+              Add To Bag
+            </button>
+          ) : (
+            <button className={style.addToCart} disabled>
+              Out of Stock
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

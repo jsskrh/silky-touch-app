@@ -10,7 +10,8 @@ import Product from "../../../../models/product";
 import db from "../../../../utils/db";
 
 const style = {
-  pdpTop: `md:flex `,
+  pdpMain: `md:mx-5`,
+  pdpTop: `flex flex-col md:flex-row`,
   pdpLeft: `flex-1`,
 };
 
@@ -26,6 +27,25 @@ const productPage = ({ product }) => {
       </Layout>
     );
   }
+
+  const [isMobile, setIsMobile] = useState();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const [tabState, setTabState] = useState(0);
 
@@ -43,19 +63,21 @@ const productPage = ({ product }) => {
     gsap.registerPlugin(ScrollTrigger);
 
     let ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: productAllRef.current,
-        pin: productContentRef.current,
-        scrub: true,
-        start: "top 88px",
-        end: "+=" + totalScroll,
-      });
+      if (!isMobile) {
+        ScrollTrigger.create({
+          trigger: productAllRef.current,
+          pin: productContentRef.current,
+          scrub: true,
+          start: "top 88px",
+          end: "+=" + totalScroll,
+        });
+      }
     }, context);
 
     return () => {
       ctx.revert();
     };
-  }, [tabState]);
+  }, [tabState, isMobile]);
 
   return (
     <Layout title={product.name} path={path} productPage>

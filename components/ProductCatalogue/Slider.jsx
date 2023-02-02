@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import Indicator from "./Indicator";
+import { Indicator, ProductPageIndicator } from "./Indicator";
 import SliderContent from "./SliderContent";
 
 const style = {
   slider: `overflow-hidden relative group h-full`,
 };
 
-const Slider = ({ images, name, slider }) => {
+const Slider = ({ images, name, slider, productPage }) => {
   const [transition, setTransition] = useState(0);
   const [width, setWidth] = useState(0);
 
@@ -16,16 +16,27 @@ const Slider = ({ images, name, slider }) => {
     setWidth(sliderRef.current.offsetWidth);
   }, []);
 
+  const imagesArr = Object.values(images);
+
   return (
     <div className={style.slider} ref={sliderRef}>
       <SliderContent
-        images={Object.values(images).slice(0, 3)}
+        images={productPage ? imagesArr : imagesArr.slice(0, 3)}
         name={name}
         width={width}
         transition={slider ? false : transition}
         setTransition={setTransition}
+        productPage={productPage}
       />
-      <Indicator transition={slider ? false : transition} />
+      {productPage ? (
+        <ProductPageIndicator
+          imagesArr={imagesArr}
+          setTransition={setTransition}
+          transition={transition}
+        />
+      ) : (
+        <Indicator transition={slider ? false : transition} />
+      )}
     </div>
   );
 };

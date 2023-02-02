@@ -8,7 +8,7 @@ import ContactUs from "./ContactUs";
 import { forwardRef } from "react";
 
 const style = {
-  productContent: `md:ml-6 mx-auto w-[calc(100%-32px)] md:max-w-md md:grow-1 md:max-h-fit`,
+  productContent: `mt-10 md:mt-0 md:ml-6 mx-auto w-[calc(100%-32px)] md:max-w-md md:grow-1 md:max-h-fit`,
 };
 
 const ProductContent = forwardRef(({ product, tabState, setTabState }, ref) => {

@@ -3,9 +3,10 @@ import PageTitle from "../components/PageTitle";
 import TopContactUs from "../components/TopContactUs";
 import ProfileCard from "../components/Profile/ProfileCard";
 import Logout from "../components/Profile/logout";
+import { useEffect, useState } from "react";
 
 const style = {
-  profilePage: `pb-4`,
+  profilePage: `pb-4 mx-5`,
   gridContainer: `mb-4`,
   accountGrid: `grid grid-cols-1 gap-[2px] md:grid-cols-3 max-w-4xl mx-auto mb-6`,
 };
@@ -39,10 +40,29 @@ const accountCards = [
 ];
 
 const profile = () => {
+  const [isMobile, setIsMobile] = useState();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Layout title="My Account" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.profilePage}>
-        <TopContactUs />
+        {!isMobile && <TopContactUs />}
         <PageTitle title="My Account" />
         <Logout />
         <div className={style.gridContainer}>
@@ -52,6 +72,7 @@ const profile = () => {
             ))}
           </div>
         </div>
+        {isMobile && <TopContactUs isMobile />}
       </div>
     </Layout>
   );

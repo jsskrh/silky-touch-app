@@ -7,7 +7,14 @@ const style = {
   returnTransition: ` transition-transform duration-[1500ms]`,
 };
 
-const SliderContent = ({ images, name, width, transition, setTransition }) => {
+const SliderContent = ({
+  images,
+  name,
+  width,
+  transition,
+  setTransition,
+  productPage,
+}) => {
   const [transitioning, setTransitioning] = useState(false);
   const [inTransition, setInTransition] = useState(false);
   const [leave, setLeave] = useState(false);
@@ -23,7 +30,7 @@ const SliderContent = ({ images, name, width, transition, setTransition }) => {
 
   const handleTransitionEnd = () => {
     setInTransition(false);
-    if (transition === 3) {
+    if (!productPage && transition === 3) {
       setInTransition(true);
       setTransition(0);
       setTimeout(() => {
@@ -51,8 +58,12 @@ const SliderContent = ({ images, name, width, transition, setTransition }) => {
         leave && style.returnTransition
       }`}
       style={{ transform: `translateX(${-width * transition}px)` }}
-      onMouseOver={() => setTransitioning(true)}
-      onMouseLeave={() => handleMouseLeave()}
+      onMouseOver={() => {
+        !productPage && setTransitioning(true);
+      }}
+      onMouseLeave={() => {
+        !productPage && handleMouseLeave();
+      }}
       onTransitionEnd={() => handleTransitionEnd()}
     >
       {slides.map((image, index) => (
