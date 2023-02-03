@@ -28,7 +28,7 @@ const Footer = () => {
     <footer className={style.footer}>
       <div className={style.top}>
         <div className={style.topLeft}>
-          <div className={style.listContainer}>
+          <div className={`${style.listContainer} border-t-0`}>
             <div className={style.headerContainer}>
               <MapPinIcon className={style.heroIcon} />
               <h3 className={style.listHeader}>Store Locator</h3>
