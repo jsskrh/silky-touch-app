@@ -89,8 +89,6 @@ const OrderPage = () => {
     createdAt,
   } = order;
 
-  console.log(orderItems);
-
   return (
     <Layout title={`Order ${orderId}`}>
       {loading ? (

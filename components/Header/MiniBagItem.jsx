@@ -24,8 +24,6 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
 
-  console.log(item, orderItems);
-
   return (
     <tr
       className={`${style.tableRow} ${
