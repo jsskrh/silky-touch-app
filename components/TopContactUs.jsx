@@ -11,7 +11,7 @@ const TopContactUs = ({ isMobile }) => {
     <div className={style.helpContainer}>
       <p className={`${style.helpWrapper} ${isMobile && style.center}`}>
         <strong className={style.helpTitle}>Need Assistance?</strong>
-        <span>
+        <span className={`${isMobile && "text-center"}`}>
           Please contact our Customer Care team on{" "}
           <button className={style.underline}>+23480xxxxxxxx</button>
         </span>

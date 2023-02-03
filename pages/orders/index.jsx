@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import Table from "../../components/Orders/Table";
 import PageTitle from "../../components/PageTitle";
@@ -25,6 +25,7 @@ const style = {
   wbDivider: `px-2`,
   link: `text-[#212121] hover:text-[#515151] underline`,
   tableContainer: `flex justify-center`,
+  mobileSeparator: `md:hidden mb-20`,
 };
 
 const orderHistory = () => {
@@ -48,9 +49,28 @@ const orderHistory = () => {
     fetchOrders();
   }, []);
 
+  const [isMobile, setIsMobile] = useState();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Layout title="Order History" bgColor={`bg-[#f5f5f5]`}>
-      <TopContactUs />
+      {!isMobile && <TopContactUs />}
       <PageTitle title="Order History" />
       <Logout />
       {loading ? (
@@ -64,6 +84,8 @@ const orderHistory = () => {
           <Table orders={orders} />
         </div>
       )}
+      <div className={style.mobileSeparator}></div>
+      {isMobile && <TopContactUs isMobile />}
     </Layout>
   );
 };
