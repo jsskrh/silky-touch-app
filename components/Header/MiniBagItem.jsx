@@ -28,7 +28,7 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
     <tr
       className={`${style.tableRow} ${
         parent === "header" ? style.textSm : style.textXs
-      } ${orderItems.length === 1 && "border-b-0"}`}
+      } ${orderItems?.length === 1 && "border-b-0"}`}
     >
       <td className={style.imageCell}>
         <Link href={`/products/${item.slug}`}>
