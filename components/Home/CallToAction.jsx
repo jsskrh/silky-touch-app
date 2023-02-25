@@ -33,7 +33,7 @@ const CallToAction = ({ homeRef }) => {
         start: "bottom bottom",
         endTrigger: context,
         end: "bottom bottom",
-        invalidateOnRefresh: true,
+        invalidateOnRefresh: false,
       });
     }, context);
 

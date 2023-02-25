@@ -20,7 +20,8 @@ const heroes = [
 ];
 
 const style = {
-  carouselContainer: `absolute top-[68px] md:top-[88px] right-0 left-0 w-screen h-[calc(100vh-68px)] md:h-[calc(100vh-88px)] overflow-hidden`,
+  carouselContainer: `absolute top-[68px] md:top-[88px] right-0 left-0 h-[calc(100vh-68px)] md:h-[calc(100vh-88px)] overflow-hidden`,
+  // carouselContainer: `absolute top-[68px] md:top-[88px] right-0 left-0 w-[calc(100vw-${scrollbarWidth})] h-[calc(100vh-68px)] md:h-[calc(100vh-88px)] overflow-hidden`,
   carouselSlide: `absolute top-0 invisible h-full`,
   outer: `h-full overflow-y-hidden`,
   carouselImage: `max-h-full h-full w-full object-cover`,
@@ -44,11 +45,17 @@ const MainCarousel = ({ homeRef, isMobile }) => {
   const [currentSlide, setCurrentSlide] = useState(-1);
   const [splitCaptions, setSplitCaptions] = useState([]);
   const [animating, setAnimating] = useState(false);
+  const [scrollbarWidth, setScrollbarWidth] = useState();
   const slideRef = useRef();
   const carouselContainerRef = useRef();
   const captionContainerRef = useRef();
 
   const indicatorRef = useRef();
+
+  useEffect(() => {
+    const scrollbar = window.innerWidth - document.body.clientWidth;
+    setScrollbarWidth(`${scrollbar}px`);
+  }, []);
 
   useEffect(() => {
     let captions = [];
@@ -180,13 +187,13 @@ const MainCarousel = ({ homeRef, isMobile }) => {
 
   return (
     <div
-      className={`${style.carouselContainer} carousel-container`}
+      className={`${style.carouselContainer} carousel-container w-[calc(100vw-${scrollbarWidth})]`}
       ref={carouselContainerRef}
       // onClick={() => !animating && setSlide(slide + 1)}
     >
       {heroes.map((hero, index) => (
         <Link href={hero.link} key={index}>
-          <div className={`${style.carouselSlide} slide`}>
+          <div className={`${style.carouselSlide} slide w-full`}>
             <div className={`${style.outer} outer`}>
               <div className={`${style.outer} inner`}>
                 <img
