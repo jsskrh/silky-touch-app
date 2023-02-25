@@ -3,7 +3,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import Table from "../../components/Orders/Table";
 import PageTitle from "../../components/PageTitle";
-import Logout from "../../components/Profile/logout";
+import Logout from "../../components/Profile/Logout";
 import TopContactUs from "../../components/TopContactUs";
 import { getError } from "../../utils/error";
 

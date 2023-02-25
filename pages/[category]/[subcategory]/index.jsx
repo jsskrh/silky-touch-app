@@ -19,14 +19,14 @@ const subcategory = ({ products }) => {
   const query = router.query;
 
   const category = data.catalogue[query.category];
-  const subcategory = category.categories[query.subcategory];
+  const subcategory = category?.categories[query.subcategory];
 
   //   console.log(router.query);
 
   return (
     <Layout
       path={path}
-      title={subcategory.metadata.title}
+      title={subcategory?.metadata.title}
       subtitle={subcategory.metadata.subtitle}
       productsCatalogue
     >

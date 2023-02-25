@@ -2,7 +2,7 @@ import Layout from "../components/Layout/Layout";
 import PageTitle from "../components/PageTitle";
 import TopContactUs from "../components/TopContactUs";
 import ProfileCard from "../components/Profile/ProfileCard";
-import Logout from "../components/Profile/logout";
+import Logout from "../components/Profile/Logout";
 import { useEffect, useState } from "react";
 
 const style = {
