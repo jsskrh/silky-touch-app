@@ -19,7 +19,11 @@ const style = {
   menuMiddle: `top-[7px]`,
   menuBottom: `bottom-0`,
   brandName: `text-3xl md:text-4xl font-bold uppercase mr-12`,
+  logoPlaceholder: `h-9 md:h-10 md:w-[170px] mr-12`,
+  logoContainer: `absolute h-16 top-0 bottom-0 md:h-[85px] flex items-center`,
+  brandLogo: `max-h-full max-w-full`,
   navMenuContainer: `hidden lg:flex h-4 items-start`,
+  // navMenuContainer: `hidden lg:flex h-4 items-start ml-[163px] md:ml-[186px]`,
   navLinks: `items-center`,
   navLink: `uppercase pt-0 p-2 font-bold text-xs flex pb-8 text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:top-5 hover:after:h-[1px] after:left-0 after:right-0`,
   navIcons: `h-4 items-start`,
@@ -82,7 +86,16 @@ const Header = ({ title }) => {
             <div className={`${style.bar} ${style.menuBottom}`}></div>
           </button>
           <Link href="/">
-            <h1 className={style.brandName}>Luxury</h1>
+            {/* <h1 className={style.brandName}>Luxury</h1> */}
+            <div className={style.logoPlaceholder}></div>
+            {/* <div className="h-10 w-[150px] mr-12"></div> */}
+            <div className={style.logoContainer}>
+              <img
+                src="/logos/SILKY-TOUCH-LOGO-270.jpg"
+                alt="logo"
+                className={style.brandLogo}
+              />
+            </div>
           </Link>
           <div className={style.navMenuContainer}>
             <Link href="/bags">
