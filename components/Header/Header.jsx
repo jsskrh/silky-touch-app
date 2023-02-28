@@ -103,6 +103,7 @@ const Header = ({ title }) => {
             </Link>
             <NavCatalogue category="women" />
             <NavCatalogue category="men" />
+            <NavCatalogue category="accessories" />
             <Link href="/stories">
               <span className={style.navLink}>Stories</span>
             </Link>

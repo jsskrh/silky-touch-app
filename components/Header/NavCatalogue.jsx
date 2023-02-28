@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import data from "../../utils/data";
 import Link from "next/link";
 import gsap from "gsap";
+// import Category from "../../models/category";
+// import db from "../../utils/db";
 
 const style = {
   navLink: `uppercase pt-0 p-2 font-bold text-xs flex pb-9 text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:top-5 hover:after:h-[1px] after:left-0 after:right-0`,
@@ -12,6 +14,15 @@ const NavCatalogue = ({ category }) => {
 
   const catalogueData = data.catalogue[category].categories;
   const catalogueKeys = Object.keys(catalogueData);
+
+  // const [currentCategory, setCurrentCategory] = useState();
+
+  // useEffect(async () => {
+  //   await db.connect();
+  //   const cat = await Category.findOne({ slug: category });
+  //   console.log(cat);
+  //   await db.disconnect();
+  // }, []);
 
   const [open, setOpen] = useState(false);
 
@@ -52,7 +63,7 @@ const NavCatalogue = ({ category }) => {
             </li>
             {catalogueKeys.map((levelOne) => (
               <li className="ml-8 w-44 box-content">
-                <Link href={`/men/${levelOne}`}>
+                <Link href={`/${category}/${levelOne}`}>
                   <h3 className="uppercase mb-3 font-bold text-xs hover:text-[#757575]">
                     {catalogueData[levelOne].metadata.name}
                   </h3>
@@ -63,7 +74,9 @@ const NavCatalogue = ({ category }) => {
                       // levelTwo !== "title" &&
                       // levelTwo !== "subtitle" &&
                       <li className="capitalize text-[0.735rem] mb-2 hover:text-[#757575]">
-                        <Link href={`/men/${levelOne}/${levelTwo.slug}`}>
+                        <Link
+                          href={`/${category}/${levelOne}/${levelTwo.slug}`}
+                        >
                           {levelTwo.name}
                         </Link>
                       </li>

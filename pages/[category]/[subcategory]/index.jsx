@@ -27,7 +27,7 @@ const subcategory = ({ products }) => {
     <Layout
       path={path}
       title={subcategory?.metadata.title}
-      subtitle={subcategory.metadata.subtitle}
+      subtitle={subcategory?.metadata.subtitle}
       productsCatalogue
     >
       <QueryBar productNo={products.length} />

@@ -9,6 +9,9 @@ const style = {
   secureText: `uppercase hidden md:flex`,
   navCenter: `flex justify-center`,
   brandName: `text-3xl lg:text-4xl font-bold uppercase`,
+  logoPlaceholder: `h-9 md:h-10 md:w-[170px] mr-12`,
+  logoContainer: `absolute h-16 top-0 bottom-0 my-auto md:h-[85px] flex items-center`,
+  brandLogo: `max-h-full max-w-full`,
   navIcons: `h-4 items-start`,
   navIcon: `flex items-center mx-2 pb-8`,
   helpText: `text-end hidden lg:block`,
@@ -29,7 +32,15 @@ const SecureHeader = () => {
         </div>
         <div className={style.navCenter}>
           <Link href="/">
-            <h1 className={style.brandName}>Luxury</h1>
+            {/* <h1 className={style.brandName}>Luxury</h1> */}
+            <div className={style.logoPlaceholder}></div>
+            <div className={style.logoContainer}>
+              <img
+                src="/logos/SILKY-TOUCH-LOGO-270.jpg"
+                alt="logo"
+                className={style.brandLogo}
+              />
+            </div>
           </Link>
         </div>
         <div className={style.navEnd}>

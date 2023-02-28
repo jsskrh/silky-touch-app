@@ -23,7 +23,7 @@ const data = {
         name: "Bags",
         title: "Bag Collection",
         subtitle:
-          "Crafted in the finest calfskin, Versace bags for women are made of supple luxury. Find this season's IT bag. Designer bag lovers will enjoy fine nappa leather crossbody bags and a range of styles and colors of handbags, clutches, shoulder bags and sport-infused luxury backpacks.",
+          "Crafted in the finest calfskin, Silky Touch bags for women offer an array of brands made of supple luxury. Find this season's IT bag. Designer bag lovers will enjoy fine nappa leather crossbody bags and a range of styles and colors of handbags, clutches, shoulder bags and sport-infused luxury backpacks.",
       },
       categories: {},
     },
@@ -34,7 +34,7 @@ const data = {
         name: "Women",
         title: "Women's Collection",
         subtitle:
-          "For the ultimate Versace look, pair the latest runway styles with a luxurious handbag and expertly crafted shoes. Add statement accessories for a perfect finishing touch.",
+          "For the ultimate Silky Touch look, pair the latest runway styles with a luxurious handbag and expertly crafted shoes. Add statement accessories for a perfect finishing touch.",
       },
       categories: {
         clothing: {
@@ -51,14 +51,14 @@ const data = {
               name: "Blouses & Tops",
               title: "Women's Shirts and Tops",
               subtitle:
-                "A true expression of Versace attitude—discover shirts, tops and bodysuits for women in the latest prints and styles, from silk shirts to lace bralette tops.",
+                "A true expression of the Silky Touch attitude—discover shirts, tops and bodysuits for women in the latest prints and styles, from silk shirts to lace bralette tops.",
             },
             "t-shirts-sweatshirts": {
               slug: "t-shirts-sweatshirts",
               name: "T-Shirts & Sweatshirts",
               title: "Men's T-Shirts and Sweatshirts",
               subtitle:
-                "Simply Versace—a selection of Versace women's t-shirts, sweatshirts and hoodies. Explore the possibilities of seasonal prints and brand codes like the GV Signature and La Medusa.",
+                "Simply Silky Touch—a selection of Silky Touch women's t-shirts, sweatshirts and hoodies, from various luxury brands. Explore the possibilities of seasonal prints and brand codes like GG, the GV Signature and La Medusa.",
             },
           },
         },
@@ -71,7 +71,7 @@ const data = {
         name: "Men",
         title: "Men's Collection",
         subtitle:
-          "Get the quintessential Versace look by pairing the latest runway styles with a statement bag and modern shoes. For the finishing touch, browse an array of luxurious accessories.",
+          "Get the quintessential Silky Touch look by pairing the latest runway styles with a statement bag and modern shoes. For the finishing touch, browse an array of luxurious accessories.",
       },
       categories: {
         clothing: {
@@ -88,28 +88,28 @@ const data = {
               slug: "pants-shorts",
               title: "Men's Pants and Shorts",
               subtitle:
-                "Versace pants and shorts for men in an array of styles and fits, from tailored formal pants to comfortable sweatpants and print silk shorts.",
+                "Silky Touch pants and shorts for men in an array of styles and fits gotten from the most luxurious of brnads, from tailored formal pants to comfortable sweatpants and print silk shorts.",
             },
             shirts: {
               name: "Shirts",
               slug: "shirts",
               title: "Men's Shirts",
               subtitle:
-                "Crafted from smooth silk or cotton, Versace shirts for men bring elegance and personality. Various designs are enhanced by bold prints and heritage embellishments. Crisp formal button shirts complete a business formal or casual look when paired with a blazer or tie.",
+                "Crafted from smooth silk or cotton, Silky Touch shirts for men bring elegance and personality. Various designs are enhanced by bold prints and heritage embellishments. Crisp formal button shirts complete a business formal or casual look when paired with a blazer or tie.",
             },
             sweatshirts: {
               name: "Sweatshirts",
               slug: "sweatshirts",
               title: "Men's Sweatshirts and Hoodies",
               subtitle:
-                "A casual yet Very Versace look—the Versace collection of luxury sweatshirts and hoodies for men featuring logo sweatshirts and signature printed hoodies.",
+                "A casual yet Very Silky Touch look—the Silky Touch collection of luxury sweatshirts and hoodies for men featuring logo sweatshirts and signature printed hoodies.",
             },
             "t-shirts-polos": {
               name: "T-Shirts",
               slug: "t-shirts-polos",
               title: "Men's T-Shirts & Polos",
               subtitle:
-                "Browse a selection of t-shirts and polo shirts for men, crafted from comfortable and fine fabrics and embellished with signature prints. Slip on a t-shirt with a pair of Versace jeans and shoes .",
+                "Browse a selection of t-shirts and polo shirts for men, crafted from comfortable and fine fabrics and embellished with signature prints. Slip on a t-shirt with a pair of Silky Touch jeans and shoes from various brands.",
             },
             "jackets-coats": {
               name: "Jackets & coats",
@@ -151,28 +151,28 @@ const data = {
               slug: "derby-shoes",
               title: "Men's Derby Shoes",
               subtitle:
-                "The Versace shoe collection for men includes lace-up Derby styles enriched with La Greca, Barocco and Medusa accents.",
+                "The Silky Touch shoe collection for men includes lace-up Derby styles enriched with La Greca, Barocco and Medusa accents.",
             },
             "loafers-slippers": {
               name: "Loafers & Slippers",
               slug: "loafers-slippers",
               title: "Men's Loafers and Slippers",
               subtitle:
-                "The Versace shoe collection for men includes slip-on loafers and slippers made from leather, suede, and velvet, enriched with La Greca motifs and Medusa hardware.",
+                "The Silky Touch shoe collection for men includes slip-on loafers and slippers made from leather, suede, and velvet, enriched with La Greca motifs and Medusa hardware.",
             },
             boots: {
               name: "Boots",
               slug: "boots",
               title: "Men's Boots",
               subtitle:
-                "Complete your look with Versace's luxury boots for men - Made in Italy from the finest materials.",
+                "Complete your look with Silky Touch's luxury boots for men - Made in Italy from the finest materials.",
             },
             "sandals-slides": {
               name: "Sandals & Slides",
               slug: "sandals-slides",
               title: "Men's Sandals and Slides",
               subtitle:
-                "Add a luxurious touch to your summer - explore Versace's selection of fashion slides and leather sandals in an array of styles and Medusa and Barocco embellishments. Pair your logo slides with Versace swimwear.",
+                "Add a luxurious touch to your summer - explore Silky Touch's selection of fashion slides and leather sandals in an array of styles and Medusa and Barocco embellishments. Pair your logo slides with Silky Touch swimwear.",
             },
           },
         },
@@ -182,7 +182,7 @@ const data = {
             name: "Accessories",
             title: "Men's Accessories",
             subtitle:
-              "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman of Versace.",
+              "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman of Silky Touch.",
           },
           categories: {
             belts: {
@@ -190,7 +190,7 @@ const data = {
               slug: "belts",
               title: "Men's Belts",
               subtitle:
-                "Add a touch of luxury to your look - crafted in Italy from the finest materials, Versace's fine leather belts are embellished with iconic buckles inspired by the House's rich heritage.",
+                "Add a touch of luxury to your look - crafted in Italy from the finest materials, Silky Touch's fine leather belts are embellished with iconic buckles inspired by the House's rich heritage.",
             },
             wallets: {
               name: "Wallets",
@@ -198,6 +198,41 @@ const data = {
               title: "Men's Wallets",
               subtitle:
                 "Keep your credit cards and essential documents at hand - browse our selection of card holders and wallets crafted from the finest materials in a wide range of colours and heritage prints.",
+            },
+            sunglasses: {
+              name: "Sunglasses",
+              slug: "sunglasses",
+              title: "Men's Sunglasses",
+              subtitle:
+                "The Silky Touch collection of men's sunglasses includes aviator, shield, squared and strong acetate frames from the Medusa Biggie line.",
+            },
+            "eyeglass-frames": {
+              name: "Eyeglass Frames",
+              slug: "eyeglass-frames",
+              title: "Men's Eyeglasses",
+              subtitle:
+                "In a variety of clean lines and modern designs, each pair of Silky Touch optical glasses represent the brand's contemporary take on luxury. Discover enduring eyeglasses in transparent sample lenses.",
+            },
+            "fashion-jewelry": {
+              slug: "fashion-jewelry",
+              name: "Jewelry",
+              title: "Men's Fashion Jewelry",
+              subtitle:
+                "Add an elegant touch to your look with fashion jewelry - from pendant necklaces to rings, bracelets and earrings. Browse a range of styles to enhance all your looks.",
+            },
+            watches: {
+              slug: "watches",
+              name: "Watches",
+              title: "Men's Watches",
+              subtitle:
+                "The ultimate accessory for fashionable looks - Silky Touch's luxury watches are sophisticated timepieces with cutting-edge design and Swiss automatic and chronograph movement, often embellished with leather or metal bands and signature accents.",
+            },
+            fragrances: {
+              slug: "fragrances",
+              name: "Fragrances",
+              title: "Men's Perfumes, Colognes and Fragrances",
+              subtitle:
+                "The Silky Touch’s fragrance collection is an expression of the bold and charismatic character of the brand. Discover our rich selection of perfumes and colognes.",
             },
           },
         },
@@ -213,7 +248,167 @@ const data = {
               slug: "bathrobes-robes",
               title: "Men's Bathrobes",
               subtitle:
-                "Bring iconic Versace prints and motifs to the beach, the pool or the bedroom. Browse the collection of luxury bathrobes for men, made from smooth silk and soft cotton.",
+                "Bring iconic Silky Touch prints and motifs to the beach, the pool or the bedroom. Browse the collection of luxury bathrobes for men, made from smooth silk and soft cotton.",
+            },
+          },
+        },
+      },
+    },
+
+    accessories: {
+      metadata: {
+        slug: "accessories",
+        name: "Accessories",
+        title: "Accessories Collection",
+        subtitle:
+          "Travel in impeccable style with luxurious fashion accessories that bring your look to a new level of sophistication - from travel bags to formal shoes, add a touch of class to your look with fine leather belts and wallets Made in Italy. Finish off your look with necklaces and cufflinks for the gentleman and ladies of Silky Touch.",
+      },
+      categories: {
+        belts: {
+          metadata: {
+            slug: "belts",
+            name: "Belts",
+            title: "Belts",
+            subtitle:
+              "Add a touch of luxury to your look - crafted in Italy from the finest materials, some Silky Touch's fine leather belts are embellished with iconic buckles inspired by the House's rich heritage of various brands.",
+          },
+          categories: {},
+        },
+        wallets: {
+          metadata: {
+            slug: "wallets",
+            name: "Wallets",
+            title: "Wallets",
+            subtitle:
+              "Keep your credit cards and essential documents at hand - browse our selection of card holders and wallets crafted from the finest materials in a wide range of colours and heritage prints.",
+          },
+          categories: {},
+        },
+        eyewear: {
+          metadata: {
+            slug: "eyewear",
+            name: "Eyewear",
+            title: "Eyewear",
+            subtitle:
+              "In a variety of clean lines and modern designs, each pair of Silky Touch optical glasses represent the brand's contemporary take on luxury. ",
+          },
+          categories: {
+            sunglasses: {
+              name: "Sunglasses",
+              slug: "sunglasses",
+              title: "Sunglasses",
+              subtitle:
+                "The Silky Touch collection of men's sunglasses includes aviator, shield, squared and strong acetate frames from the Medusa Biggie line.",
+            },
+            "eyeglass-frames": {
+              name: "Eyeglass Frames",
+              slug: "eyeglass-frames",
+              title: "Eyeglasses",
+              subtitle:
+                "In a variety of clean lines and modern designs, each pair of Silky Touch optical glasses represent the brand's contemporary take on luxury. Discover enduring eyeglasses in transparent sample lenses.",
+            },
+          },
+        },
+        "jewelry-watches": {
+          metadata: {
+            slug: "jewelry-watches",
+            name: "Jewelry & Watches",
+            title: "Fashion Jewelry and Watches",
+            subtitle:
+              "Add an elegant touch to your look with fashion jewelry - from pendant necklaces to rings, bracelets and earrings. Browse a range of styles to enhance all your looks.",
+          },
+          categories: {
+            bracelets: {
+              name: "Bracelets",
+              slug: "bracelets",
+              title: "Bracelets",
+              subtitle:
+                "Add an distinctive touch to your look with crafted stainless steel or leather gold charms and Medusa bracelets.",
+            },
+            cufflinks: {
+              name: "Cufflinks",
+              slug: "cufflinks",
+              title: "Cufflinks",
+              subtitle:
+                "Find a pair of luxury Silky Touch cufflinks to pair with a dress shirt and suit.",
+            },
+            rings: {
+              name: "Rings",
+              slug: "rings",
+              title: "Rings",
+              subtitle:
+                "Browse a wide selection of bold rings for with iconic gold Medusa details and enamel Greca accents.",
+            },
+            earrings: {
+              name: "Earrings",
+              slug: "earrings",
+              title: "Earrings",
+              subtitle:
+                "Silky Touch's stud earrings for come in a range of styles, from gold and silver Medusa embellishments to the Virtus design.",
+            },
+            necklaces: {
+              name: "Necklaces",
+              slug: "necklaces",
+              title: "Necklaces",
+              subtitle:
+                "Silky Touch's metal necklaces for men come in a wide range of styles, embellished with Medusa and Greca accents.",
+            },
+            watches: {
+              slug: "watches",
+              name: "Watches",
+              title: "Watches",
+              subtitle:
+                "The ultimate accessory for fashionable looks - Silky Touch's luxury watches are sophisticated timepieces with cutting-edge design and Swiss automatic and chronograph movement, often embellished with leather or metal bands and signature accents.",
+            },
+          },
+        },
+        // watches: {
+        //   metadata: {
+        //     slug: "watches",
+        //     name: "Watches",
+        //     title: "Watches",
+        //     subtitle:
+        //       "The ultimate accessory for fashionable looks - Silky Touch's luxury watches are sophisticated timepieces with cutting-edge design and Swiss automatic and chronograph movement, often embellished with leather or metal bands and signature accents.",
+        //   },
+        //   categories: {
+        //     gucci: {
+        //       name: "Gucci",
+        //       slug: "gucci",
+        //       title: "Gucci Watches",
+        //       subtitle:
+        //         "Silky Touch offers luxury watches by Gucci, that are sophisticated timepieces with cutting-edge design and Swiss automatic and chronograph movement, often embellished with leather or metal bands and signature accents.",
+        //     },
+        //     versace: {
+        //       name: "Versace",
+        //       slug: "versace",
+        //       title: "Versace Watches",
+        //       subtitle:
+        //         "Silky Touch offers luxury watches by Versace, that are sophisticated timepieces with cutting-edge design and Swiss automatic and chronograph movement, often embellished with leather or metal bands and signature accents.",
+        //     },
+        //   },
+        // },
+        fragrances: {
+          metadata: {
+            slug: "fragrances",
+            name: "Fragrances",
+            title: "Perfumes, Colognes and Fragrances",
+            subtitle:
+              "The Silky Touch’s fragrance collection is an expression of the bold and charismatic character of the brand. Discover our rich selection of perfumes and colognes.",
+          },
+          categories: {
+            men: {
+              name: "For Men",
+              slug: "men",
+              title: "Perfumes, Colognes and Fragrances for Men",
+              subtitle:
+                "The Silky Touch men’s fragrance collection is an expression of the bold and charismatic character of the brand. Discover our rich selection of perfumes and colognes",
+            },
+            women: {
+              name: "For Women",
+              slug: "women",
+              title: "Perfumes for Men",
+              subtitle:
+                "The Silky Touch women’s fragrances are an expression of the brand DNA. Choose from a selection of distinct perfumes.",
             },
           },
         },
@@ -226,7 +421,7 @@ const data = {
         name: "Shoes",
         title: "Shoe Collection",
         subtitle:
-          "Crafted in the finest calfskin, Versace bags for women are made of supple luxury. Find this season's IT bag. Designer bag lovers will enjoy fine nappa leather crossbody bags and a range of styles and colors of handbags, clutches, shoulder bags and sport-infused luxury backpacks.",
+          "Crafted in the finest calfskin, Silky Touch bags for women are made of supple luxury. Find this season's IT bag. Designer bag lovers will enjoy fine nappa leather crossbody bags and a range of styles and colors of handbags, clutches, shoulder bags and sport-infused luxury backpacks.",
       },
       categories: {},
     },
@@ -241,7 +436,7 @@ const data = {
     //       name: "Soft Accessories",
     //       title: "Men's Soft Accessories",
     //       subtitle:
-    //         "The Versace soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
+    //         "The Silky Touch soft accessories selection includes hats, gloves, scarves and foulards made with the finest fabrics in statement Versace prints.",
     //     },
     //   },
     // },
@@ -1105,6 +1300,189 @@ const data = {
         "Trimming: 90% Cotton, 10% Polyamide.",
       ],
       sku: "717104_ZAKBX_1000",
+    },
+    {
+      name: "Medusa Resin Cufflinks",
+      slug: "medusa-resin-cufflinks",
+      images: {
+        primary: "/images/27/image1.avif",
+        secondary: "/images/27/image2.avif",
+        modelFront: "/images/27/image3.avif",
+        materialCloseUp: "/images/27/image4.avif",
+      },
+      price: 500,
+      brand: "Versace",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "cufflinks",
+      color: ["Gold"],
+      countInStock: 20,
+      description: "Versace cufflink.",
+      details: [
+        "Medusa",
+        "Resin",
+        "Metal: Brass",
+        "Finish: Gold",
+        "Please note water and perfume may damage the item",
+        "Made in Italy",
+      ],
+      sku: "DG77287-DJMR_K41T",
+    },
+    {
+      name: "Greca Time Watch",
+      slug: "greca-time-watch",
+      images: {
+        primary: "/images/30/image1.avif",
+        secondary: "/images/30/image2.avif",
+        materialCloseUp: "/images/30/image3.avif",
+        tertiary: "/images/30/image4.avif",
+        modelFront: "/images/30/image5.avif",
+      },
+      price: 1075,
+      brand: "Versace",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "watches",
+      color: ["Black"],
+      countInStock: 20,
+      description:
+        "The modern timepiece is characterized by an engraved ring with Versace lettering. The dial features a tonal Greca pattern, a contrasting logo and a three-dimensional Medusa emblem. Complete with a leather wristrap, the case has a three-hands movement and a window date with magnifying glass located at three o'clock.",
+      details: [
+        "Case: 41 mm IP Champagne round case with Versace lettering on the top ring",
+        "Dial: Black dial with Versace lettering and Greca motif",
+        "Strap: Black genuine calf leather strap with contrast top-stitching, black lining and tongue buckle",
+        "Movement: RONDA 715.3 Swiss Quartz 3-hands movement",
+        "Water Resistant: 5 ATM",
+      ],
+      sku: "PVE3K002-P0022_PNUL",
+    },
+    {
+      name: "Icon Active Watch",
+      slug: "icon-active-watch",
+      images: {
+        primary: "/images/29/image1.avif",
+        secondary: "/images/29/image2.avif",
+        materialCloseUp: "/images/29/image3.avif",
+        tertiary: "/images/29/image4.avif",
+        modelFront: "/images/29/image5.avif",
+        modelBack: "/images/29/image6.avif",
+      },
+      price: 1275,
+      brand: "Versace",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "watches",
+      color: ["Green"],
+      countInStock: 20,
+      description:
+        "The Icon Active watch is a modern and sporty timepiece with trasparant elements and a swirling colored pattern. Featuring the Medusa and Versace logo at 12 o'clock, a Greca loop accents the metal band. Comes in a Medusa presentation box.",
+      details: [
+        "Case: 44 mm Pink Rainbow Greca Pattern transparent polycarbonate round case; IP Champagne cage with 4 screws on top ring",
+        "Dial: Pink Rainbow Greca pattern dial with Medusa; Versace logo at 12h and coloured details",
+        "Strap: Transparent Pink Rainbow Greca pattern PU strap with metal loop with Greca at 6h and tongue buckle",
+        "Movement: RONDA 502.1 D Swiss Chrono Quartz",
+        "Water Resistant: 3 ATM",
+      ],
+      sku: "PVEZ7012-P0022_PNUL",
+    },
+    {
+      name: "Medusa Logo Ring",
+      slug: "medusa-logo-ring",
+      images: {
+        primary: "/images/31/image1.avif",
+        secondary: "/images/31/image2.avif",
+        modelFront: "/images/31/image3.avif",
+      },
+      price: 350,
+      brand: "Versace",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "rings",
+      color: ["Gold"],
+      countInStock: 20,
+      description:
+        "A cubic ring with a Versace letter engraving and Medusa stud. All Versace jewelry products are lead and nickel free. All materials are hypoallergenic.",
+      details: [
+        "Logo lettering",
+        "Medusa stud",
+        "Outer composition: 100% Metal",
+      ],
+      sku: "1009151-1A00620_3J000",
+    },
+    {
+      name: "Engraved Greek Key Ring",
+      slug: "engraved-greek-key-ring",
+      images: {
+        primary: "/images/32/image1.avif",
+        secondary: "/images/32/image2.avif",
+        modelFront: "/images/32/image3.avif",
+      },
+      price: 280,
+      brand: "Versace",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "rings",
+      color: ["Gold", "Green"],
+      countInStock: 20,
+      description:
+        "Gold tone ring engraved with Greek Key Keys and logo on the inner band.",
+      details: [
+        "Greek Key engraving",
+        "Engraved with logo on the inner band",
+        "Metal: Brass",
+        "Finish: Gold",
+      ],
+      sku: "DG56785-DJMT_3J000",
+    },
+    {
+      name: "La Maschera Mother of Pearl Necklace",
+      slug: "la-maschera-mother-of-pearl-necklace",
+      images: {
+        primary: "/images/33/image1.avif",
+        secondary: "/images/33/image2.avif",
+        modelFront: "/images/33/image3.avif",
+      },
+      price: 580,
+      brand: "Versace",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "necklaces",
+      color: ["Gold"],
+      countInStock: 20,
+      description:
+        "A chain necklace with a mother of pearl pendant featuring an engraved mask motif—a classical reference to theatre and opera. All Versace jewelry products are lead and nickel free. All materials are hypoallergenic.",
+      details: [
+        "Greca engraving",
+        "La Maschera charm",
+        "Lobster clasp closure",
+        "Outer composition: 100% Metal",
+      ],
+      sku: "1009604-1A06968_4J040",
+    },
+    {
+      name: "Floral Motif Cufflinks",
+      slug: "floral-motif-cufflinks",
+      images: {
+        primary: "/images/28/image1.jpg",
+        secondary: "/images/28/image2.avif",
+        modelFront: "/images/28/image3.avif",
+        materialCloseUp: "/images/28/image4.avif",
+      },
+      price: 500,
+      brand: "Gucci",
+      category: "accessories",
+      subcategory: "jewelry-watches",
+      subSubcategory: "cufflinks",
+      color: ["Silver"],
+      countInStock: 20,
+      description:
+        "The Interlocking G is revisited for Cruise 2023 Gucci Cosmogonie. It appears enlarged and alongside other key motifs, such as the heart and floral motif. This pair of sterling silver cufflinks take the form of a flower with a turquoise enamel center and engraved details.",
+      details: [
+        "925 sterling silver",
+        "Flower with turquoise enamel and engraved details",
+        "Made in Italy",
+      ],
+      sku: "728430-J8749_8183",
     },
   ],
 
