@@ -1,11 +1,14 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 const largeImages = {
   men: { image: "/largeImages/men.jpg", link: "/men", title: "Men's Bags" },
 };
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const style = {
   sectionContainer: `py-10`,
@@ -20,7 +23,7 @@ const CallToAction = ({ homeRef }) => {
   const containerRef = useRef();
   const contentRef = useRef();
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const context = containerRef?.current;
 
     gsap.registerPlugin(ScrollTrigger);
