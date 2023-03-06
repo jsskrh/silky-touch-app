@@ -13,7 +13,16 @@ const Slider = ({ images, name, slider, productPage }) => {
   const sliderRef = useRef(null);
 
   useEffect(() => {
-    setWidth(sliderRef.current.offsetWidth);
+    const handleResize = () => {
+      setWidth(sliderRef.current.offsetWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const imagesArr = Object.values(images);
