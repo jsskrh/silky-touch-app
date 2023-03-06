@@ -127,7 +127,7 @@ const payment = () => {
                       <Link href="/terms-conditions">
                         <span>Terms & Conditions</span>
                       </Link>{" "}
-                      and have read and understood the Versace{" "}
+                      and have read and understood the Silky Touch{" "}
                       <Link href="/privacy-policy">
                         <span>Privacy Policy</span>
                       </Link>

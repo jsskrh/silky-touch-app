@@ -10,8 +10,8 @@ const CABenefits = () => {
   return (
     <div className={style.caBenefits}>
       <p className={style.benefitsText}>
-        Register with the Versace Online Store and enjoy the benefits of having
-        an account:
+        Register with the Silky Touch Online Store and enjoy the benefits of
+        having an account:
       </p>
       <ul className={style.benefitsList}>
         {benefits.map((benefit, index) => (

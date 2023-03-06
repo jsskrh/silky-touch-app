@@ -31,9 +31,9 @@ const category = ({ products }) => {
       <div className={style.productsGrid}>
         {products.map((product, index) => (
           <>
-            {(index + 1) % 6 === 0 && (
+            {/* {(index + 1) % 6 === 0 && (
               <div className={style.heroContainer}></div>
-            )}
+            )} */}
             <ProductItem product={product} key={product.slug} />
           </>
         ))}

@@ -202,7 +202,7 @@ const register = () => {
                   )}
               </div>
               {/* <CheckboxLayout>
-                I consent to commercial promotion activities related to Versace
+                I consent to commercial promotion activities related to Silky Touch
                 by e-mail and/or text messages according to our Privacy Policy.
               </CheckboxLayout> */}
               <div className={style.errorHandler}></div>

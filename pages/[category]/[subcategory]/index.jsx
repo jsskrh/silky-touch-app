@@ -34,8 +34,8 @@ const subcategory = ({ products }) => {
       <div className={style.productsGrid}>
         {products.map((product, index) => (
           <>
-            {index === 2 && <div className={style.heroContainer}></div>}
-            {index === 6 && <div className={style.heroContainer}></div>}
+            {/* {index === 2 && <div className={style.heroContainer}></div>}
+            {index === 6 && <div className={style.heroContainer}></div>} */}
 
             <ProductItem product={product} key={product.slug} />
           </>
