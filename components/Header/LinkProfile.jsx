@@ -12,7 +12,7 @@ const LinkProfile = () => {
   const { status, data: session } = useSession();
 
   return (
-    <NavIcon link="login?redirect=/profile">
+    <NavIcon link="/profile">
       {status === "loading" ? (
         "Loading"
       ) : session?.user ? (

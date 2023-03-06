@@ -4,6 +4,8 @@ import TopContactUs from "../components/TopContactUs";
 import ProfileCard from "../components/Profile/ProfileCard";
 import Logout from "../components/Profile/Logout";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const style = {
   profilePage: `pb-4 mx-5`,
@@ -41,6 +43,18 @@ const accountCards = [
 
 const profile = () => {
   const [isMobile, setIsMobile] = useState();
+  const { status, data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "loading") {
+      return;
+    }
+
+    if (!session?.user) {
+      router.push("/login");
+    }
+  }, [status, session]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,6 +72,14 @@ const profile = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  if (status === "loading") {
+    return <div>Loading</div>;
+  }
+
+  if (!session?.user) {
+    return null; // or render a message asking the user to log in
+  }
 
   return (
     <Layout title="My Account" bgColor={`bg-[#f5f5f5]`}>
