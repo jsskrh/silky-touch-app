@@ -33,13 +33,13 @@ const Sidebar = ({ showSidebar, setShowSidebar, setShowFullOverlay }) => {
           />
         )}
         <ul className={style.categoryList}>
-          {Object.keys(catalogue).map((category) => (
+          {Object.keys(catalogue.men.categories).map((category) => (
             <CategoryListItem
-              category={catalogue[category]}
+              category={catalogue.men.categories[category]}
               showSidebar={showSidebar}
               setShowSidebar={setShowSidebar}
               setShowFullOverlay={setShowFullOverlay}
-              link={`/${catalogue[category].metadata.slug}`}
+              link={`/${catalogue.men.categories[category].metadata.slug}`}
             />
           ))}
         </ul>

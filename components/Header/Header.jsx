@@ -98,17 +98,13 @@ const Header = ({ title }) => {
             </div>
           </Link>
           <div className={style.navMenuContainer}>
-            <Link href="/bags">
-              <span className={style.navLink}>Bags</span>
-            </Link>
-            <NavCatalogue category="women" />
-            <NavCatalogue category="men" />
-            <NavCatalogue category="accessories" />
+            <NavCatalogue category={"clothing"} />
+            <NavCatalogue category={"bags"} />
+            <NavCatalogue category={"shoes"} />
+            <NavCatalogue category={"accessories"} />
+            <NavCatalogue category={"underwear-beachwear"} />
             <Link href="/stories">
               <span className={style.navLink}>Stories</span>
-            </Link>
-            <Link href="/gifts">
-              <span className={style.navLink}>Gifts</span>
             </Link>
           </div>
         </div>

@@ -9,10 +9,10 @@ const style = {
   navLink: `uppercase pt-0 p-2 font-bold text-xs flex pb-9 text-[#212121] hover:text-[#757575] relative hover:after:bg-[#757575] after:absolute after:content-[''] after:w-full after:top-5 hover:after:h-[1px] after:left-0 after:right-0`,
 };
 
-const NavCatalogue = ({ category }) => {
+const NavCatalogue = ({ category, categoryItems }) => {
   const contRef = useRef();
 
-  const catalogueData = data.catalogue[category].categories;
+  const catalogueData = data.catalogue.men.categories[category].categories;
   const catalogueKeys = Object.keys(catalogueData);
 
   // const [currentCategory, setCurrentCategory] = useState();
@@ -46,46 +46,33 @@ const NavCatalogue = ({ category }) => {
 
   return (
     <div
-      className="inline-block"
+      className="inline-block relative"
       ref={contRef}
       onMouseEnter={() => setOpen(true)}
     >
-      <Link href={`/${category}`}>
-        <span className={style.navLink}>{category}</span>
+      <Link href={`/men/${category}`}>
+        <span className={style.navLink}>
+          {data.catalogue.men.categories[category].metadata.name}
+        </span>
       </Link>
       <div
-        className={`catalogue-menu border-t border-[#f5f5f5] px-6 pt-8 pb-16 w-screen absolute left-0 bg-[#fff] z-[-1] hidden`}
+        className={`catalogue-menu border-t border-[#f5f5f5] px-6 pt-8 pb-16 absolute left-0 bg-[#fff] z-[-1] hidden`}
       >
         <div>
-          <ul className="flex">
-            <li className="w-[212px]">
-              <div className="h-[297px]"></div>
-            </li>
-            {catalogueKeys.map((levelOne) => (
-              <li className="ml-8 w-44 box-content">
-                <Link href={`/${category}/${levelOne}`}>
+          <div className="flex">
+            <div className="mr-8 w-44 box-content">
+              {catalogueKeys.map((levelOne) => (
+                <Link href={`/men/${category}/${levelOne}`}>
                   <h3 className="uppercase mb-3 font-bold text-xs hover:text-[#757575]">
-                    {catalogueData[levelOne].metadata.name}
+                    {catalogueData[levelOne].name}
                   </h3>
                 </Link>
-                <ul>
-                  {Object.values(catalogueData[levelOne].categories).map(
-                    (levelTwo) => (
-                      // levelTwo !== "title" &&
-                      // levelTwo !== "subtitle" &&
-                      <li className="capitalize text-[0.735rem] mb-2 hover:text-[#757575]">
-                        <Link
-                          href={`/${category}/${levelOne}/${levelTwo.slug}`}
-                        >
-                          {levelTwo.name}
-                        </Link>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+            {/* <div className="w-[212px]">
+              <div className="h-[297px]"></div>
+            </div> */}
+          </div>
         </div>
       </div>
     </div>
@@ -93,3 +80,23 @@ const NavCatalogue = ({ category }) => {
 };
 
 export default NavCatalogue;
+
+export async function getServerSideProps() {
+  await db.connect();
+
+  const mongoItems = await Product.find({
+    category: "men",
+  })
+    .limit(4)
+    .lean();
+
+  const categoryImages = [];
+
+  mongoItems.map((item) => categoryImages.push(item.images.primary));
+
+  return {
+    props: {
+      categoryItems: mongoItems.map(db.convertDocsToObj),
+    },
+  };
+}
