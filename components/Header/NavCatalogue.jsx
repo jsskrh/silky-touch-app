@@ -62,7 +62,7 @@ const NavCatalogue = ({ category, categoryItems }) => {
           <div className="flex">
             <div className="mr-8 w-44 box-content">
               {catalogueKeys.map((levelOne) => (
-                <Link href={`/men/${category}/${levelOne}`}>
+                <Link href={`/men/${category}/${levelOne}`} key={levelOne}>
                   <h3 className="uppercase mb-3 font-bold text-xs hover:text-[#757575]">
                     {catalogueData[levelOne].name}
                   </h3>
