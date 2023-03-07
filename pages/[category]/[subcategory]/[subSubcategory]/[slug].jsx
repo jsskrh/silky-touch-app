@@ -1,13 +1,16 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import Layout from "../../../../components/Layout/Layout";
 import PageNavigation from "../../../../components/ProductPage/PageNavigation";
 import ProductContent from "../../../../components/ProductPage/ProductContent";
 import ProductImages from "../../../../components/ProductPage/ProductImages";
 import Product from "../../../../models/product";
 import db from "../../../../utils/db";
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const style = {
   pdpMain: `md:mx-5`,
@@ -53,7 +56,7 @@ const productPage = ({ product }) => {
   const productContentRef = useRef();
   const productAllRef = useRef();
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const context = productPageRef?.current;
 
     let testHeight = productContentRef.current.clientHeight;

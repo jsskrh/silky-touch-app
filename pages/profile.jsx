@@ -54,6 +54,8 @@ const profile = () => {
     if (!session?.user) {
       router.push("/login");
     }
+
+    console.log(session?.user);
   }, [status, session]);
 
   useEffect(() => {
@@ -92,6 +94,12 @@ const profile = () => {
             {accountCards.map((card, index) => (
               <ProfileCard card={card} key={index} />
             ))}
+            {session?.user.isAdmin && (
+              <ProfileCard
+                card={{ header: "Admin", link: "/admin", text: "Admin panel" }}
+                admin
+              />
+            )}
           </div>
         </div>
         {isMobile && <TopContactUs isMobile />}
