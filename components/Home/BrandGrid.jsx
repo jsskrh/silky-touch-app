@@ -20,6 +20,7 @@ const BrandGrid = ({ activeBrand, brand }) => {
         {activeBrand.map((product, index) => (
           <Link
             href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+            key={index}
           >
             <div className={style.imageContainer} key={index}>
               <img
