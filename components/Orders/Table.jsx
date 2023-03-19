@@ -12,7 +12,7 @@ const style = {
   //   button: `w-fit border px-[10px] py-[10px] text-xs font-bold uppercase bg-[#212121] border-[#212121] text-[#ededed] align-center`,
 };
 
-const Table = ({ orders }) => {
+const Table = ({ orders, admin }) => {
   const router = useRouter();
 
   const convertDate = (zuluDate) => {
@@ -40,6 +40,7 @@ const Table = ({ orders }) => {
       <thead className={style.tableHead}>
         <tr>
           <th className={style.headCell}>ID</th>
+          {admin && <th className={style.headCell}>Customer</th>}
           <th className={style.headCell}>Date</th>
           <th className={style.headCell}>Total</th>
           <th className={style.headCell}>Status</th>
@@ -55,6 +56,7 @@ const Table = ({ orders }) => {
               onClick={() => router.push(`/orders/${order._id}`)}
             >
               <td className={style.tableCell}>{order._id.slice(19, 24)}</td>
+              {admin && <td className={style.tableCell}>{order.user}</td>}
               <td className={style.tableCell}>
                 {convertDate(order.createdAt)}
               </td>
