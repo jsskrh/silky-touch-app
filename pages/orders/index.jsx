@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useReducer, useState } from "react";
+import Empty from "../../components/Bag/Empty";
 import Layout from "../../components/Layout/Layout";
 import Table from "../../components/Orders/Table";
 import PageTitle from "../../components/PageTitle";
@@ -78,7 +79,10 @@ const orderHistory = () => {
       ) : error ? (
         <div>{error}</div>
       ) : orders.length === 0 ? (
-        <div>We have no order records for this account.</div>
+        <Empty
+          title="No Records Found."
+          text="We have no records for this account"
+        />
       ) : (
         <div className={style.tableContainer}>
           <Table orders={orders} />
