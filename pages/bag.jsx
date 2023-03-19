@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import BagContactUs from "../components/Bag/BagContactUs";
-import BagEmpty from "../components/Bag/BagEmpty";
 import BagTable from "../components/Bag/BagTable";
 import OrderSummary from "../components/Bag/OrderSummary";
 import TopContactUs from "../components/TopContactUs";
@@ -11,6 +10,7 @@ import { Store } from "../utils/Store";
 import PageTitle from "../components/PageTitle";
 import MiniBagTable from "../components/Header/MiniBagTable";
 import MiniBagItem from "../components/Header/MiniBagItem";
+import Empty from "../components/Bag/Empty";
 
 const style = {
   bagContainer: `mt-10`,
@@ -72,7 +72,7 @@ const bag = () => {
         <div className={style.pageContent}>
           <div className={style.cartItemsSection}>
             {cartItems.length === 0 ? (
-              <BagEmpty />
+              <Empty title="Bag Empty." text="You have 0 items in your bag" />
             ) : isMobile ? (
               <table className={style.table}>
                 <thead className={style.tableHead}>
