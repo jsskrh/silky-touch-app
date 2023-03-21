@@ -31,7 +31,7 @@ const accountCards = [
   {
     header: "Add Product",
     text: "Add new products to the database",
-    link: "/orders",
+    link: "/admin/add-product",
   },
   {
     header: "Settings",

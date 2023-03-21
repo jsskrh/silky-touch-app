@@ -4,10 +4,15 @@ const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
-    images: { type: Object, required: true },
+    images: [
+      {
+        type: { type: String, required: true, trim: true },
+        url: { type: String, required: true, trim: true },
+      },
+    ],
     price: { type: Number, required: true },
     brand: { type: String, required: true },
-    category: { type: String, required: true },
+    category: { type: String, required: true, default: "men" },
     subcategory: { type: String, required: true },
     subSubcategory: { type: String, required: true },
     color: { type: [String], required: true },
