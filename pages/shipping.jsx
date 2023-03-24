@@ -200,7 +200,7 @@ const shipping = () => {
                             required: "Please select a country",
                             validate: (value) =>
                               value !== "Please select" ||
-                              "Please enter your country",
+                              "Please enter a country",
                           }}
                           render={({ field }) => <CountryBox {...field} />}
                         />
