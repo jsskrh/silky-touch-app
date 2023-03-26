@@ -1,4 +1,3 @@
-import ProductItem from "../ProductCatalogue/ProductItem";
 import Slider from "../ProductCatalogue/Slider";
 
 const style = {
@@ -9,19 +8,17 @@ const style = {
   sliderCont: `absolute top-[68px] md:top-[88px] right-0 left-0 w-screen h-[calc(100vh-68px-62px)] md:h-[calc(100vh-88px-62px)]`,
 };
 
-const ProductImages = ({ product }) => {
-  const imagesArr = Object.values(product.images);
+const ProductImages = ({ product, images }) => {
   return (
     <>
       <div className={style.productImages}>
-        {imagesArr.map((image, index) => (
+        {images.map((image, index) => (
           <img
-            src={image}
-            alt={product.name}
+            src={image.url}
+            alt={`${product} ${image.type}`}
             key={index}
             className={
-              imagesArr.length % 2 === 1 &&
-              image === imagesArr[imagesArr.length - 1]
+              images.length % 2 === 1 && image === images[images.length - 1]
                 ? style.oddImage
                 : ""
             }
@@ -31,11 +28,7 @@ const ProductImages = ({ product }) => {
       <div className={style.mobileImagesCont}>
         <div className={style.imagesPlaceholder}></div>
         <div className={style.sliderCont}>
-          <Slider
-            images={product.images}
-            name={product.name}
-            productPage={true}
-          />
+          <Slider images={images} name={product} productPage={true} />
         </div>
       </div>
     </>

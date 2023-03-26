@@ -53,8 +53,10 @@ export async function getServerSideProps(context) {
     .sort({ createdAt: -1 })
     .lean();
 
+  const productsStringified = products.map(db.stringifyProducts);
+
   return {
-    props: { products: products.map(db.convertDocsToObj) },
+    props: { products: productsStringified.map(db.convertDocsToObj) },
   };
 }
 

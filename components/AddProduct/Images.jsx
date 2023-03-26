@@ -4,7 +4,7 @@ import {
   PlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const style = {
   listbox: `relative`,
@@ -17,13 +17,16 @@ const style = {
 };
 
 const Images = ({ images, onAddImage, onRemoveImage }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(null);
   const [imageType, setImageType] = useState("Select");
 
+  const inputRef = useRef(null);
+
   const handleAddImage = () => {
-    if (inputValue.trim() && imageType !== "" && imageType !== "Select") {
-      onAddImage({ type: imageType, url: inputValue.trim() });
-      setInputValue("");
+    if (inputValue && imageType !== "" && imageType !== "Select") {
+      onAddImage({ type: imageType, url: inputValue });
+      setInputValue(null);
+      inputRef.current.value = null;
       setImageType("Select");
     }
   };
@@ -41,7 +44,7 @@ const Images = ({ images, onAddImage, onRemoveImage }) => {
             className={`justify-between flex items-center py-1 my-1`}
           >
             <span>
-              {image.type}: {image.url}
+              {image.type}: {image.url.name}
             </span>
             <button
               type="button"
@@ -55,12 +58,9 @@ const Images = ({ images, onAddImage, onRemoveImage }) => {
       </ul>
       <div className={`flex`}>
         <Listbox
-          //   value={props.value}
           onChange={setImageType}
           as="div"
           className={`${style.listbox} min-w-[160px]`}
-          //   refName={props.name}
-          //   multiple
         >
           {({ open }) => (
             <>
@@ -68,12 +68,7 @@ const Images = ({ images, onAddImage, onRemoveImage }) => {
                 as="div"
                 className={`${style.input} ${style.listboxHead}`}
               >
-                <span classname={style.colors}>
-                  {/* {selectedColors.length === 0
-                ? "Please select"
-                : selectedColors.join(", ")} */}
-                  {imageType}
-                </span>
+                <span className={style.colors}>{imageType}</span>
                 <span
                   className={`${style.heroIcon} ${open && style.transform}`}
                 >
@@ -96,8 +91,11 @@ const Images = ({ images, onAddImage, onRemoveImage }) => {
         </Listbox>
         <input
           type="file"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => {
+            const file = e.target.files[0];
+            setInputValue(file);
+          }}
+          ref={inputRef}
           className={`${style.input} flex-1 py-[7px] items-center max-h-[45.6px]`}
         />
         <button

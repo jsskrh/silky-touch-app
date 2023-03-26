@@ -31,14 +31,23 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
       } ${orderItems?.length === 1 && "border-b-0"}`}
     >
       <td className={style.imageCell}>
-        <Link href={`/products/${item.slug}`}>
-          <img src={item.images.primary} alt={item.name} />
+        <Link
+          href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item.slug}`}
+        >
+          <img
+            src={item.images.find((image) => image.type === "primary").url}
+            alt={item.name}
+          />
         </Link>
       </td>
       <td className={style.detailsContainer}>
         <div className={style.productDetails}>
           <div className={`${parent === "header" && style.name}`}>
-            <Link href={`/products/${item.slug}`}>{item.name}</Link>
+            <Link
+              href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item.slug}`}
+            >
+              {item.name}
+            </Link>
           </div>
           {!orderItems && (
             <div className={style.attribute}>

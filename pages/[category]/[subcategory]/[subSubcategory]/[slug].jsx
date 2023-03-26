@@ -87,7 +87,7 @@ const productPage = ({ product }) => {
       <div className={style.pdpMain} ref={productPageRef}>
         <div className={style.pdpTop} ref={productAllRef}>
           <div className={style.pdpLeft}>
-            <ProductImages product={product} />
+            <ProductImages images={product.images} product={product.name} />
           </div>
           <ProductContent
             product={product}
@@ -111,7 +111,11 @@ export async function getServerSideProps(context) {
   await db.disconnect();
 
   return {
-    props: { product: product ? db.convertDocsToObj(product) : null },
+    props: {
+      product: product
+        ? db.convertDocsToObj(db.stringifyProducts(product))
+        : null,
+    },
   };
 }
 

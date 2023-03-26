@@ -32,13 +32,8 @@ const subcategory = ({ products }) => {
     >
       <QueryBar productNo={products.length} />
       <div className={style.productsGrid}>
-        {products.map((product, index) => (
-          <>
-            {/* {index === 2 && <div className={style.heroContainer}></div>}
-            {index === 6 && <div className={style.heroContainer}></div>} */}
-
-            <ProductItem product={product} key={product.slug} />
-          </>
+        {products.map((product) => (
+          <ProductItem product={product} key={product.slug} />
         ))}
       </div>
     </Layout>
@@ -57,8 +52,10 @@ export async function getServerSideProps(context) {
     .sort({ createdAt: -1 })
     .lean();
 
+  const productsStringified = products.map(db.stringifyProducts);
+
   return {
-    props: { products: products.map(db.convertDocsToObj) },
+    props: { products: productsStringified.map(db.convertDocsToObj) },
   };
 }
 

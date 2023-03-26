@@ -40,6 +40,21 @@ const convertDocsToObj = (doc) => {
   return doc;
 };
 
-const db = { connect, disconnect, convertDocsToObj };
+const stringifyProducts = (product) => {
+  const imagesStringified = product.images.map((image) => {
+    return {
+      ...image,
+      _id: image._id.toString(),
+    };
+  });
+
+  return {
+    ...product,
+    images: imagesStringified,
+  };
+  // });
+};
+
+const db = { connect, disconnect, convertDocsToObj, stringifyProducts };
 
 export default db;

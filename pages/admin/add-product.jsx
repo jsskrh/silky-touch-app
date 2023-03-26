@@ -14,6 +14,7 @@ import ColorBox from "../../components/AddProduct/ColorBox";
 import DetailsList from "../../components/AddProduct/DetailsList";
 import Images from "../../components/AddProduct/Images";
 import axios from "axios";
+import { slugify } from "../../utils/helpers";
 
 const style = {
   header: `py-6 border-t w-full border-[#e6e6e6] px-5`,
@@ -98,6 +99,25 @@ const addProduct = () => {
     description,
     images,
   }) => {
+    // cloudinary.v2.config({
+    //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    //   api_key: process.env.CLOUDINARY_API_KEY,
+    //   api_secret: process.env.CLOUDINARY_API_SECRET,
+    // });
+
+    const uploadPromises = images.map(async (image) => {
+      const url = image.url;
+      const formData = new FormData();
+      formData.append("file", url);
+      formData.append("upload_preset", "luxury_store");
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
+        formData
+      );
+      image.url = response.data.secure_url;
+      return;
+    });
+
     console.log({
       productName,
       price,
@@ -110,6 +130,10 @@ const addProduct = () => {
       details,
       images,
     });
+
+    // Wait for all promises to resolve before proceeding
+    await Promise.all(uploadPromises);
+
     dispatch(startSubmit());
     try {
       // const newProduct = {
@@ -128,15 +152,15 @@ const addProduct = () => {
         name: productName,
         price,
         brand,
-        subcategory,
-        subSubcategory,
+        subcategory: slugify(subcategory),
+        subSubcategory: slugify(subSubcategory),
         color,
         countInStock,
         description,
         details,
         images,
       });
-      console.log(data);
+      console.log("data", data);
     } catch (error) {
       dispatch(submitFailure());
     }
@@ -483,16 +507,18 @@ const addProduct = () => {
                         value.length
                       ) {
                         return "Image types cannot be repeated";
-                      } else {
-                        const invalidFiles = value.filter(
-                          (item) => !/\.(jpg|webp|avif|png)$/i.test(item.url)
-                        );
-                        if (invalidFiles.length > 0) {
-                          return `Invalid file type(s): ${invalidFiles
-                            .map((item) => item.type)
-                            .join(", ")}`;
-                        }
                       }
+                      // } else {
+                      //   const invalidFiles = value.filter(
+                      //     (item) =>
+                      //       !/\.(jpg|jpeg|webp|avif|png)$/i.test(item.url)
+                      //   );
+                      //   if (invalidFiles.length > 0) {
+                      //     return `Invalid file type(s): ${invalidFiles
+                      //       .map((item) => item.type)
+                      //       .join(", ")}`;
+                      //   }
+                      // }
                       return true;
                     },
                   }}

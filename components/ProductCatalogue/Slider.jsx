@@ -25,7 +25,9 @@ const Slider = ({ images, name, slider, productPage }) => {
     };
   }, []);
 
-  const imagesArr = Object.values(images);
+  const imagesArr = images.map((image) => {
+    return image.url;
+  });
 
   return (
     <div className={style.slider} ref={sliderRef}>
