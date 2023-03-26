@@ -50,7 +50,7 @@ const ColorBox = React.forwardRef((props, ref) => {
             as="div"
             className={`${style.input} ${style.listboxHead}`}
           >
-            <span classname={style.colors}>
+            <span className={style.colors}>
               {/* {selectedColors.length === 0
                 ? "Please select"
                 : selectedColors.join(", ")} */}
