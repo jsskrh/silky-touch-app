@@ -40,7 +40,9 @@ export default function Home({ activeBrand }) {
         <div className={style.mainCarouselPlaceholder}></div>
         <MainCarousel homeRef={homeRef} isMobile={isMobile} />
 
-        <BrandGrid activeBrand={activeBrand} brand="gucci" />
+        {activeBrand.length !== 0 && (
+          <BrandGrid activeBrand={activeBrand} brand="gucci" />
+        )}
 
         <CallToAction homeRef={homeRef} />
       </div>
