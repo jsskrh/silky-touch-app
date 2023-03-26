@@ -10,19 +10,23 @@ const handler = async (req, res) => {
   }
   const { user } = session;
   if (!user.isAdmin) {
-    return res.status(401).send({ message: "Not authoorized" });
+    return res.status(401).send({ message: "Not authorized" });
   }
-  await db.connect();
-  const newProduct = new Product({ ...req.body });
-  newProduct.slug = slugify(newProduct.name);
-  newProduct.sku = generateSKU(
-    newProduct.brand,
-    "men",
-    newProduct.subcategory,
-    newProduct.subSubcategory
-  );
-  const product = await newProduct.save();
-  res.status(201).send(product);
+  try {
+    await db.connect();
+    const newProduct = new Product({ ...req.body });
+    newProduct.slug = slugify(newProduct.name);
+    newProduct.sku = generateSKU(
+      newProduct.brand,
+      "men",
+      newProduct.subcategory,
+      newProduct.subSubcategory
+    );
+    const product = await newProduct.save();
+    return res.status(201).send(product);
+  } catch (err) {
+    return res.status(500).send({ message: err.message });
+  }
 };
 
 export default handler;
