@@ -10,6 +10,7 @@ import CheckoutProgress from "../components/Shipping/CheckoutProgress";
 import OrderSummary from "../components/OrderSummary";
 import { Store } from "../utils/Store";
 import SecureLayout from "../components/Layout/SecureLayout";
+import Empty from "../components/Bag/Empty";
 
 const style = {
   pageContent: `md:flex text-xs`,
@@ -71,7 +72,7 @@ const payment = () => {
       <div className={style.paymentContainer}>
         {cartItems.length === 0 ? (
           <div className={style.emptyBag}>
-            <BagEmpty />
+            <Empty title="Bag Empty." text="You have 0 items in your bag" />
           </div>
         ) : (
           <>

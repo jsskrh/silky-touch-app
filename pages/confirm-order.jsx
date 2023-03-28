@@ -9,10 +9,10 @@ import ShippingSummary from "../components/Payment/ShippingSummary";
 import PaymentMethod from "../components/Confirmation/PaymentMethod";
 import OrderSummary from "../components/OrderSummary";
 import SecureCheckoutLayout from "../components/Layout/SecureLayout";
-import BagEmpty from "../components/Bag/BagEmpty";
 import PaystackPayment from "../components/Confirmation/PaystackPayment";
 import PaypalPayment from "../components/Confirmation/PaypalPayment";
 import StripePayment from "../components/Confirmation/StripePayment";
+import Empty from "../components/Bag/Empty";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -104,7 +104,7 @@ const confirmation = () => {
       <div>
         {cartItems.length === 0 ? (
           <div className={style.emptyBag}>
-            <BagEmpty />
+            <Empty title="Bag Empty." text="You have 0 items in your bag" />
           </div>
         ) : (
           <>

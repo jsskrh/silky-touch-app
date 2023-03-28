@@ -104,7 +104,7 @@ const shipping = () => {
       <div className={style.checkoutContainer}>
         {cartItems.length === 0 ? (
           <div className={style.emptyBag}>
-            <BagEmpty />
+            <Empty title="Bag Empty." text="You have 0 items in your bag" />
           </div>
         ) : (
           <>
