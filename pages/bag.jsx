@@ -84,7 +84,7 @@ const bag = () => {
                 </thead>
                 <tbody>
                   {cartItems.map((item, index) => (
-                    <MiniBagItem item={item} parent="header" />
+                    <MiniBagItem item={item} key={index} parent="header" />
                   ))}
                 </tbody>
               </table>
