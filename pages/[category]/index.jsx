@@ -2,29 +2,25 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout/Layout";
 import ProductItem from "../../components/ProductCatalogue/ProductItem";
 import Product from "../../models/product";
-import data from "../../utils/data";
 import db from "../../utils/db";
 import QueryBar from "../../components/ProductCatalogue/QueryBar";
+import Category from "../../models/category";
 
 const style = {
   productsGrid: `pt-4 mx-4 grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4`,
 };
 
-const category = ({ products }) => {
+const category = ({ products, category }) => {
   const router = useRouter();
+
   // Fix path error in console
   const path = router.asPath;
-  const query = router.query;
-
-  const category = data.catalogue[query.category];
-
-  //   console.log(router.query);
 
   return (
     <Layout
       path={path}
-      title={category.metadata.title}
-      subtitle={category.metadata.subtitle}
+      title={category.title}
+      subtitle={category.subtitle}
       productsCatalogue
     >
       <QueryBar productNo={products.length} />
@@ -47,11 +43,23 @@ export async function getServerSideProps(context) {
   })
     .sort({ createdAt: -1 })
     .lean();
+  const filteredCategory = await Category.findOne({ slug: category }).lean();
+
+  if (filteredCategory.subcategories !== []) {
+    filteredCategory.subcategories = filteredCategory.subcategories.map(
+      (subcategory) => {
+        return subcategory.toString();
+      }
+    );
+  }
 
   const productsStringified = products.map(db.stringifyProducts);
 
   return {
-    props: { products: productsStringified.map(db.convertDocsToObj) },
+    props: {
+      products: productsStringified.map(db.convertDocsToObj),
+      category: db.convertDocsToObj(filteredCategory),
+    },
   };
 }
 

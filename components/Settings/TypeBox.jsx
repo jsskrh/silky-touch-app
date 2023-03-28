@@ -1,7 +1,6 @@
 import { Listbox } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import react from "react";
-import { slugify } from "../../utils/helpers";
 
 const style = {
   input: `w-full bg-[#fff] px-[15px] py-[10px] border border-[#d7d7d7] hover:border-[#515151] placeholder:italic`,
@@ -21,7 +20,7 @@ const subcategories = [
   "Underwear and Beachwear",
 ];
 
-const SubcategoryBox = react.forwardRef((props, ref) => {
+const TypeBox = react.forwardRef((props, ref) => {
   return (
     <Listbox
       value={props.value}
@@ -42,7 +41,7 @@ const SubcategoryBox = react.forwardRef((props, ref) => {
             </span>
           </Listbox.Button>
           <Listbox.Options className={style.options}>
-            {subcategories.map((subcategory, index) => (
+            {["subcategory", "subSubcategory"].map((subcategory, index) => (
               <Listbox.Option
                 key={index}
                 value={subcategory}
@@ -58,4 +57,4 @@ const SubcategoryBox = react.forwardRef((props, ref) => {
   );
 });
 
-export default SubcategoryBox;
+export default TypeBox;

@@ -1,6 +1,7 @@
 import { Listbox } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import react from "react";
+import { slugify } from "../../utils/helpers";
 
 const style = {
   input: `w-full bg-[#fff] px-[15px] py-[10px] border border-[#d7d7d7] hover:border-[#515151] placeholder:italic`,
@@ -9,7 +10,7 @@ const style = {
   heroIcon: `h-4 w-4`,
   transform: `transform rotate-180`,
   options: `absolute bg-[#fff] w-full max-h-60 overflow-y-scroll z-10`,
-  option: `px-[15px] py-[10px] cursor-pointer hover:bg-[#f5f5f5]`,
+  option: `px-[15px] py-[10px] cursor-pointer hover:bg-[#f5f5f5] capitalize`,
 };
 
 const SubSubcategoryBox = react.forwardRef((props, ref) => {

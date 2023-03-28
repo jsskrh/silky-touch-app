@@ -35,8 +35,8 @@ const disconnect = async () => {
 
 const convertDocsToObj = (doc) => {
   doc._id = doc._id.toString();
-  doc.createdAt = doc.createdAt.toString();
-  doc.updatedAt = doc.updatedAt.toString();
+  doc.createdAt = doc.createdAt ? doc.createdAt.toString() : null;
+  doc.updatedAt = doc.updatedAt ? doc.createdAt.toString() : null;
   return doc;
 };
 
@@ -52,9 +52,25 @@ const stringifyProducts = (product) => {
     ...product,
     images: imagesStringified,
   };
-  // });
 };
 
-const db = { connect, disconnect, convertDocsToObj, stringifyProducts };
+const stringifyCategories = (category) => {
+  const subcategoriesStringified = category.subcategories.map((subcategory) => {
+    return subcategory.toString();
+  });
+
+  return {
+    ...category,
+    subcategories: subcategoriesStringified,
+  };
+};
+
+const db = {
+  connect,
+  disconnect,
+  convertDocsToObj,
+  stringifyProducts,
+  stringifyCategories,
+};
 
 export default db;

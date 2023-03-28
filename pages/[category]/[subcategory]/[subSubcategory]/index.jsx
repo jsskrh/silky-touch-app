@@ -3,25 +3,19 @@ import Layout from "../../../../components/Layout/Layout";
 import ProductItem from "../../../../components/ProductCatalogue/ProductItem";
 import PageNavigation from "../../../../components/ProductPage/PageNavigation";
 import Product from "../../../../models/product";
-import data from "../../../../utils/data";
 import db from "../../../../utils/db";
 import QueryBar from "../../../../components/ProductCatalogue/QueryBar";
+import Category from "../../../../models/category";
 
 const style = {
   productsGrid: `pt-4 mx-4 grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4`,
 };
 
-const subSubcategory = ({ products }) => {
+const subSubcategory = ({ products, subSubcategory }) => {
   const router = useRouter();
+
   // Fix path error in console
   const path = router.asPath;
-  const query = router.query;
-
-  const category = data.catalogue[query.category];
-  const subcategory = category?.categories[query.subcategory];
-  const subSubcategory = subcategory?.categories[query.subSubcategory];
-
-  //   console.log(router.query);
 
   return (
     <Layout
@@ -52,11 +46,24 @@ export async function getServerSideProps(context) {
   })
     .sort({ createdAt: -1 })
     .lean();
+  const filteredSubSubcategory = await Category.findOne({
+    slug: subSubcategory,
+  }).lean();
+
+  if (filteredSubSubcategory.subcategories !== []) {
+    filteredSubSubcategory.subcategories =
+      filteredSubSubcategory.subcategories.map((subcategory) => {
+        return subcategory.toString();
+      });
+  }
 
   const productsStringified = products.map(db.stringifyProducts);
 
   return {
-    props: { products: productsStringified.map(db.convertDocsToObj) },
+    props: {
+      products: productsStringified.map(db.convertDocsToObj),
+      subSubcategory: db.convertDocsToObj(filteredSubSubcategory),
+    },
   };
 }
 

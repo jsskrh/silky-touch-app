@@ -3,11 +3,11 @@ import LinkBag from "./LinkBag";
 import LinkProfile from "./LinkProfile";
 import LinkWishlist from "./LinkWishlist";
 import LinkSearch from "./LinkSearch";
-import { useEffect, useRef, useState } from "react";
-import data from "../../utils/data";
+import { useEffect, useRef, useState, useReducer } from "react";
 import NavCatalogue from "./NavCatalogue";
 import FullOverlay from "./FullOverlay";
 import Sidebar from "../Sidebar/Sidebar";
+import axios from "axios";
 
 const style = {
   header: `sticky top-0 z-50`,
@@ -31,7 +31,45 @@ const style = {
   heroIcon: `h-4 w-4`,
 };
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_REQUEST":
+      return { ...state, loading: true, error: "" };
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        categories: action.payload,
+        error: "",
+      };
+    case "FETCH_FAIL":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 const Header = ({ title }) => {
+  const [{ loading, error, categories }, dispatch] = useReducer(reducer, {
+    loading: true,
+    categories: [],
+    error: "",
+  });
+
+  useEffect(() => {
+    const fetchHeaders = async () => {
+      try {
+        dispatch({ type: "FETCH_REQUEST" });
+        const { data } = await axios.get("/api/settings/catalogue");
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      } catch (error) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(error) });
+      }
+    };
+
+    fetchHeaders();
+  }, []);
+
   const [headerHeight, setHeaderHeight] = useState(0);
 
   const headerRef = useRef(null);
@@ -39,11 +77,6 @@ const Header = ({ title }) => {
   useEffect(() => {
     setHeaderHeight(headerRef.current.clientHeight);
   }, []);
-
-  const catalogueData = data.catalogue.men;
-  delete catalogueData.title;
-  delete catalogueData.subtitle;
-  const catalogueKeys = Object.keys(catalogueData);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -98,11 +131,9 @@ const Header = ({ title }) => {
             </div>
           </Link>
           <div className={style.navMenuContainer}>
-            <NavCatalogue category={"clothing"} />
-            <NavCatalogue category={"bags"} />
-            <NavCatalogue category={"shoes"} />
-            <NavCatalogue category={"accessories"} />
-            <NavCatalogue category={"underwear-beachwear"} />
+            {categories.map((category) => (
+              <NavCatalogue category={category} />
+            ))}
             <Link href="/stories">
               <span className={style.navLink}>Stories</span>
             </Link>
@@ -125,6 +156,7 @@ const Header = ({ title }) => {
             showSidebar={showSidebar}
             setShowSidebar={setShowSidebar}
             setShowFullOverlay={setShowFullOverlay}
+            categories={categories}
           />
           <FullOverlay
             setShowSidebar={setShowSidebar}

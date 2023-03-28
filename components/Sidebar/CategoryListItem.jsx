@@ -42,12 +42,14 @@ const CategoryListItem = ({
               category.metadata && style.uppercase
             }`}
           >
-            {category.metadata ? category.metadata.name : category.name}
+            {category.name}
           </span>
         </Link>
-        {category.metadata && <span className={style.arrowRight}></span>}
+        {category.type === "subcategory" && (
+          <span className={style.arrowRight}></span>
+        )}
       </li>
-      {category.categories && (
+      {category.subcategories && (
         <SubMenu
           category={category}
           showLevel={showLevelTwo}

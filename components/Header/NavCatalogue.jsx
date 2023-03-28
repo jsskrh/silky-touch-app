@@ -12,8 +12,8 @@ const style = {
 const NavCatalogue = ({ category, categoryItems }) => {
   const contRef = useRef();
 
-  const catalogueData = data.catalogue.men.categories[category].categories;
-  const catalogueKeys = Object.keys(catalogueData);
+  // const catalogueData = data.catalogue.men.categories[category].categories;
+  // const catalogueKeys = Object.keys(catalogueData);
 
   // const [currentCategory, setCurrentCategory] = useState();
 
@@ -50,10 +50,8 @@ const NavCatalogue = ({ category, categoryItems }) => {
       ref={contRef}
       onMouseEnter={() => setOpen(true)}
     >
-      <Link href={`/men/${category}`}>
-        <span className={style.navLink}>
-          {data.catalogue.men.categories[category].metadata.name}
-        </span>
+      <Link href={`/men/${category.slug}`}>
+        <span className={style.navLink}>{category.name}</span>
       </Link>
       <div
         className={`catalogue-menu border-t border-[#f5f5f5] px-6 pt-8 pb-16 absolute left-0 bg-[#fff] z-[-1] hidden`}
@@ -61,10 +59,13 @@ const NavCatalogue = ({ category, categoryItems }) => {
         <div>
           <div className="flex">
             <div className="mr-8 w-44 box-content">
-              {catalogueKeys.map((levelOne) => (
-                <Link href={`/men/${category}/${levelOne}`} key={levelOne}>
+              {category.subcategories.map((subcategory) => (
+                <Link
+                  href={`/men/${category.slug}/${subcategory.slug}`}
+                  key={subcategory.slug}
+                >
                   <h3 className="uppercase mb-3 font-bold text-xs hover:text-[#757575]">
-                    {catalogueData[levelOne].name}
+                    {subcategory.name}
                   </h3>
                 </Link>
               ))}
@@ -81,22 +82,22 @@ const NavCatalogue = ({ category, categoryItems }) => {
 
 export default NavCatalogue;
 
-export async function getServerSideProps() {
-  await db.connect();
+// export async function getServerSideProps() {
+//   await db.connect();
 
-  const mongoItems = await Product.find({
-    category: "men",
-  })
-    .limit(4)
-    .lean();
+//   const mongoItems = await Product.find({
+//     category: "men",
+//   })
+//     .limit(4)
+//     .lean();
 
-  const categoryImages = [];
+//   const categoryImages = [];
 
-  mongoItems.map((item) => categoryImages.push(item.images.primary));
+//   mongoItems.map((item) => categoryImages.push(item.images.primary));
 
-  return {
-    props: {
-      categoryItems: mongoItems.map(db.convertDocsToObj),
-    },
-  };
-}
+//   return {
+//     props: {
+//       categoryItems: mongoItems.map(db.convertDocsToObj),
+//     },
+//   };
+// }

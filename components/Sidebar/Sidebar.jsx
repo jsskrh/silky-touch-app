@@ -16,7 +16,12 @@ const style = {
   currencyCont: `mx-6 border-t border-[#bdbdbd] text-[#757575] py-6 mt-4 flex justify-between items-center cursor-pointer`,
 };
 
-const Sidebar = ({ showSidebar, setShowSidebar, setShowFullOverlay }) => {
+const Sidebar = ({
+  showSidebar,
+  setShowSidebar,
+  setShowFullOverlay,
+  categories,
+}) => {
   const { status, data: session } = useSession();
   const catalogue = data.catalogue;
 
@@ -33,13 +38,14 @@ const Sidebar = ({ showSidebar, setShowSidebar, setShowFullOverlay }) => {
           />
         )}
         <ul className={style.categoryList}>
-          {Object.keys(catalogue.men.categories).map((category) => (
+          {categories.map((category, index) => (
             <CategoryListItem
-              category={catalogue.men.categories[category]}
+              key={index}
+              category={category}
               showSidebar={showSidebar}
               setShowSidebar={setShowSidebar}
               setShowFullOverlay={setShowFullOverlay}
-              link={`/${catalogue.men.categories[category].metadata.slug}`}
+              link={`/men/${category.slug}`}
             />
           ))}
         </ul>

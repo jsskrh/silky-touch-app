@@ -1,42 +1,27 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import Layout from "../../components/Layout/Layout";
-import PageTitle from "../../components/PageTitle";
-import Logout from "../../components/Profile/Logout";
-import ProfileCard from "../../components/Profile/ProfileCard";
-import TopContactUs from "../../components/TopContactUs";
+import Layout from "../../../components/Layout/Layout";
+import TopContactUs from "../../../components/TopContactUs";
+import PageTitle from "../../../components/PageTitle";
+import Logout from "../../../components/Profile/Logout";
+import ProfileCard from "../../../components/Profile/ProfileCard";
 
-const accountCards = [
+const settingsCards = [
   {
-    header: "Notifications",
-    text: "View all notifications",
-    link: "/profile/account-details",
+    header: "Catalogue",
+    text: "View and manage product categories",
+    link: "/admin/settings/catalogue",
   },
   {
-    header: "Customers",
-    text: "View and manage all existing customers",
+    header: "Homepage",
+    text: "Manage homepage carousel and brand grid",
     link: "/admin/customers",
   },
   {
-    header: "Ongoing Orders",
-    text: "Track and view undelivered orders",
+    header: "Others",
+    text: "Other site settings",
     link: "/admin/orders/ongoing",
-  },
-  {
-    header: "All Orders",
-    text: "Track and view all order status and history",
-    link: "/admin/orders",
-  },
-  {
-    header: "Add Product",
-    text: "Add new products to the database",
-    link: "/admin/add-product",
-  },
-  {
-    header: "Settings",
-    text: "Edit system settings and preferences",
-    link: "/admin/settings",
   },
 ];
 
@@ -46,7 +31,7 @@ const style = {
   accountGrid: `grid grid-cols-1 gap-[2px] md:grid-cols-3 max-w-4xl mx-auto mb-6`,
 };
 
-const admin = () => {
+const settings = () => {
   const [isMobile, setIsMobile] = useState();
   const { status, data: session } = useSession();
   const router = useRouter();
@@ -95,14 +80,14 @@ const admin = () => {
   }
 
   return (
-    <Layout title="Admin" bgColor={`bg-[#f5f5f5]`}>
+    <Layout title="Settings" bgColor={`bg-[#f5f5f5]`}>
       <div className={style.profilePage}>
         {!isMobile && <TopContactUs />}
-        <PageTitle title="Admin Panel" />
+        <PageTitle title="Settings" />
         <Logout />
         <div className={style.gridContainer}>
           <div className={style.accountGrid}>
-            {accountCards.map((card, index) => (
+            {settingsCards.map((card, index) => (
               <ProfileCard card={card} key={index} />
             ))}
           </div>
@@ -113,4 +98,4 @@ const admin = () => {
   );
 };
 
-export default admin;
+export default settings;

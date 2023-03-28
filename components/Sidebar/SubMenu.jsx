@@ -44,18 +44,15 @@ const SubMenu = ({
             setShowFullOverlay(false);
           }}
         >
-          <span className={style.menuTitle}>{category.metadata.name}</span>
+          <span className={style.menuTitle}>{category.name}</span>
         </Link>
       </div>
       <ul>
-        {Object.values(category.categories).map((subcategory) => (
+        {category.subcategories.map((subcategory, index) => (
           <CategoryListItem
+            key={index}
             category={subcategory}
-            link={`${link}/${
-              subcategory.metadata
-                ? subcategory.metadata.slug
-                : subcategory.slug
-            }`}
+            link={`${link}/${subcategory.slug}`}
             setShowSidebar={setShowSidebar}
             setShowFullOverlay={setShowFullOverlay}
           />
