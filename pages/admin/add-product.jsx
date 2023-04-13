@@ -14,6 +14,7 @@ import ColorBox from "../../components/AddProduct/ColorBox";
 import DetailsList from "../../components/AddProduct/DetailsList";
 import Images from "../../components/AddProduct/Images";
 import axios from "axios";
+// import cloudinary from "cloudinary";
 import { slugify } from "../../utils/helpers";
 
 const style = {
@@ -105,13 +106,34 @@ const addProduct = () => {
     //   api_secret: process.env.CLOUDINARY_API_SECRET,
     // });
 
+    // const timestamp = Math.round(new Date().getTime() / 1000);
+    // const paramsToSign = {
+    //   timestamp,
+    //   upload_preset: "luxury_store",
+    // };
+    // const signature = cloudinary.utils.sign_request(
+    //   paramsToSign,
+    //   process.env.CLOUDINARY_API_SECRET
+    // );
+    // const signedUrl = `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload?timestamp=${timestamp}&upload_preset=luxury_store&signature=${signature}`;
+
+    // const uploadPromises = images.map(async (image) => {
+    //   const url = image.url;
+    //   const formData = new FormData();
+    //   formData.append("file", url);
+    //   formData.append("upload_preset", "luxury_store");
+    //   const response = await axios.post(signedUrl, formData);
+    //   image.url = response.data.secure_url;
+    //   return;
+    // });
+
     const uploadPromises = images.map(async (image) => {
       const url = image.url;
       const formData = new FormData();
       formData.append("file", url);
       formData.append("upload_preset", "luxury_store");
       const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/jsskrh/image/upload`,
         formData
       );
       image.url = response.data.secure_url;
@@ -136,18 +158,6 @@ const addProduct = () => {
 
     dispatch(startSubmit());
     try {
-      // const newProduct = {
-      //   productName,
-      //   price,
-      //   brand,
-      //   subcategory,
-      //   subSubcategory,
-      //   color,
-      //   countInStock,
-      //   description,
-      //   details,
-      //   images,
-      // };
       const { data } = await axios.post(`/api/admin/products/add`, {
         name: productName,
         price,
@@ -160,38 +170,11 @@ const addProduct = () => {
         details,
         images,
       });
+      dispatch(submitSuccess());
       console.log("data", data);
     } catch (error) {
       dispatch(submitFailure());
     }
-    // dispatch({
-    //   type: "SAVE_SHIPPING_ADDRESS",
-    //   payload: {
-    //     firstName,
-    //     lastName,
-    //     address,
-    //     phoneNumber,
-    //     postalCode,
-    //     country,
-    //     prefix,
-    //   },
-    // });
-    // Cookies.set(
-    //   "cart",
-    //   JSON.stringify({
-    //     ...cart,
-    //     shippingAddress: {
-    //       firstName,
-    //       lastName,
-    //       address,
-    //       phoneNumber,
-    //       postalCode,
-    //       country,
-    //       prefix,
-    //     },
-    //   })
-    // );
-    // router.push("/payment");
   };
 
   const subcategories = [

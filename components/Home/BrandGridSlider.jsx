@@ -113,7 +113,10 @@ const BrandGridSlider = ({ brand }) => {
               <div className={style.slideContent}>
                 <div className={style.imageContainer}>
                   <img
-                    src={product.images.primary}
+                    src={
+                      product.images.find((image) => image.type === "primary")
+                        .url
+                    }
                     alt={product.name}
                     className={style.image}
                   />

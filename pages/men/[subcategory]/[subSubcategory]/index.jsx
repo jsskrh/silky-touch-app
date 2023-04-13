@@ -36,11 +36,11 @@ const subSubcategory = ({ products, subSubcategory }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { category, subcategory, subSubcategory } = params;
+  const { subcategory, subSubcategory } = params;
 
   await db.connect();
   const products = await Product.find({
-    category,
+    category: "men",
     subcategory,
     subSubcategory,
   })

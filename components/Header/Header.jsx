@@ -119,9 +119,7 @@ const Header = ({ title }) => {
             <div className={`${style.bar} ${style.menuBottom}`}></div>
           </button>
           <Link href="/">
-            {/* <h1 className={style.brandName}>Luxury</h1> */}
             <div className={style.logoPlaceholder}></div>
-            {/* <div className="h-10 w-[150px] mr-12"></div> */}
             <div className={style.logoContainer}>
               <img
                 src="/logos/SILKY-TOUCH-LOGO-270.jpg"
@@ -140,10 +138,10 @@ const Header = ({ title }) => {
           </div>
         </div>
         <div className={`${style.navGrouping} ${style.navIcons}`}>
-          <LinkSearch />
+          {/* <LinkSearch /> */}
           {!isMobile && (
             <>
-              <LinkWishlist />
+              {/* <LinkWishlist /> */}
               <LinkProfile />
             </>
           )}

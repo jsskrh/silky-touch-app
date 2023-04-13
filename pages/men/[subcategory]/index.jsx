@@ -1,16 +1,18 @@
 import { useRouter } from "next/router";
-import Layout from "../../components/Layout/Layout";
-import ProductItem from "../../components/ProductCatalogue/ProductItem";
-import Product from "../../models/product";
-import db from "../../utils/db";
-import QueryBar from "../../components/ProductCatalogue/QueryBar";
-import Category from "../../models/category";
+import React from "react";
+import Layout from "../../../components/Layout/Layout";
+import ProductItem from "../../../components/ProductCatalogue/ProductItem";
+import Product from "../../../models/product";
+import db from "../../../utils/db";
+import QueryBar from "../../../components/ProductCatalogue/QueryBar";
+import Category from "../../../models/category";
 
 const style = {
   productsGrid: `pt-4 mx-4 grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4`,
+  heroContainer: `md:col-span-2`,
 };
 
-const category = ({ products, category }) => {
+const subcategory = ({ products, subcategory }) => {
   const router = useRouter();
 
   // Fix path error in console
@@ -19,8 +21,8 @@ const category = ({ products, category }) => {
   return (
     <Layout
       path={path}
-      title={category.title}
-      subtitle={category.subtitle}
+      title={subcategory?.title}
+      subtitle={subcategory?.subtitle}
       productsCatalogue
     >
       <QueryBar productNo={products.length} />
@@ -35,18 +37,21 @@ const category = ({ products, category }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { category } = params;
+  const { subcategory } = params;
 
   await db.connect();
   const products = await Product.find({
-    category,
+    category: "men",
+    subcategory,
   })
     .sort({ createdAt: -1 })
     .lean();
-  const filteredCategory = await Category.findOne({ slug: category }).lean();
+  const filteredSubcategory = await Category.findOne({
+    slug: subcategory,
+  }).lean();
 
-  if (filteredCategory.subcategories !== []) {
-    filteredCategory.subcategories = filteredCategory.subcategories.map(
+  if (filteredSubcategory.subcategories !== []) {
+    filteredSubcategory.subcategories = filteredSubcategory.subcategories.map(
       (subcategory) => {
         return subcategory.toString();
       }
@@ -58,9 +63,9 @@ export async function getServerSideProps(context) {
   return {
     props: {
       products: productsStringified.map(db.convertDocsToObj),
-      category: db.convertDocsToObj(filteredCategory),
+      subcategory: db.convertDocsToObj(filteredSubcategory),
     },
   };
 }
 
-export default category;
+export default subcategory;

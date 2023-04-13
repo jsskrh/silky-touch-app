@@ -195,7 +195,7 @@ const shipping = () => {
                         <Controller
                           name="country"
                           control={control}
-                          defaultValue="Please select"
+                          // defaultValue="Please select"
                           rules={{
                             required: "Please select a country",
                             validate: (value) =>

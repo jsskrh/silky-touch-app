@@ -54,12 +54,14 @@ export async function getServerSideProps() {
   await db.connect();
 
   const activeBrand = await Product.find({
-    brand: "Gucci",
+    brand: "Versace",
   }).lean();
+
+  const activeBrandStringified = activeBrand.map(db.stringifyProducts);
 
   return {
     props: {
-      activeBrand: activeBrand
+      activeBrand: activeBrandStringified
         .map(db.convertDocsToObj)
         .sort(() => 0.5 - Math.random())
         .slice(0, 4),

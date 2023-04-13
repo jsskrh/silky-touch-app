@@ -51,7 +51,7 @@ const Sidebar = ({
         </ul>
         <ul>
           <li>
-            <Link href="login?redirect=/profile" className={style.userListItem}>
+            <Link href="/profile" className={style.userListItem}>
               <UserIcon className={style.heroIcon} />
               {status === "loading" ? (
                 <span>Loading</span>
@@ -62,10 +62,10 @@ const Sidebar = ({
               )}
             </Link>
           </li>
-          <li className={style.userListItem}>
+          {/* <li className={style.userListItem}>
             <HeartIcon className={style.heroIcon} />
             <span>Wishlist</span>
-          </li>
+          </li> */}
           <li className={`${style.userListItem} justify-between`}>
             <span>Contact Us</span>
             <span

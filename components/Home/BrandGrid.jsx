@@ -25,9 +25,11 @@ const BrandGrid = ({ activeBrand, brand }) => {
             <div className={style.imageContainer} key={index}>
               <img
                 src={
-                  product.images.modelShowcaseFront
-                    ? product.images.modelShowcaseFront
-                    : product.images.modelFront
+                  product.images.find(
+                    (image) =>
+                      image.type === "model showcase front" ||
+                      image.type === "model front"
+                  ).url
                 }
                 alt={product.name}
                 className={style.image}

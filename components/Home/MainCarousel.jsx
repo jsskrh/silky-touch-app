@@ -4,19 +4,31 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const heroes = [
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/jsskrh/image/upload/v1681321812/luxury_store_app/1_afamw1.jpg",
+  //   link: "/",
+  //   caption: "Calfskin Leather Bags",
+  // },
   {
-    image: "/heroImages/hero1.jpg",
-    link: "/",
-    caption: "Timeless Bags for Men",
-  },
-  {
-    image: "/heroImages/hero2.jpg",
+    image:
+      "https://res.cloudinary.com/jsskrh/image/upload/v1681321813/luxury_store_app/2_qtyvlt.jpg",
     link: "/bags",
-    caption: "Horsebit Mini Bags",
+    caption: "Signature Blazers",
   },
-  { image: "/heroImages/hero3.jpg", link: "/bags", caption: "GG Belts" },
-  { image: "/heroImages/hero4.jpg", link: "/bags", caption: "Supreme Flora" },
-  { image: "/heroImages/hero5.avif", link: "/bags", caption: "Resort 2023" },
+  {
+    image:
+      "https://res.cloudinary.com/jsskrh/image/upload/v1681321814/luxury_store_app/3_opbxbp.jpg",
+    link: "/bags",
+    caption: "Vibrant Umbrellas",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/jsskrh/image/upload/v1681321811/luxury_store_app/4_m1kjgl.jpg",
+    link: "/bags",
+    caption: "Luxury Accessories",
+  },
+  // { image: "/heroImages/hero5.avif", link: "/bags", caption: "Resort 2023" },
 ];
 
 const style = {

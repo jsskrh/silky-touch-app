@@ -76,7 +76,14 @@ const Images = ({ images, onAddImage, onRemoveImage }) => {
                 </span>
               </Listbox.Button>
               <Listbox.Options className={style.options}>
-                {["primary", "secondary", "tertiary"].map((type, index) => (
+                {[
+                  "primary",
+                  "secondary",
+                  "tertiary",
+                  "model front",
+                  "model back",
+                  "material closeUp",
+                ].map((type, index) => (
                   <Listbox.Option
                     key={index}
                     value={type}

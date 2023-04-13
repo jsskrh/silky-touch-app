@@ -4,7 +4,12 @@ import Link from "next/link";
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 const largeImages = {
-  men: { image: "/largeImages/men.jpg", link: "/men", title: "Men's Bags" },
+  men: {
+    image:
+      "https://res.cloudinary.com/jsskrh/image/upload/v1681321812/luxury_store_app/1_afamw1.jpg",
+    link: "/men",
+    title: "Men's Bags",
+  },
 };
 
 const useIsomorphicLayoutEffect =

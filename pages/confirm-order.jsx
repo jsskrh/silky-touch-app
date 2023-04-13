@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import { useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import CheckoutProgress from "../components/Shipping/CheckoutProgress";
@@ -51,6 +52,8 @@ const confirmation = () => {
   const { cartItems, shippingAddress, paymentMethod } = cart;
   const router = useRouter();
 
+  const { status, data: session } = useSession();
+
   const [loading, setLoading] = useState(false);
 
   const [{ loadingPay, successPay }, reducerDispatch] = useReducer(reducer, {});
@@ -81,6 +84,9 @@ const confirmation = () => {
       totalPrice,
       paymentResult,
     });
+    await axios.post("/api/mail/order", {
+      data,
+    });
     setLoading(true);
     router.push(`/orders/${data._id}`);
     reducerDispatch({ type: "PAY_SUCCESS", payload: data });
@@ -97,7 +103,7 @@ const confirmation = () => {
     console.log(getError(error));
   };
 
-  const email = "qwerty@qwerty.com";
+  const email = "qwert@qwerty.com";
 
   return (
     <SecureCheckoutLayout title="Confirmation | Checkout">
@@ -141,7 +147,7 @@ const confirmation = () => {
                       handleError={handleError}
                       successInit={successInit}
                       totalPrice={totalPrice}
-                      email={email}
+                      email={session.user.email}
                       style={style}
                     />
                   ) : (
