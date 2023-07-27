@@ -7,6 +7,18 @@ const slugify = (str) => {
   return str;
 };
 
+const slugifyUnique = (str) => {
+  str =
+    str
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/gi, "")
+      .replace(/ /g, "-")
+      .replace(/--+/g, "-") +
+    "-" +
+    Math.random().toString(36).substring(2, 6);
+  return str;
+};
+
 const generateSKU = (brand, category, subcategory, subSubcategory) => {
   const brandSlug = brand.replace(/\s+/g, "-").toLowerCase();
   const categorySlug = category.replace(/\s+/g, "-").toLowerCase();
@@ -17,4 +29,4 @@ const generateSKU = (brand, category, subcategory, subSubcategory) => {
   return sku;
 };
 
-export { slugify, generateSKU };
+export { slugify, generateSKU, slugifyUnique };

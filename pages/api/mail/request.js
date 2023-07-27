@@ -3,27 +3,8 @@ import { mailOptions, transporter } from "../../../utils/nodemailer";
 import { formatDate } from "../../../utils/date";
 
 const generateEmailContent = (data) => {
-  const formatOrderItems = (orderItems) => {
-    return orderItems
-      .map(
-        (orderItem) => `
-      <tr>
-        <td width="70%" class="purchase_item">
-          <span class="f-fallback">${orderItem.name} x${orderItem.quantity}</span>
-        </td>
-        <td class="align-right" width="30%" class="purchase_item">
-          <span class="f-fallback">$${orderItem.price}</span>
-        </td>
-      </tr>
-    `
-      )
-      .join("");
-  };
-
-  const orderItemsHTML = formatOrderItems(data.orderItems);
-
   return {
-    text: "New Order",
+    text: "New Fitting and Dry Cleaning Request",
     html: `<!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml">
       <head>
@@ -464,8 +445,7 @@ const generateEmailContent = (data) => {
       </head>
       <body>
         <span class="preheader"
-          >This is the confirmation for your recent purchase on {{ purchase_date }}.
-          No payment is due with this receipt.</span
+          >This is a new request for a fitting or dry cleaning session.</span
         >
         <table
           class="email-wrapper"
@@ -513,86 +493,14 @@ const generateEmailContent = (data) => {
                       <tr>
                         <td class="content-cell">
                           <div class="f-fallback">
-                            <h1>
-                              Hello ${data.shippingAddress.prefix}.
-                              ${data.shippingAddress.firstName}
-                              ${data.shippingAddress.lastName},
-                            </h1>
+                          <h1>
+                          Fitting And Dry Cleaning Request
+                        </h1>
                             <p>
-                              Thank you for shopping with us. This email is the
-                              confirmation of your purchase. No payment is due. An
-                              email will be sent wheen the order is out for
-                              delivery.
+                              ${data.description}
                             </p>
-    
-                            <table
-                              class="purchase"
-                              width="100%"
-                              cellpadding="0"
-                              cellspacing="0"
-                              role="presentation"
-                            >
-                              <tr>
-                                <td>
-                                  <h3>${data._id}</h3>
-                                </td>
-                                <td>
-                                  <h3 class="align-right">
-                                    ${formatDate(data.createdAt)}
-                                  </h3>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td colspan="2">
-                                  <table
-                                    class="purchase_content"
-                                    width="100%"
-                                    cellpadding="0"
-                                    cellspacing="0"
-                                  >
-                                    <tr>
-                                      <th class="purchase_heading" align="left">
-                                        <p class="f-fallback">Description</p>
-                                      </th>
-                                      <th class="purchase_heading" align="right">
-                                        <p class="f-fallback">Amount</p>
-                                      </th>
-                                    </tr>
-                                    <!-- {{#each receipt_details}} -->
-                                    ${orderItemsHTML}
-                                    <!-- {{/each}} -->
-                                    <tr>
-                                      <td
-                                        width="70%"
-                                        class="purchase_footer"
-                                        valign="middle"
-                                      >
-                                        <p
-                                          class="f-fallback purchase_total purchase_total--label"
-                                        >
-                                          Total
-                                        </p>
-                                      </td>
-                                      <td
-                                        width="30%"
-                                        class="purchase_footer"
-                                        valign="middle"
-                                      >
-                                        <p class="f-fallback purchase_total">
-                                          ${data.totalPrice}
-                                        </p>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                            <p>
-                              If you have any questions about this email, simply
-                              reach out to our support team at 080xxxxxxxx for help.
-                              <!-- <a href="{{support_url}}">support team</a> for help. -->
-                            </p>
-                            <p>Cheers, <br />Silky Touch Emporium</p>
+
+                            <p>From, <br />${data.prefix}. ${data.firstName} ${data.lastName} <br />${data.email} <br />${data.phoneNumber}</p>
                             <!-- Action -->
                             <table
                               class="body-action"
@@ -689,17 +597,17 @@ const generateEmailContent = (data) => {
 };
 
 const handler = async (req, res) => {
-  const session = await getSession({ req });
-  if (!session) {
-    return res.status(401).send("Sign in required");
-  }
+  // const session = await getSession({ req });
+  // if (!session) {
+  //   return res.status(401).send("Sign in required");
+  // }
   try {
     const { data } = req.body;
     await transporter.sendMail({
       ...mailOptions,
-      to: data.paymentResult.email_address,
+      to: process.env.EMAIL,
       ...generateEmailContent(data),
-      subject: "Order Receipt",
+      subject: "Fitting and Dry Cleaning Request",
     });
 
     return res.status(200).json({ success: true });

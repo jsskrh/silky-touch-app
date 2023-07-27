@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import BrandGrid from "../components/Home/BrandGrid";
 import MainCarousel from "../components/Home/MainCarousel";
 import CallToAction from "../components/Home/CallToAction";
+import Partners from "../components/Home/Partners";
 import Layout from "../components/Layout/Layout";
 import Product from "../models/product";
 import db from "../utils/db";
@@ -41,10 +42,12 @@ export default function Home({ activeBrand }) {
         <MainCarousel homeRef={homeRef} isMobile={isMobile} />
 
         {activeBrand.length !== 0 && (
-          <BrandGrid activeBrand={activeBrand} brand="gucci" />
+          <BrandGrid activeBrand={activeBrand} brand="bags" />
         )}
 
         <CallToAction homeRef={homeRef} />
+
+        <Partners />
       </div>
     </Layout>
   );
@@ -54,7 +57,7 @@ export async function getServerSideProps() {
   await db.connect();
 
   const activeBrand = await Product.find({
-    brand: "Versace",
+    subcategory: "bags",
   }).lean();
 
   const activeBrandStringified = activeBrand.map(db.stringifyProducts);

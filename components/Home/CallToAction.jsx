@@ -6,7 +6,7 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 const largeImages = {
   men: {
     image:
-      "https://res.cloudinary.com/jsskrh/image/upload/v1681321812/luxury_store_app/1_afamw1.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100044/homepage/1_uog6lq.jpg",
     link: "/men",
     title: "Men's Bags",
   },
@@ -58,7 +58,7 @@ const CallToAction = ({ homeRef }) => {
         />
         <div className={style.imageContent} ref={contentRef}>
           <h2 className={style.title}>{largeImages.men.title}</h2>
-          <Link href={largeImages.men.link}>
+          <Link href="/men/bags">
             <button className={style.button}>Shop Now</button>
           </Link>
         </div>

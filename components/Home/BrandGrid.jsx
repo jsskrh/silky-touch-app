@@ -19,7 +19,7 @@ const BrandGrid = ({ activeBrand, brand }) => {
       <div className={style.brandGrid}>
         {activeBrand.map((product, index) => (
           <Link
-            href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+            href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product._id}`}
             key={index}
           >
             <div className={style.imageContainer} key={index}>
@@ -28,7 +28,8 @@ const BrandGrid = ({ activeBrand, brand }) => {
                   product.images.find(
                     (image) =>
                       image.type === "model showcase front" ||
-                      image.type === "model front"
+                      image.type === "model front" ||
+                      image.type === "secondary"
                   ).url
                 }
                 alt={product.name}
@@ -39,8 +40,8 @@ const BrandGrid = ({ activeBrand, brand }) => {
         ))}
       </div>
       <div className={style.brandDetails}>
-        <h2 className={style.title}>{activeBrand[0].brand}</h2>
-        <Link href={`/brands/${brand}`}>
+        <h2 className={style.title}>{brand}</h2>
+        <Link href={`/men/${brand}`}>
           <button className={style.button}>Shop Now</button>
         </Link>
       </div>

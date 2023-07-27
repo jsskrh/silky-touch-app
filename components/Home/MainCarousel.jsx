@@ -4,32 +4,48 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const heroes = [
-  // {
-  //   image:
-  //     "https://res.cloudinary.com/jsskrh/image/upload/v1681321812/luxury_store_app/1_afamw1.jpg",
-  //   link: "/",
-  //   caption: "Calfskin Leather Bags",
-  // },
   {
     image:
-      "https://res.cloudinary.com/jsskrh/image/upload/v1681321813/luxury_store_app/2_qtyvlt.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/2_d2q3pa.jpg",
     link: "/bags",
     caption: "Signature Blazers",
   },
   {
     image:
-      "https://res.cloudinary.com/jsskrh/image/upload/v1681321814/luxury_store_app/3_opbxbp.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/3_ey8vqe.jpg",
     link: "/bags",
     caption: "Vibrant Umbrellas",
   },
   {
     image:
-      "https://res.cloudinary.com/jsskrh/image/upload/v1681321811/luxury_store_app/4_m1kjgl.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100045/homepage/4_yjypkb.jpg",
     link: "/bags",
     caption: "Luxury Accessories",
   },
-  // { image: "/heroImages/hero5.avif", link: "/bags", caption: "Resort 2023" },
 ];
+
+const mHeroes = [
+  {
+    image:
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100042/homepage/2_crop_j4lkkn.jpg",
+    link: "/bags",
+    caption: "Signature Blazers",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100041/homepage/3_crop_ajb4th.jpg",
+    link: "/bags",
+    caption: "Vibrant Umbrellas",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100041/homepage/4_crop_kmmbaw.jpg",
+    link: "/bags",
+    caption: "Luxury Accessories",
+  },
+];
+
+gsap.registerPlugin(ScrollTrigger);
 
 const style = {
   carouselContainer: `absolute top-[68px] md:top-[88px] right-0 left-0 h-[calc(100vh-68px)] md:h-[calc(100vh-88px)] overflow-hidden`,
@@ -38,7 +54,7 @@ const style = {
   outer: `h-full overflow-y-hidden`,
   carouselImage: `max-h-full h-full w-full object-cover`,
   // carouselSlide: `absolute top-0 invisible`,
-  captionContainer: `absolute bottom-20 left-10 text-[#fff] text-[3rem] lg:text-[4rem] max-w-[550px] uppercase font-['Cormorant-Garamond']`,
+  captionContainer: `absolute  bottom-20 left-5 md:left-10 text-[#fff] text-[36px] md:text-[3rem] lg:text-[4rem] max-w-[550px] uppercase font-['Cormorant-Garamond']`,
   captionWord: `inline-block mr-4`,
   captionChar: `inline-block mr-1`,
   carouselIndicatorContainer: `absolute bottom-0 left-0 right-0 flex z-10`,
@@ -58,6 +74,7 @@ const MainCarousel = ({ homeRef, isMobile }) => {
   const [splitCaptions, setSplitCaptions] = useState([]);
   const [animating, setAnimating] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState();
+  const [heroItems, setHeroItems] = useState([]);
   const slideRef = useRef();
   const carouselContainerRef = useRef();
   const captionContainerRef = useRef();
@@ -69,12 +86,22 @@ const MainCarousel = ({ homeRef, isMobile }) => {
     setScrollbarWidth(`${scrollbar}px`);
   }, []);
 
+  // const [isMobile, setIsMobile] = useState();
+
+  useEffect(() => {
+    if (!isMobile) {
+      setHeroItems(heroes);
+    } else {
+      setHeroItems(mHeroes);
+    }
+  }, [isMobile]);
+
   useEffect(() => {
     let captions = [];
     let wordArr = [];
 
     const pushCaptions = () => {
-      heroes.map((hero) => {
+      heroItems.map((hero) => {
         // let newText = `Shop ${hero.caption}`;
         captions.push(hero.caption);
       });
@@ -90,7 +117,7 @@ const MainCarousel = ({ homeRef, isMobile }) => {
     pushCaptions();
 
     setSplitCaptions(wordArr);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const slides = carouselContainerRef.current.querySelectorAll(".slide");
@@ -197,13 +224,113 @@ const MainCarousel = ({ homeRef, isMobile }) => {
     };
   }, [slide]);
 
+  // useEffect(() => {
+  //   // calculate maximum distance the indicator can travel
+  //   const containerHeight = carouselContainerRef.current.offsetHeight;
+  //   const viewportHeight = window.innerHeight;
+  //   const maxDistance = containerHeight - viewportHeight;
+
+  //   // animate indicatorRef to fixed position at bottom of viewport
+  //   gsap.timeline().to(indicatorRef.current, {
+  //     y: maxDistance,
+  //     duration: 0.5,
+  //   });
+
+  //   // add scroll event listener to parent div
+  //   const handleScroll = () => {
+  //     const scrollTop = carouselContainerRef.current.scrollTop;
+  //     gsap.to(indicatorRef.current, {
+  //       y: maxDistance - scrollTop,
+  //       duration: 0.3,
+  //     });
+  //   };
+  //   carouselContainerRef.current.addEventListener("scroll", handleScroll);
+
+  //   return () => {
+  //     // remove scroll event listener on unmount
+  //     carouselContainerRef.current.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+
+  const timelineRef = useRef(null);
+  const triggerRef = useRef(null);
+  useEffect(() => {
+    // check if the plugin is enabled before creating the trigger
+    if (ScrollTrigger) {
+      const timeline = gsap.timeline({
+        paused: true,
+        defaults: { ease: "power1.out" },
+      });
+
+      const container = carouselContainerRef.current;
+      const indicator = indicatorRef.current;
+
+      const { bottom: indicatorBottom } = indicator.getBoundingClientRect();
+      const { bottom: containerBottom } = container.getBoundingClientRect();
+
+      timeline.fromTo(
+        indicator,
+        { position: "fixed", bottom: 0 },
+        { position: "absolute", bottom: containerBottom - indicatorBottom }
+      );
+
+      timeline.duration(containerBottom - indicatorBottom);
+
+      const trigger = ScrollTrigger.create({
+        trigger: container,
+        start: "top bottom-=100px",
+        onEnter: () => timeline.play(),
+        onLeaveBack: () => timeline.reverse(),
+      });
+
+      // store the timeline and trigger instances in refs
+      timelineRef.current = timeline;
+      triggerRef.current = trigger;
+    }
+
+    // return a cleanup function to destroy the trigger when the component unmounts
+    return () => {
+      if (timelineRef.current) {
+        timelineRef.current.kill(); // kill the timeline instance
+        timelineRef.current = null;
+      }
+      if (triggerRef.current) {
+        triggerRef.current.kill(); // kill the trigger instance
+        triggerRef.current = null;
+      }
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   if (indicatorRef.current) {
+  //     const trigger = {
+  //       trigger: carouselContainerRef.current,
+  //       start: "top bottom",
+  //       end: "bottom top",
+  //       scrub: true,
+  //     };
+
+  //     const animation = {
+  //       y: -indicatorRef.current.offsetHeight,
+  //     };
+
+  //     ScrollTrigger.create({
+  //       trigger,
+  //       animation,
+  //       pin: true,
+  //       pinSpacing: false,
+  //       invalidateOnRefresh: true,
+  //     });
+  //   }
+  // }, []);
+
   return (
     <div
       className={`${style.carouselContainer} carousel-container w-[calc(100vw-${scrollbarWidth})]`}
       ref={carouselContainerRef}
       // onClick={() => !animating && setSlide(slide + 1)}
     >
-      {heroes.map((hero, index) => (
+      {(isMobile ? mHeroes : heroes).map((hero, index) => (
         <Link href={hero.link} key={index}>
           <div className={`${style.carouselSlide} slide w-full`}>
             <div className={`${style.outer} outer`}>

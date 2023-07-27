@@ -18,7 +18,7 @@ const MiniBagTable = ({ cartItems }) => {
       </thead>
       <tbody>
         {cartItems.map((item) => (
-          <Menu.Item key={item.slug}>
+          <Menu.Item key={item._id}>
             <MiniBagItem item={item} parent="header" />
           </Menu.Item>
         ))}

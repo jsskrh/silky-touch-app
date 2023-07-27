@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 import Product from "../../../../models/product";
 import db from "../../../../utils/db";
-import { generateSKU, slugify } from "../../../../utils/helpers";
+import { generateSKU, slugify, slugifyUnique } from "../../../../utils/helpers";
 
 const handler = async (req, res) => {
   const session = await getSession({ req });
@@ -15,7 +15,7 @@ const handler = async (req, res) => {
   try {
     await db.connect();
     const newProduct = new Product({ ...req.body });
-    newProduct.slug = slugify(newProduct.name);
+    newProduct.slug = slugifyUnique(newProduct.name);
     newProduct.sku = generateSKU(
       newProduct.brand,
       "men",

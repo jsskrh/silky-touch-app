@@ -6,7 +6,9 @@ const style = {
 const TitleBadge = ({ product }) => {
   return (
     <div className={style.titleBadgeContainer}>
-      <h1 className={style.titleBadge}>{product.name}</h1>
+      <h1 className={style.titleBadge}>
+        {product.brand} {product.name}
+      </h1>
     </div>
   );
 };

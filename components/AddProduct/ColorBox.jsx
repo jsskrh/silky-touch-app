@@ -22,7 +22,20 @@ const style = {
   colors: `capitalize`,
 };
 
-const colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink"];
+const colors = [
+  "brown",
+  "black",
+  "white",
+  "silver",
+  "gold",
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "orange",
+  "purple",
+  "pink",
+];
 
 const ColorBox = React.forwardRef((props, ref) => {
   const [selectedColors, setSelectedColors] = useState([]);

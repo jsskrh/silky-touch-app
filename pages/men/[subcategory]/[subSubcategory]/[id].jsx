@@ -105,9 +105,9 @@ const productPage = ({ product }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { slug } = params;
+  const { id } = params;
   await db.connect();
-  const product = await Product.findOne({ slug }).lean();
+  const product = await Product.findById(id).lean();
   await db.disconnect();
 
   return {

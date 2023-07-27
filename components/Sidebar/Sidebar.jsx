@@ -48,6 +48,22 @@ const Sidebar = ({
               link={`/men/${category.slug}`}
             />
           ))}
+          <li
+            className={`cursor-pointer flex py-4 px-6 justify-between items-center text-[#212121] hover:text-[#515151]`}
+            // onClick={() => setShowLevelTwo(true)}
+          >
+            <Link
+              href={`/fitting-drycleaning`}
+              onClick={() => {
+                setShowSidebar(false);
+                setShowFullOverlay(false);
+              }}
+            >
+              <span className={`text-sm font-bold`}>
+                Fitting and Drycleaning
+              </span>
+            </Link>
+          </li>
         </ul>
         <ul>
           <li>

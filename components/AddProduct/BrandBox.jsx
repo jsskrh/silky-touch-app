@@ -12,7 +12,17 @@ const style = {
   option: `px-[15px] py-[10px] cursor-pointer hover:bg-[#f5f5f5]`,
 };
 
-const brands = ["Versace", "Gucci", "Tom Ford", "Balenciaga"];
+const brands = [
+  "Versace",
+  "Gucci",
+  "Tom Ford",
+  "Balenciaga",
+  "Stefano Ricci",
+  "Pal Zileri",
+  "Cortigiani",
+  "Brioni",
+  "Mirial",
+];
 
 const BrandBox = React.forwardRef((props, ref) => {
   const [query, setQuery] = useState("");

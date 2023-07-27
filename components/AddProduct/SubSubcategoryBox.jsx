@@ -1,6 +1,6 @@
 import { Listbox } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import react from "react";
+import react, { useState, useEffect } from "react";
 import { slugify } from "../../utils/helpers";
 
 const style = {
@@ -15,6 +15,16 @@ const style = {
 
 const SubSubcategoryBox = react.forwardRef((props, ref) => {
   const { subcategory } = props;
+
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+
+  useEffect(() => {
+    const setSubcategory = async () => {
+      const holder = await subcategory;
+      setSelectedSubcategory(holder);
+    };
+    setSubcategory();
+  }, [subcategory]);
 
   return (
     <Listbox
@@ -36,14 +46,14 @@ const SubSubcategoryBox = react.forwardRef((props, ref) => {
             </span>
           </Listbox.Button>
           <Listbox.Options className={style.options}>
-            {subcategory &&
-              subcategory?.subSubcategories.map((subSubcategory, index) => (
+            {selectedSubcategory &&
+              selectedSubcategory?.subcategories?.map((subcategory, index) => (
                 <Listbox.Option
                   key={index}
-                  value={subSubcategory}
+                  value={subcategory.name}
                   className={style.option}
                 >
-                  {subSubcategory}
+                  {subcategory.name}
                 </Listbox.Option>
               ))}
           </Listbox.Options>

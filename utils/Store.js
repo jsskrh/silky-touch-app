@@ -15,7 +15,7 @@ function reducer(state, action) {
       {
         const newItem = action.payload;
         const exists = state.cart.cartItems.find(
-          (item) => item.slug === newItem.slug
+          (item) => item._id === newItem._id
         );
         const cartItems = exists
           ? state.cart.cartItems.map((item) =>
@@ -30,7 +30,7 @@ function reducer(state, action) {
     case "CART_REMOVE_ITEM":
       {
         const cartItems = state.cart.cartItems.filter(
-          (item) => item.slug !== action.payload.slug
+          (item) => item._id !== action.payload._id
         );
         Cookies.set("cart", JSON.stringify({ ...state.cart, cartItems }));
         return { ...state, cart: { ...state.cart, cartItems } };

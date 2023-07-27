@@ -4,17 +4,23 @@ import ProductItem from "../../components/ProductCatalogue/ProductItem";
 import Product from "../../models/product";
 import db from "../../utils/db";
 import QueryBar from "../../components/ProductCatalogue/QueryBar";
-import Category from "../../models/category";
+// import Category from "../../models/category";
 
 const style = {
   productsGrid: `pt-4 mx-4 grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4`,
 };
 
-const category = ({ products, category }) => {
+const category = ({ products }) => {
   const router = useRouter();
 
   // Fix path error in console
   const path = router.asPath;
+
+  const category = {
+    title: "Men",
+    subtitle:
+      "Get the quintessential Silky Touch look by pairing the latest runway styles with a statement bag and modern shoes. For the finishing touch, browse an array of luxurious accessories.",
+  };
 
   return (
     <Layout
@@ -26,7 +32,7 @@ const category = ({ products, category }) => {
       <QueryBar productNo={products.length} />
       <div className={style.productsGrid}>
         {products.map((product) => (
-          <ProductItem product={product} key={product.slug} />
+          <ProductItem product={product} key={product._id} />
         ))}
       </div>
     </Layout>
@@ -35,30 +41,15 @@ const category = ({ products, category }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  // const { category } = params;
 
   await db.connect();
-  const products = await Product.find({
-    category: "men",
-  })
-    .sort({ createdAt: -1 })
-    .lean();
-  const filteredCategory = await Category.findOne({ slug: "men" }).lean();
-
-  if (filteredCategory.subcategories !== []) {
-    filteredCategory.subcategories = filteredCategory.subcategories.map(
-      (subcategory) => {
-        return subcategory.toString();
-      }
-    );
-  }
+  const products = await Product.find().sort({ createdAt: -1 }).lean();
 
   const productsStringified = products.map(db.stringifyProducts);
 
   return {
     props: {
       products: productsStringified.map(db.convertDocsToObj),
-      category: db.convertDocsToObj(filteredCategory),
     },
   };
 }

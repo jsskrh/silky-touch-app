@@ -32,7 +32,7 @@ const TableRow = ({ item }) => {
     <tr className={style.tableRow}>
       <td className={style.imageCell}>
         <Link
-          href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item.slug}`}
+          href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item._id}`}
         >
           <img
             src={item.images.find((image) => image.type === "primary").url}
@@ -45,7 +45,7 @@ const TableRow = ({ item }) => {
         <div className={style.productDetails}>
           <div className={style.name}>
             <Link
-              href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item.slug}`}
+              href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item._id}`}
             >
               {item.name}
             </Link>

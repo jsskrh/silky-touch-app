@@ -19,7 +19,7 @@ const ProductActions = ({ product }) => {
 
   const addToCartHandler = async () => {
     const exists = state.cart.cartItems.find(
-      (cartItem) => cartItem.slug === product.slug
+      (cartItem) => cartItem._id === product._id
     );
     const quantity = exists ? exists.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);

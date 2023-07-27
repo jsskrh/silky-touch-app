@@ -127,13 +127,15 @@ const addProduct = () => {
     //   return;
     // });
 
+    // const router = useRouter();
+
     const uploadPromises = images.map(async (image) => {
       const url = image.url;
       const formData = new FormData();
       formData.append("file", url);
-      formData.append("upload_preset", "luxury_store");
+      formData.append("upload_preset", "silky_touch_platform");
       const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/jsskrh/image/upload`,
+        `https://api.cloudinary.com/v1_1/dixuzyoht/image/upload`,
         formData
       );
       image.url = response.data.secure_url;
@@ -171,6 +173,7 @@ const addProduct = () => {
         images,
       });
       dispatch(submitSuccess());
+      // router.reload();
       console.log("data", data);
     } catch (error) {
       dispatch(submitFailure());
@@ -217,10 +220,22 @@ const addProduct = () => {
   const subcategory = watch("subcategory");
   const [selectedSubcategory, setSelectedSubcategory] = useState();
 
+  const fetchSubcategory = async () => {
+    try {
+      const { data } = await axios.post(`/api/admin/settings/catalogue/get`, {
+        category: subcategory,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    const selectedSubcategory = subcategories.find(
-      (category) => category.name === subcategory
-    );
+    // const selectedSubcategory = subcategories.find(
+    //   (category) => category.name === subcategory
+    // );
+    const selectedSubcategory = fetchSubcategory();
     setSelectedSubcategory(selectedSubcategory);
   }, [subcategory]);
 
@@ -274,7 +289,7 @@ const addProduct = () => {
   }, []);
 
   return (
-    <Layout title="Order History" bgColor={`bg-[#f5f5f5]`}>
+    <Layout title="Add Product" bgColor={`bg-[#f5f5f5]`}>
       {!isMobile && <TopContactUs />}
       <PageTitle title="Add Product" />
       <Logout />

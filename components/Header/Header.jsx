@@ -7,6 +7,7 @@ import { useEffect, useRef, useState, useReducer } from "react";
 import NavCatalogue from "./NavCatalogue";
 import FullOverlay from "./FullOverlay";
 import Sidebar from "../Sidebar/Sidebar";
+import { getError } from "../../utils/error";
 import axios from "axios";
 
 const style = {
@@ -129,16 +130,16 @@ const Header = ({ title }) => {
             </div>
           </Link>
           <div className={style.navMenuContainer}>
-            {categories.map((category) => (
-              <NavCatalogue category={category} />
+            {categories.map((category, index) => (
+              <NavCatalogue category={category} key={index} />
             ))}
-            <Link href="/stories">
-              <span className={style.navLink}>Stories</span>
+            <Link href="/fitting-drycleaning">
+              <span className={style.navLink}>Fitting and Drycleaning</span>
             </Link>
           </div>
         </div>
         <div className={`${style.navGrouping} ${style.navIcons}`}>
-          {/* <LinkSearch /> */}
+          <LinkSearch />
           {!isMobile && (
             <>
               {/* <LinkWishlist /> */}

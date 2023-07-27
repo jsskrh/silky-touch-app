@@ -23,7 +23,7 @@ const ProductVariations = () => {
               <Link href="/size-guide">Size Guide</Link>
             </span>
           </div>
-          <ul className={style.attributeValues}>
+          {/* <ul className={style.attributeValues}>
             {sizes.map((size) => (
               <li className={style.sizeValueContainer} key={size}>
                 <button className={style.sizeValue}>
@@ -31,7 +31,7 @@ const ProductVariations = () => {
                 </button>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </li>
       </ul>
     </div>

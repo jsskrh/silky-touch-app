@@ -32,7 +32,7 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
     >
       <td className={style.imageCell}>
         <Link
-          href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item.slug}`}
+          href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item._id}`}
         >
           <img
             src={item.images.find((image) => image.type === "primary").url}
@@ -44,7 +44,7 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
         <div className={style.productDetails}>
           <div className={`${parent === "header" && style.name}`}>
             <Link
-              href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item.slug}`}
+              href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item._id}`}
             >
               {item.name}
             </Link>

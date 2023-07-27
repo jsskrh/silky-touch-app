@@ -28,7 +28,7 @@ const subcategory = ({ products, subcategory }) => {
       <QueryBar productNo={products.length} />
       <div className={style.productsGrid}>
         {products.map((product) => (
-          <ProductItem product={product} key={product.slug} />
+          <ProductItem product={product} key={product._id} />
         ))}
       </div>
     </Layout>

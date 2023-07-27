@@ -14,7 +14,8 @@ const style = {
   slider: `flex w-max`,
   slide: ``,
   slideContent: `w-screen container flex flex-col items-center`,
-  imageContainer: `w-1/3`,
+  imageContainer: `w-1/3 md:w-[28%]`,
+  // imageContainer: `w-1/3`,
   image: `max-h-full max-w--full`,
   productBrand: `font-thin mt-8`,
   productName: `text-3xl font-thin text-center max-w-[75vw]`,
@@ -127,7 +128,7 @@ const BrandGridSlider = ({ brand }) => {
                   <div className={style.diamond}></div>
                 </div>
                 <Link
-                  href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product.slug}`}
+                  href={`/${product.category}/${product.subcategory}/${product.subSubcategory}/${product._id}`}
                 >
                   <button className={style.button}>Shop Now</button>
                 </Link>
