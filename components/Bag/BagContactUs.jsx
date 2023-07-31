@@ -12,7 +12,7 @@ const BagContactUs = () => {
       <h3 className={style.head}>Need Assistance?</h3>
       <p className={style.text}>Please contact our Customer Care team either</p>
       <p className={style.text}>
-        By telephone: <span>+23480xxxxxxxx</span> Or via our{" "}
+        By telephone: <span>+2349063989428</span> Or via our{" "}
         <Link href="/contact-us">Contact Form</Link>
       </p>
       <p className={style.text}>

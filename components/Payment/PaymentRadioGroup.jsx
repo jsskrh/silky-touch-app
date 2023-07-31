@@ -9,7 +9,8 @@ const style = {
   label: `ml-1`,
 };
 
-const paymentMethods = ["Paystack", "Stripe", "Paypal"];
+const paymentMethods = ["Paystack"];
+// const paymentMethods = ["Paystack", "Stripe", "Paypal"];
 
 const PaymentRadioGroup = React.forwardRef((props, ref) => {
   return (

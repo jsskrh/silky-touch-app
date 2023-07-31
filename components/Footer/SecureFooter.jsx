@@ -46,7 +46,7 @@ const SecureFooter = () => {
       </div>
 
       <div className={style.copyrightWrapper}>
-        <p className={style.copyrightText}>© Jesse Akorah</p>
+        <p className={style.copyrightText}>© Silky Touch Emporium 2023</p>
       </div>
     </footer>
   );

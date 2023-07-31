@@ -21,7 +21,7 @@ const style = {
   menuBottom: `bottom-0`,
   brandName: `text-3xl md:text-4xl font-bold uppercase mr-12`,
   logoPlaceholder: `h-9 md:h-10 md:w-[170px] mr-12`,
-  logoContainer: `absolute h-16 top-0 bottom-0 md:h-[85px] flex items-center`,
+  logoContainer: `absolute h-12 max-sm:top-1/2 max-sm:-translate-y-1/2 top-0 bottom-0 md:h-[85px] flex items-center`,
   brandLogo: `max-h-full max-w-full`,
   navMenuContainer: `hidden lg:flex h-4 items-start`,
   // navMenuContainer: `hidden lg:flex h-4 items-start ml-[163px] md:ml-[186px]`,

@@ -101,7 +101,7 @@ const Partners = () => {
       <h3 className={style.title}>Our Partners</h3>
       <div className={style.partnerContainer}>
         {partners.map((partner, index) => (
-          <div className="justify-center flex h-40">
+          <div className="justify-center flex h-24 md:h-40">
             <img src={partner} key={index} className="max-h-full max-w-full" />
           </div>
         ))}

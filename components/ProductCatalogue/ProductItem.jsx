@@ -36,7 +36,7 @@ const ProductItem = ({ product, slider, search }) => {
               </h3>
             </Link>
           </div>
-          <p className={style.productPrice}>${product.price}</p>
+          <p className={style.productPrice}>₦{product.price * 865}</p>
         </div>
       </div>
     </div>

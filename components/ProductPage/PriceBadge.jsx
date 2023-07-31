@@ -6,7 +6,7 @@ const style = {
 const PriceBadge = ({ product }) => {
   return (
     <div className={style.priceBadgeContainer}>
-      <span className={style.priceBadge}>${product.price}</span>
+      <span className={style.priceBadge}>₦{product.price * 865}</span>
     </div>
   );
 };

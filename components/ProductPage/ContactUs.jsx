@@ -8,9 +8,9 @@ const style = {
 const ContactUs = () => {
   return (
     <div className={style.contactUsContainer}>
-      <Link href="/contact-us">
-        <span className={style.contactUs}>Contact Us</span>
-      </Link>
+      {/* <Link href="/contact-us"> */}
+      <span className={style.contactUs}>Contact Us</span>
+      {/* </Link> */}
     </div>
   );
 };
