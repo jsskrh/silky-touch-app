@@ -82,14 +82,19 @@ const Sidebar = ({
             <HeartIcon className={style.heroIcon} />
             <span>Wishlist</span>
           </li> */}
-          <li className={`${style.userListItem} justify-between`}>
-            <span>Contact Us</span>
-            <span
-              className={style.arrowRight}
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            ></span>
+          <li>
+            <Link
+              href="/contact-us"
+              className={`${style.userListItem} justify-between`}
+            >
+              <span>Contact Us</span>
+              <span
+                className={style.arrowRight}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              ></span>
+            </Link>
           </li>
         </ul>
         <div className={style.currencyCont}>

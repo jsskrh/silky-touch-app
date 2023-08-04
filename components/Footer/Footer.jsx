@@ -34,8 +34,12 @@ const Footer = () => {
               <h3 className={style.listHeader}>Store Locator</h3>
             </div>
             <ul>
-              {/* <li className={style.listItem}>Find a Boutique</li> */}
-              <li className={style.listItem}>Book an Appointment</li>
+              <li className={style.listItem}>
+                <Link href="/locations">Find a Boutique</Link>
+              </li>
+              <li className={style.listItem}>
+                <Link href="/book-appointment">Book an Appointment</Link>
+              </li>
             </ul>
           </div>
           <div className={style.listContainer}>
@@ -47,11 +51,19 @@ const Footer = () => {
               <li className={style.listItem}>
                 <Link href="/fitting-drycleaning">Exclusive Services</Link>
               </li>
-              {/* <li className={style.listItem}>Contact Us</li> */}
-              {/* <li className={style.listItem}>Help / FAQs</li> */}
-              {/* <li className={style.listItem}>Order & Shipping</li>
-              <li className={style.listItem}>Return & Refunds</li>
-              <li className={style.listItem}>Track Your Order</li> */}
+              <li className={style.listItem}>
+                <Link href="/contact-us">Contact Us</Link>
+              </li>
+              <li className={style.listItem}>
+                <Link href="/faqs">Help / FAQs</Link>
+              </li>
+              <li className={style.listItem}>
+                <Link href="/order-shipping">Order & Shipping</Link>
+              </li>
+              <li className={style.listItem}>
+                <Link href="/return-refunds">Return & Refunds</Link>
+              </li>
+              {/* <li className={style.listItem}>Track Your Order</li> */}
             </ul>
           </div>
           <div className={style.listContainer}>
@@ -60,8 +72,12 @@ const Footer = () => {
               <h3 className={style.listHeader}>About Us</h3>
             </div>
             <ul>
-              <li className={style.listItem}>Company Profile</li>
-              <li className={style.listItem}>Corporate Data</li>
+              <li className={style.listItem}>
+                <Link href="/corporate-profile">Corporate Profile</Link>
+              </li>
+              <li className={style.listItem}>
+                <Link href="/corporate-data">Corporate Data</Link>
+              </li>
               {/* <li className={style.listItem}>Careers</li> */}
             </ul>
           </div>
@@ -87,7 +103,11 @@ const Footer = () => {
             {/* </Link> */}
           </div>
           <div className={style.socialsContainer}>
-            <Link href="https://instagram.com/silkytouchemporium?igshid=OGQ5ZDc2ODk2Za==">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://instagram.com/silkytouchemporium?igshid=OGQ5ZDc2ODk2Za=="
+            >
               <div className={style.socialsIconCont}>
                 <img
                   src="/icons/instagramIcon.png"
@@ -95,7 +115,7 @@ const Footer = () => {
                   className={style.socialsIcon}
                 />
               </div>
-            </Link>
+            </a>
             {/* <div className={style.socialsIconCont}>
               <img
                 src="/icons/twitterIcon.png"
@@ -103,7 +123,11 @@ const Footer = () => {
                 className={style.socialsIcon}
               />
             </div> */}
-            <Link href="https://wa.me/2349063989428">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://wa.me/2349063989428"
+            >
               <div className={style.socialsIconCont}>
                 <img
                   src="/icons/whatsappIcon.png"
@@ -111,7 +135,7 @@ const Footer = () => {
                   className={style.socialsIcon}
                 />
               </div>
-            </Link>
+            </a>
             {/* <div className={style.socialsIconCont}>
               <img
                 src="/icons/facebookIcon.png"
@@ -119,7 +143,11 @@ const Footer = () => {
                 className={style.socialsIcon}
               />
             </div> */}
-            <Link href="https://www.linkedin.com/company/silky-touch-emporium/">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/company/silky-touch-emporium/"
+            >
               <div className={style.socialsIconCont}>
                 <img
                   src="/icons/linkedinIcon.png"
@@ -127,7 +155,7 @@ const Footer = () => {
                   className={style.socialsIcon}
                 />
               </div>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -100,11 +100,38 @@ const Partners = () => {
     <div>
       <h3 className={style.title}>Our Partners</h3>
       <div className={style.partnerContainer}>
-        {partners.map((partner, index) => (
+        {/* {partners.map((partner, index) => (
           <div className="justify-center flex h-24 md:h-40">
             <img src={partner} key={index} className="max-h-full max-w-full" />
           </div>
-        ))}
+        ))} */}
+        <div className="justify-center flex h-36 md:h-40">
+          <img src={partners[0]} className="max-h-full max-w-full" />
+        </div>
+        <div className="justify-center flex h-24 md:h-40">
+          <img src={partners[1]} className="max-h-full max-w-full" />
+        </div>
+        <div className="justify-center flex h-36 md:h-40">
+          <img src={partners[2]} className="max-h-full max-w-full" />
+        </div>
+        <div className="justify-center flex h-24 md:h-40">
+          <img src={partners[3]} className="max-h-full max-w-full" />
+        </div>
+        <div className="flex justify-center py-10">
+          <div className="justify-center flex h-20 md:h-32">
+            <img src={partners[4]} className="max-h-full max-w-full" />
+          </div>
+        </div>
+        <div className="flex justify-center py-10">
+          <div className="justify-center flex max-sm:w-40 md:w-60">
+            <img src={partners[5]} className="max-h-full max-w-full" />
+          </div>
+        </div>
+        <div className="flex justify-center py-10">
+          <div className="justify-center flex max-sm:w-40 md:w-60">
+            <img src={partners[6]} className="max-h-full max-w-full" />
+          </div>
+        </div>
       </div>
     </div>
     // <div>
