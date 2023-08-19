@@ -16,6 +16,7 @@ const partners = [
   "https://res.cloudinary.com/dixuzyoht/image/upload/v1689930697/partners/nqij4mxyqdqfunrrlgle.png",
   "https://res.cloudinary.com/dixuzyoht/image/upload/v1689930697/partners/ujuv9legphusk8crbvjf.png",
   "https://res.cloudinary.com/dixuzyoht/image/upload/v1690008157/partners/t7lzkfexdi6r3dptyzan.jpg",
+  "https://res.cloudinary.com/dixuzyoht/image/upload/v1692462912/partners/gfcgiihf4aed2tamlbbp.png",
 ];
 
 const style = {
@@ -130,6 +131,11 @@ const Partners = () => {
         <div className="flex justify-center py-10">
           <div className="justify-center flex max-sm:w-40 md:w-60">
             <img src={partners[6]} className="max-h-full max-w-full" />
+          </div>
+        </div>
+        <div className="flex justify-center py-10">
+          <div className="justify-center flex max-sm:w-40 md:w-60">
+            <img src={partners[7]} className="max-h-full max-w-full" />
           </div>
         </div>
       </div>

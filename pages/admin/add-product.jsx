@@ -293,7 +293,7 @@ const addProduct = () => {
       {!isMobile && <TopContactUs />}
       <PageTitle title="Add Product" />
       <Logout />
-      <div>
+      <div className="pb-20">
         <form onSubmit={handleSubmit(submitHandler)}>
           <legend className={style.header}>
             <h2 className={style.headerTitle}>Product Information</h2>

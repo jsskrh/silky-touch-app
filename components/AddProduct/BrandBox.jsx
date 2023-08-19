@@ -22,6 +22,11 @@ const brands = [
   "Cortigiani",
   "Brioni",
   "Mirial",
+  "Deliga",
+  "Nipmar",
+  "Mauri",
+  "Bilancioni",
+  "Pasotti",
 ];
 
 const BrandBox = React.forwardRef((props, ref) => {

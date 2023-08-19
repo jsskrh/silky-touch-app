@@ -19,6 +19,7 @@ const subcategories = [
   "Shoes",
   "Accessories",
   "Underwear and Beachwear",
+  "Home & Lifestyle",
 ];
 
 const SubcategoryBox = react.forwardRef((props, ref) => {
