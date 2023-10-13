@@ -21,7 +21,11 @@ const SecureFooter = () => {
             <strong>Need help completing your order?</strong> Please contact our
             Customer Care team on{" "}
             <Link href="/customer-care" className={style.linkText}>
-              08000000000
+              01-2700195
+            </Link>{" "}
+            or{" "}
+            <Link href="/customer-care" className={style.linkText}>
+              +2349166426170
             </Link>
           </p>
         </div>

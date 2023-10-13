@@ -126,7 +126,7 @@ const Footer = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://wa.me/2349063989428"
+              href="https://wa.me/2349166426170"
             >
               <div className={style.socialsIconCont}>
                 <img

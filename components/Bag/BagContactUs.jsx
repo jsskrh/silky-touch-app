@@ -12,8 +12,8 @@ const BagContactUs = () => {
       <h3 className={style.head}>Need Assistance?</h3>
       <p className={style.text}>Please contact our Customer Care team either</p>
       <p className={style.text}>
-        By telephone: <span>+2349063989428</span> Or via our{" "}
-        <Link href="/contact-us">Contact Form</Link>
+        By telephone: <span>01-2700195</span> / <span>+2349166426170</span> Or
+        via our <Link href="/contact-us">Contact Form</Link>
       </p>
       <p className={style.text}>
         Our Customer Care team is available to help you from Monday to Saturday
