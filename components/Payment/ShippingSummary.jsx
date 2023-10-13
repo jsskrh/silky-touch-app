@@ -53,7 +53,7 @@ const ShippingSummary = ({
         </p>
         <p className={style.detail}>{shippingAddress.country}</p>
         <p className={style.detail}>Phone: {shippingAddress.phoneNumber}</p>
-        <p className={style.detailsItem}>Shipping Type: Lorem Ipsom</p>
+        {/* <p className={style.detailsItem}>Shipping Type: Lorem Ipsom</p> */}
         {isDelivered && (
           <p className={`${style.detail} ${style.deliveryTime}`}>
             Delivered at {formatDate(deliveredAt)}

@@ -26,7 +26,7 @@ const generateEmailContent = (data) => {
   const orderItemsHTML = formatOrderItems(data.orderItems);
 
   return {
-    text: "New Order",
+    text: `New Order - ${data._id}`,
     html: `<!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml">
       <head>
@@ -517,15 +517,20 @@ const generateEmailContent = (data) => {
                         <td class="content-cell">
                           <div class="f-fallback">
                             <h1>
-                              Hello ${data.shippingAddress.prefix}.
-                              ${data.shippingAddress.firstName}
-                              ${data.shippingAddress.lastName},
+                              Hello Care Agent,
                             </h1>
                             <p>
-                              Thank you for shopping with us. This email is the
-                              confirmation of your purchase. No payment is due. An
-                              email will be sent when the order is out for
-                              delivery.
+                              A new ${
+                                data.isPaid ? "paid" : "unpaid"
+                              } order has been placed by ${
+      data.shippingAddress.prefix
+    }. ${data.shippingAddress.firstName} ${
+      data.shippingAddress.lastName
+    } with phone number ${
+      data.shippingAddress.phoneNumber
+    }, to this location - ${data.shippingAddress.address} ${
+      data.shippingAddress.postalCode
+    } ${data.shippingAddress.country}.
                             </p>
     
                             <table
@@ -700,9 +705,9 @@ const handler = async (req, res) => {
     const { data } = req.body;
     await transporter.sendMail({
       ...mailOptions,
-      to: data.paymentResult.email_address,
+      to: "silkytouchemporium23@gmail.com",
       ...generateEmailContent(data),
-      subject: "Order Receipt",
+      subject: "New Order",
     });
 
     return res.status(200).json({ success: true });

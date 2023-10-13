@@ -41,6 +41,12 @@ const PaymentMethod = ({ orderPaymentMethod, isPaid, paidAt, formatDate }) => {
           <span>{paymentMethod}</span>
           <span>Icon</span>
         </p>
+        {!isPaid && paymentMethod === "Assisted Payment" && (
+          <p className="font-semibold pt-2">
+            Customer support representative assisted payment. A customer care
+            agent will reach out to take you through the payment procedure.
+          </p>
+        )}
         {isPaid && (
           <p className={`${style.detail} ${style.paymentTime}`}>
             Paid at {formatDate(paidAt)}
