@@ -59,7 +59,7 @@ const corporateProfile = () => {
         {!isMobile && <TopContactUs />}
         <PageTitle title="Corporate Profile" />
         <div className={style.pageContent}>
-          <div className={style.formContainer}>
+          <div className={`max-sm:mx-5`}>
             <p className="mb-5">
               Welcome to Silky Touch Emporium, Fine Clothier and Fashion
               Consultants since 1984. Distinctly Exclusive with a Penchant for

@@ -59,7 +59,7 @@ const corporateData = () => {
         {!isMobile && <TopContactUs />}
         <PageTitle title="Corporate Data" />
         <div className={style.pageContent}>
-          <div className={style.formContainer}>
+          <div className={`max-sm:mx-5`}>
             <h3 className="font-semibold mb-5">Silky Touch Emporium</h3>
             <p className="mb-2">Registered Offices:</p>
             <p className="mb-2">
