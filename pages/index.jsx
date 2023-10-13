@@ -56,18 +56,20 @@ export default function Home({ activeBrand }) {
 export async function getServerSideProps() {
   await db.connect();
 
-  const activeBrand = await Product.find({
-    subcategory: "bags",
-  }).lean();
+  const product1 = await Product.findById("64b950130ef0988aa23b2e34").lean();
+  const product2 = await Product.findById("64b94825663c4d77d584240c").lean();
+  const product3 = await Product.findById("64b960543fdaf4906c52767e").lean();
+  const product4 = await Product.findById("64b955470ef0988aa23b2e6f").lean();
+
+  const activeBrand = [product1, product2, product3, product4];
 
   const activeBrandStringified = activeBrand.map(db.stringifyProducts);
 
   return {
     props: {
-      activeBrand: activeBrandStringified
-        .map(db.convertDocsToObj)
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 4),
+      activeBrand: activeBrandStringified.map(db.convertDocsToObj),
+      // .sort(() => 0.5 - Math.random())
+      // .slice(0, 4),
     },
   };
 }
