@@ -3,12 +3,12 @@ import { useSession } from "next-auth/react";
 import { useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import {
-  useMonnifyPayment,
-  MonnifyButton,
-  MonnifyConsumer,
-  MonnifyHookExample,
-} from "react-monnify";
+// import {
+//   useMonnifyPayment,
+//   MonnifyButton,
+//   MonnifyConsumer,
+//   MonnifyHookExample,
+// } from "react-monnify";
 import CheckoutProgress from "../components/Shipping/CheckoutProgress";
 import { getError } from "../utils/error";
 import { Store } from "../utils/Store";
@@ -19,7 +19,7 @@ import SecureCheckoutLayout from "../components/Layout/SecureLayout";
 import PaystackPayment from "../components/Confirmation/PaystackPayment";
 import PaypalPayment from "../components/Confirmation/PaypalPayment";
 import StripePayment from "../components/Confirmation/StripePayment";
-import MonnifyPayment from "../components/Confirmation/MonnifyPayment";
+// import MonnifyPayment from "../components/Confirmation/MonnifyPayment";
 import CCPayment from "../components/Confirmation/CCPayment";
 import Empty from "../components/Bag/Empty";
 
@@ -223,25 +223,25 @@ const confirmation = () => {
                       email={session.user.email}
                       style={style}
                     />
-                  ) : paymentMethod === "Monniepoint" ? (
-                    <MonnifyButton
-                      text="Make Payment"
-                      className="payButton"
-                      onComplete={onComplete}
-                      close={close}
-                      disabled={true} // disable payment button
-                      embed={true} // payment embed in your app instead of a pop up
-                      customerFullName={customerFullName}
-                      customerEmail={customerEmail}
-                      customerMobileNumber={customerMobileNumber}
-                      paymentDescription={paymentDescription}
-                      amount={amount}
-                      apiKey={apiKey}
-                      contractCode={contractCode}
-                      reference={reference}
-                      tag="button" // it can be button or a or input tag
-                    />
-                  ) : paymentMethod === "Stripe" ? (
+                  ) : // ) : paymentMethod === "Monniepoint" ? (
+                  //   <MonnifyButton
+                  //     text="Make Payment"
+                  //     className="payButton"
+                  //     onComplete={onComplete}
+                  //     close={close}
+                  //     disabled={true} // disable payment button
+                  //     embed={true} // payment embed in your app instead of a pop up
+                  //     customerFullName={customerFullName}
+                  //     customerEmail={customerEmail}
+                  //     customerMobileNumber={customerMobileNumber}
+                  //     paymentDescription={paymentDescription}
+                  //     amount={amount}
+                  //     apiKey={apiKey}
+                  //     contractCode={contractCode}
+                  //     reference={reference}
+                  //     tag="button" // it can be button or a or input tag
+                  //   />
+                  paymentMethod === "Stripe" ? (
                     <StripePayment
                       saveOrder={saveOrder}
                       handleError={handleError}
