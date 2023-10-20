@@ -1,13 +1,11 @@
-import { loadStripe } from "@stripe/stripe-js/pure";
-import axios from "axios";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import LoadingSpinner from "../LoadingSpinner";
 
 const CCPayment = ({
   loading,
   style,
   saveOrder,
   successInit,
-  handleError,
   totalPrice,
   setLoading,
   router,
@@ -22,23 +20,19 @@ const CCPayment = ({
       email_address: email,
     };
     saveOrder(paymentResult);
-    setLoading(false);
   };
 
   return (
     <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <button
-          className={`${style.button} ${style.continueButton}`}
-          onClick={() => {
-            checkout();
-          }}
-        >
-          Confirm Order
-        </button>
-      )}
+      <button
+        className={`${style.button} ${style.continueButton}`}
+        onClick={() => {
+          checkout();
+        }}
+        disabled={loading}
+      >
+        {loading ? <LoadingSpinner /> : "Confirm Order"}
+      </button>
     </>
   );
 };

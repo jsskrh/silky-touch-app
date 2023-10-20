@@ -255,7 +255,6 @@ const confirmation = () => {
                   ) : (
                     <CCPayment
                       saveOrder={saveOrder}
-                      handleError={handleError}
                       successInit={successInit}
                       router={router}
                       email={session.user.email}

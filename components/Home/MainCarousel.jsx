@@ -7,19 +7,19 @@ const heroes = [
   {
     image:
       "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/2_d2q3pa.jpg",
-    link: "/bags",
+    link: "clothing/blazers-suits",
     caption: "Signature Blazers",
   },
   {
     image:
       "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/3_ey8vqe.jpg",
-    link: "/bags",
+    link: "accessories",
     caption: "Vibrant Umbrellas",
   },
   {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100045/homepage/4_yjypkb.jpg",
-    link: "/bags",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1697661975/homepage/kmafhwogzwwdj7m5o0lk.jpg",
+    link: "accessories",
     caption: "Luxury Accessories",
   },
 ];
@@ -28,19 +28,19 @@ const mHeroes = [
   {
     image:
       "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100042/homepage/2_crop_j4lkkn.jpg",
-    link: "/bags",
+    link: "clothing/blazers-suits",
     caption: "Signature Blazers",
   },
   {
     image:
       "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100041/homepage/3_crop_ajb4th.jpg",
-    link: "/bags",
+    link: "accessories",
     caption: "Vibrant Umbrellas",
   },
   {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100041/homepage/4_crop_kmmbaw.jpg",
-    link: "/bags",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1697662124/homepage/unubrwl6mizuiiha9aye.jpg",
+    link: "accessories",
     caption: "Luxury Accessories",
   },
 ];
@@ -331,7 +331,7 @@ const MainCarousel = ({ homeRef, isMobile }) => {
       // onClick={() => !animating && setSlide(slide + 1)}
     >
       {(isMobile ? mHeroes : heroes).map((hero, index) => (
-        <Link href={hero.link} key={index}>
+        <Link href={`/men/${hero.link}`} key={index}>
           <div className={`${style.carouselSlide} slide w-full`}>
             <div className={`${style.outer} outer`}>
               <div className={`${style.outer} inner`}>

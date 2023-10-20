@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Image from "next/image";
 // import ColorThief from "colorthief/dist/color-thief.mjs";
 
 const style = { productImage: `self-center` };
@@ -101,6 +102,17 @@ const Slide = ({ image, name }) => {
 
   return (
     // <div>
+    // <Image
+    //   src={image}
+    //   alt={name}
+    //   className={`${style.productImage} original-height`}
+    //   style={{
+    //     width: "100%",
+    //     height: "auto",
+    //   }}
+    //   ref={imgRef}
+    //   placeholder="blur"
+    // />
     <img
       src={image}
       alt={name}
