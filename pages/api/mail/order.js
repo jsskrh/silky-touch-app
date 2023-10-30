@@ -467,8 +467,14 @@ const generateEmailContent = (data) => {
       </head>
       <body>
         <span class="preheader"
-          >This is the confirmation for your recent purchase on {{ purchase_date }}.
-          No payment is due with this receipt.</span
+          >This is the confirmation for your recent purchase on ${formatDate(
+            data.createdAt
+          )}.
+          ${
+            data.isPaid
+              ? "No payment is due with this receipt"
+              : "Payment is yet to be made"
+          }.</span
         >
         <table
           class="email-wrapper"
@@ -489,7 +495,7 @@ const generateEmailContent = (data) => {
                 <tr>
                   <td class="email-masthead">
                     <a
-                      href="https://silky-touch.vercel.app/"
+                      href="https://silkytouchemporium.com/"
                       class="f-fallback email-masthead_name"
                     >
                       <img src="https://res.cloudinary.com/dixuzyoht/image/upload/v1689942889/main/fzybp7ochp6wxorwvax3.jpg" alt="logo" />
@@ -522,10 +528,11 @@ const generateEmailContent = (data) => {
                               ${data.shippingAddress.lastName},
                             </h1>
                             <p>
-                              Thank you for shopping with us. This email is the
-                              confirmation of your purchase. No payment is due. An
-                              email will be sent when the order is out for
-                              delivery.
+                              Thank you for shopping with us. ${
+                                data.isPaid
+                                  ? "This email is the confirmation of your purchase. No payment is due. An email will be sent when the order is out for delivery"
+                                  : "This email is the confirmation of your order. Payment is yet to be made. A customer support representative will contact you shortly to guide you through the payment procedure"
+                              }.
                             </p>
     
                             <table

@@ -467,8 +467,12 @@ const generateEmailContent = (data) => {
       </head>
       <body>
         <span class="preheader"
-          >This is the confirmation for your recent purchase on {{ purchase_date }}.
-          No payment is due with this receipt.</span
+          >An order has been placed on ${formatDate(data.createdAt)}.
+          ${
+            data.isPaid
+              ? "No payment is due with this receipt"
+              : "Payment is yet to be made"
+          }.</span
         >
         <table
           class="email-wrapper"
@@ -489,7 +493,7 @@ const generateEmailContent = (data) => {
                 <tr>
                   <td class="email-masthead">
                     <a
-                      href="https://silky-touch.vercel.app/"
+                      href="https://silkytouchemporium.com/"
                       class="f-fallback email-masthead_name"
                     >
                       <img src="https://res.cloudinary.com/dixuzyoht/image/upload/v1689942889/main/fzybp7ochp6wxorwvax3.jpg" alt="logo" />
@@ -705,7 +709,7 @@ const handler = async (req, res) => {
     const { data } = req.body;
     await transporter.sendMail({
       ...mailOptions,
-      to: "silkytouchemporium23@gmail.com",
+      to: "lagos@silkytouchemporium.com",
       ...generateEmailContent(data),
       subject: "New Order",
     });
