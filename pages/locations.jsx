@@ -63,7 +63,7 @@ const locations = () => {
         <PageTitle title="Find a Boutique" />
         <div className={style.pageContent}>
           <div className={`max-sm:mx-2`}>
-            <iframe
+            {/* <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7363080308646!2d3.4258586999999996!3d6.4279137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf531e5f89721%3A0xc7b44871cbc9e2ea!2sSilky%20Touch%20Emporium%20Limited!5e0!3m2!1sen!2sng!4v1691102394565!5m2!1sen!2sng"
               // width="600"
               height="450"
@@ -72,12 +72,17 @@ const locations = () => {
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-            {/* <iframe
-              src="https://www.google.com/maps/d/embed?mid=1fI-wpoxY-JdJgKQXVEujrbAXWVqaukw&ehbc=2E312F"
-              width="640"
-              height="480"
             ></iframe> */}
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1fI-wpoxY-JdJgKQXVEujrbAXWVqaukw&ehbc=2E312F"
+              // width="640"
+              // height="480"
+              height="450"
+              className="w-full"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
         {isMobile && <TopContactUs isMobile />}
