@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import BrandGridSlider from "./BrandGridSlider";
 
@@ -35,6 +36,21 @@ const BrandGrid = ({ activeBrand, brand }) => {
                 alt={product.name}
                 className={style.image}
               />
+              {/* <Image
+                unoptimized
+                src={
+                  product.images.find(
+                    (image) =>
+                      image.type === "model showcase front" ||
+                      image.type === "model front" ||
+                      image.type === "secondary"
+                  ).url
+                }
+                alt={product.name}
+                className={style.image}
+                style={{ maxWidth: "100%" }}
+                fill
+              /> */}
             </div>
           </Link>
         ))}

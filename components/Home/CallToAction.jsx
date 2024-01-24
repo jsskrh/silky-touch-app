@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 const largeImages = {
@@ -51,10 +52,28 @@ const CallToAction = ({ homeRef }) => {
   return (
     <div className={style.sectionContainer}>
       <div className={style.imageContainer} ref={containerRef}>
-        <img
+        {/* <img
           src={largeImages.men.image}
           alt={largeImages.men.title}
           className={style.largeImage}
+        /> */}
+        <Image
+          // unoptimized
+          src={largeImages.men.image}
+          alt={largeImages.men.title}
+          className={style.largeImage}
+          style={{
+            //   maxWidth: "100%",
+            //   maxHeight: "100%",
+            //   height: "100%",
+            objectFit: "cover",
+          }}
+          // objectFit="cover"
+          // fill={true}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "100%", height: "auto", objectFit: "cover" }} // optional
         />
         <div className={style.imageContent} ref={contentRef}>
           <h2 className={style.title}>{largeImages.men.title}</h2>

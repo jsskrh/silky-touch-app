@@ -29,4 +29,12 @@ const generateSKU = (brand, category, subcategory, subSubcategory) => {
   return sku;
 };
 
-export { slugify, generateSKU, slugifyUnique };
+const getWindowDimensions = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+};
+
+export { slugify, generateSKU, slugifyUnique, getWindowDimensions };

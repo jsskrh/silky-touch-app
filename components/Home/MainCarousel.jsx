@@ -1,7 +1,9 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+// import { getWindowDimensions } from "../../utils/helpers";
 
 const heroes = [
   {
@@ -324,6 +326,14 @@ const MainCarousel = ({ homeRef, isMobile }) => {
   //   }
   // }, []);
 
+  // const getWindowDimensions = () => {
+  //   const { innerWidth: width, innerHeight: height } = window;
+  //   return {
+  //     width,
+  //     height,
+  //   };
+  // };
+
   return (
     <div
       className={`${style.carouselContainer} carousel-container w-[calc(100vw-${scrollbarWidth})]`}
@@ -335,9 +345,11 @@ const MainCarousel = ({ homeRef, isMobile }) => {
           <div className={`${style.carouselSlide} slide w-full`}>
             <div className={`${style.outer} outer`}>
               <div className={`${style.outer} inner`}>
-                <img
+                <Image
+                  // unoptimized
                   src={hero.image}
                   alt="hero image"
+                  fill
                   className={`${style.carouselImage} carousel-image`}
                 />
                 <div
