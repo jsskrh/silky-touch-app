@@ -13,7 +13,7 @@ const TopContactUs = ({ isMobile }) => {
         <strong className={style.helpTitle}>Need Assistance?</strong>
         <span className={`${isMobile && "text-center"}`}>
           Please contact our Customer Care team on{" "}
-          <button className={style.underline}>01-2700195</button> or{" "}
+          <button className={style.underline}>+2348108147951</button> or{" "}
           <button className={style.underline}>+2349166426170</button>
         </span>
       </p>
