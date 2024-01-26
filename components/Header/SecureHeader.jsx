@@ -50,7 +50,7 @@ const SecureHeader = () => {
           <p className={style.helpText}>
             Please contact our Customer Care team on{" "}
             <Link href="/customer-care" className={style.linkText}>
-              01-2700195
+              +2348108147951
             </Link>
           </p>
           <PhoneIcon className={style.mobileIcon} />
