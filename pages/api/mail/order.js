@@ -599,7 +599,7 @@ const generateEmailContent = (data) => {
                             </table>
                             <p>
                               If you have any questions about this email, simply
-                              reach out to our support team at 01-2700195 or 09166426170 for help.
+                              reach out to our support team at +2348108147951 or 09166426170 for help.
                               <!-- <a href="{{support_url}}">support team</a> for help. -->
                             </p>
                             <p>Cheers, <br />Silky Touch Emporium</p>
