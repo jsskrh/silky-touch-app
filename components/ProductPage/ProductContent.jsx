@@ -16,7 +16,7 @@ const ProductContent = forwardRef(({ product, tabState, setTabState }, ref) => {
     <div className={`${style.productContent} product-content`} ref={ref}>
       <TitleBadge product={product} />
 
-      <PriceBadge product={product} />
+      {/* <PriceBadge product={product} /> */}
 
       <ProductVariations />
 

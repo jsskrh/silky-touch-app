@@ -16,7 +16,7 @@ const OrderSummary = ({ cartItems }) => {
   return (
     <div className={style.orderSummary}>
       <h2 className={style.title}>Order Summary</h2>
-      <div className={style.costDetails}>
+      {/* <div className={style.costDetails}>
         <div className={style.modContainer}>
           <span>Subtotal</span>
           <span>
@@ -33,14 +33,15 @@ const OrderSummary = ({ cartItems }) => {
             )}
           </span>
         </div>
-      </div>
+      </div> */}
       <div className={style.checkoutButton}>
-        <button
+        {/* <button
           className={style.checkoutText}
           onClick={() => router.push("login?redirect=/shipping")}
         >
           Secure Checkout
-        </button>
+        </button> */}
+        <button className={style.checkoutText}>Request Quote</button>
       </div>
     </div>
   );

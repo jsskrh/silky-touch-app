@@ -82,7 +82,7 @@ const MiniBagItem = forwardRef(({ item, parent, orderItems }, ref) => {
             </div>
           )}
           <div className={style.priceInner}>
-            <span>{formatCurrency(item.price * item.quantity)}</span>
+            {/* <span>{formatCurrency(item.price * item.quantity)}</span> */}
           </div>
         </div>
       </td>

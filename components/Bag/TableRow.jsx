@@ -47,7 +47,7 @@ const TableRow = ({ item }) => {
             <Link
               href={`/${item.category}/${item.subcategory}/${item.subSubcategory}/${item._id}`}
             >
-              {item.name}
+              {item.brand} {item.name}
             </Link>
           </div>
           <div className={style.attribute}>
@@ -95,7 +95,7 @@ const TableRow = ({ item }) => {
       </td>
       <td className={style.priceContainer}>
         <div className={style.priceInner}>
-          <span>{formatCurrency(item.price * item.quantity)}</span>
+          {/* <span>{formatCurrency(item.price * item.quantity)}</span> */}
         </div>
       </td>
     </tr>

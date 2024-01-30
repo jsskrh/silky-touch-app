@@ -37,7 +37,7 @@ const MenuItems = ({ cartItemsCount, cartItems }) => {
           </>
         )}
 
-        <div className={style.miniCartTotals}>
+        {/* <div className={style.miniCartTotals}>
           <div className={style.miniCartSubtotal}>
             <span className={style.label}>Subtotal</span>
             <span className={style.value}>
@@ -48,7 +48,7 @@ const MenuItems = ({ cartItemsCount, cartItems }) => {
               )}
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
     </Menu.Items>
   );
