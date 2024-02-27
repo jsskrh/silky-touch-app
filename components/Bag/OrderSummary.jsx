@@ -41,7 +41,9 @@ const OrderSummary = ({ cartItems }) => {
         >
           Secure Checkout
         </button> */}
-        <button className={style.checkoutText}>Request Quote</button>
+        <a href="https://wa.me/2349166426170" target="_blank">
+          <button className={style.checkoutText}>Request Quote</button>
+        </a>
       </div>
     </div>
   );
