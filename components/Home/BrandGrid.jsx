@@ -56,8 +56,8 @@ const BrandGrid = ({ activeBrand, brand }) => {
         ))}
       </div>
       <div className={style.brandDetails}>
-        <h2 className={style.title}>{brand}</h2>
-        <Link href={`/men/${brand}`}>
+        <h2 className={style.title}>Fashion</h2>
+        <Link href={`/men`}>
           <button className={style.button}>Shop Now</button>
         </Link>
       </div>
