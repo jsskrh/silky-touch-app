@@ -63,7 +63,9 @@ export async function getServerSideProps() {
   const product5 = await Product.findById("64bc3ba80a25fdbbe406bf3f").lean();
   const product6 = await Product.findById("6567845d29104c1ffa4c7d55").lean();
   const product7 = await Product.findById("6567839ad6c0644ab3188f4e").lean();
+  const product8 = await Product.findById("6567802f29104c1ffa4c7d49").lean();
   const product9 = await Product.findById("65dd9e19f6bc3c36359d3a29").lean();
+  const product10 = await Product.findById("6567824129104c1ffa4c7d4e").lean();
 
   const activeBrand = [
     product1,
@@ -73,7 +75,9 @@ export async function getServerSideProps() {
     product5,
     product6,
     product7,
+    product8,
     product9,
+    product10,
   ];
 
   const activeBrandStringified = activeBrand.map(db.stringifyProducts);

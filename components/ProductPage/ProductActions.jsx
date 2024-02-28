@@ -53,9 +53,16 @@ const ProductActions = ({ product }) => {
     <div className={style.productActions}>
       <div className={style.addToCartContainer} ref={buttonRef}>
         {product.countInStock >= 1 ? (
-          <button className={style.addToCart} onClick={addToCartHandler}>
-            Add To Bag
-          </button>
+          <div className="flex flex-col gap-y-3">
+            <a href="https://wa.me/2349166426170" target="_blank">
+              <button className={style.addToCart} onClick={addToCartHandler}>
+                Request a Price
+              </button>
+            </a>
+            <button className={style.addToCart} onClick={addToCartHandler}>
+              Add To Bag
+            </button>
+          </div>
         ) : (
           <button className={style.addToCart} disabled>
             Out of Stock
