@@ -66,9 +66,6 @@ const corporateData = () => {
               14b Karimu Kotun St, Victoria Island 106104, Lagos, Nigeria
             </p>
             <p className="mb-2">
-              15 Allen Ave, Omole Phase 1 101233, Ikeja, Lagos, Nigeria
-            </p>
-            <p className="mb-2">
               No.58, Usuma Street, Off Gana Street, Maitama 904101, Abuja,
               Federal Capital Territory, Nigeria
             </p>

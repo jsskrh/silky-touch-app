@@ -77,13 +77,6 @@ const corporateProfile = () => {
               easy accessibility to our exclusive product of style.
             </p>
             <p className="mb-5">
-              The Abuja Emporium which is part of our master plan and designed
-              to meet the Sartorial needs of the nation’s policy and Lawmakers
-              is presently under construction, to become operational in a couple
-              of years. In the meantime a sales office has been put in place to
-              conduct the business of delivery and receiving orders.
-            </p>
-            <p className="mb-5">
               Our tailoring department which was created specifically for
               alterations and repair is undergoing extension. Arrangements have
               been concluded for a member of the unit to be trained by the
