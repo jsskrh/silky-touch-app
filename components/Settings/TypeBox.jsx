@@ -18,6 +18,7 @@ const subcategories = [
   "Shoes",
   "Accessories",
   "Underwear and Beachwear",
+  "Fragrances",
 ];
 
 const TypeBox = react.forwardRef((props, ref) => {
