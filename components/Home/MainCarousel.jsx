@@ -6,44 +6,86 @@ import { useEffect, useRef, useState } from "react";
 // import { getWindowDimensions } from "../../utils/helpers";
 
 const heroes = [
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/2_d2q3pa.jpg",
+  //   link: "clothing/blazers-suits",
+  //   caption: "Signature Blazers",
+  // },
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/3_ey8vqe.jpg",
+  //   link: "accessories",
+  //   caption: "Vibrant Umbrellas",
+  // },
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dixuzyoht/image/upload/v1697661975/homepage/kmafhwogzwwdj7m5o0lk.jpg",
+  //   link: "accessories",
+  //   caption: "Luxury Accessories",
+  // },
   {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/2_d2q3pa.jpg",
-    link: "clothing/blazers-suits",
-    caption: "Signature Blazers",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743238388/homepage/i2rwkdtwd12io6sqs2eh.jpg",
+    link: "shoes",
+    caption: " ",
   },
   {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100048/homepage/3_ey8vqe.jpg",
-    link: "accessories",
-    caption: "Vibrant Umbrellas",
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1697661975/homepage/kmafhwogzwwdj7m5o0lk.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743240500/homepage/cjnppccrw2nwjv1fwovd.jpg",
     link: "accessories",
     caption: "Luxury Accessories",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743240503/homepage/ixp5xm3vkjpherffphvg.jpg",
+    link: "clothing/shirts",
+    caption: " ",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743240501/homepage/nbtrpb4rbegoffmddwwq.jpg",
+    link: "clothing",
+    caption: " ",
   },
 ];
 
 const mHeroes = [
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100042/homepage/2_crop_j4lkkn.jpg",
+  //   link: "clothing/blazers-suits",
+  //   caption: "Signature Blazers",
+  // },
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100041/homepage/3_crop_ajb4th.jpg",
+  //   link: "accessories",
+  //   caption: "Vibrant Umbrellas",
+  // },
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dixuzyoht/image/upload/v1697662124/homepage/unubrwl6mizuiiha9aye.jpg",
+  //   link: "accessories",
+  //   caption: "Luxury Accessories",
+  // },
   {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100042/homepage/2_crop_j4lkkn.jpg",
-    link: "clothing/blazers-suits",
-    caption: "Signature Blazers",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743238387/homepage/bwzjk4heltfdddogvlc8.jpg",
+    link: "shoes",
+    caption: " ",
   },
   {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100041/homepage/3_crop_ajb4th.jpg",
-    link: "accessories",
-    caption: "Vibrant Umbrellas",
-  },
-  {
-    image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1697662124/homepage/unubrwl6mizuiiha9aye.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743240500/homepage/tn8e7vz5glnqaewozso1.jpg",
     link: "accessories",
     caption: "Luxury Accessories",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743240500/homepage/cpqk9jqprrypascyvraz.jpg",
+    link: "clothing/shirts",
+    caption: " ",
   },
 ];
 
@@ -105,10 +147,14 @@ const MainCarousel = ({ homeRef, isMobile }) => {
     const pushCaptions = () => {
       heroItems.map((hero) => {
         // let newText = `Shop ${hero.caption}`;
-        captions.push(hero.caption);
+        if (hero.caption) {
+          captions.push(hero.caption);
+        }
       });
       captions.map((caption) => {
-        wordArr.push(caption.split(" "));
+        if (caption) {
+          wordArr.push(caption.split(" "));
+        }
       });
       wordArr.map((caption, i) => {
         caption.map((word, j) => {
