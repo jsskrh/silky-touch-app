@@ -29,7 +29,7 @@ const Layout = ({
       <Head>
         <title>{title ? title + " - Silky Touch" : "Silky Touch"}</title>
         <meta name="description" content="Luxury Ecommerce website" />
-        <link rel="icon" href="/logos/SILKY-TOUCH-LOGO.jpg" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className={style.wrapper}>
