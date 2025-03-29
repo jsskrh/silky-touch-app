@@ -1,6 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { Store } from "../../utils/Store";
+import { useSession } from "next-auth/react";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShareIcon } from "@heroicons/react/24/outline";
 
@@ -15,7 +17,24 @@ const style = {
 };
 
 const ProductActions = ({ product }) => {
+  const { status, data: session } = useSession();
   const { state, dispatch } = useContext(Store);
+  const router = useRouter();
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+      await axios.delete(`/api/products/${product._id}`);
+      setIsDeleting(false);
+      router.push("/admin/products");
+    } catch (err) {
+      console.log(err);
+
+      setIsDeleting(false);
+      alert(err.response?.data?.message || "Error deleting product");
+    }
+  };
 
   const addToCartHandler = async () => {
     const exists = state.cart.cartItems.find(
@@ -62,6 +81,15 @@ const ProductActions = ({ product }) => {
             <button className={style.addToCart} onClick={addToCartHandler}>
               Add To Bag
             </button>
+            {session?.user.isAdmin && (
+              <button
+                className={style.addToCart}
+                onClick={handleDelete}
+                disabled={isDeleting}
+              >
+                {isDeleting ? "Deleting..." : "Delete Product"}
+              </button>
+            )}
           </div>
         ) : (
           <button className={style.addToCart} disabled>
