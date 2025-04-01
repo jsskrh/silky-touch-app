@@ -7,9 +7,9 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 const largeImages = {
   men: {
     image:
-      "https://res.cloudinary.com/dixuzyoht/image/upload/v1689100044/homepage/1_uog6lq.jpg",
+      "https://res.cloudinary.com/dixuzyoht/image/upload/v1743240501/homepage/nbtrpb4rbegoffmddwwq.jpg",
     link: "/men",
-    title: "Men's Bags",
+    title: "Men's Shirts",
   },
 };
 

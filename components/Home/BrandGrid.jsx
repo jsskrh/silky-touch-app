@@ -15,9 +15,9 @@ const style = {
 
 const images = [
   "https://res.cloudinary.com/dixuzyoht/image/upload/v1743239524/homepage/etpmi3bpogqpljsnne8j.jpg",
-  "https://res.cloudinary.com/dixuzyoht/image/upload/v1743239524/homepage/wxt9yirt0dslnmhjjgol.jpg",
   "https://res.cloudinary.com/dixuzyoht/image/upload/v1743239524/homepage/p57d1utnmwevdn8biuxi.jpg",
   "https://res.cloudinary.com/dixuzyoht/image/upload/v1743239524/homepage/ym0kyuelae1f1t4rdygw.jpg",
+  "https://res.cloudinary.com/dixuzyoht/image/upload/v1743239524/homepage/wxt9yirt0dslnmhjjgol.jpg",
 ];
 
 const BrandGrid = ({ activeBrand, brand }) => {
