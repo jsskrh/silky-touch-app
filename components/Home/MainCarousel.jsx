@@ -30,7 +30,7 @@ const mHeroes = [
     image:
       "https://res.cloudinary.com/dixuzyoht/image/upload/v1743238387/homepage/bwzjk4heltfdddogvlc8.jpg",
     link: "shoes",
-    caption: "Step in Style",
+    caption: "Step out in Style",
   },
   {
     image:

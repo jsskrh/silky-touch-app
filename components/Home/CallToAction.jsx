@@ -20,7 +20,7 @@ const style = {
   sectionContainer: `py-10`,
   imageContainer: `w-full relative mb-20 h-screen md:h-auto`,
   largeImage: `max-w-full max-h-full object-cover md:object-none h-full md:h-auto`,
-  imageContent: `p-10 absolute top-0 text-center left-0 right-0 w-max mx-auto`,
+  imageContent: `p-10 absolute max-md:bottom-0 md:top-0 text-center left-0 right-0 w-max mx-auto`,
   title: `text-4xl font-bold text-[#fff] uppercase`,
   button: `transition-all border bg-[#fff] px-[30px] py-[13px] w-full text-xs font-bold uppercase mt-4`,
 };
@@ -77,7 +77,7 @@ const CallToAction = ({ homeRef }) => {
         />
         <div className={style.imageContent} ref={contentRef}>
           <h2 className={style.title}>{largeImages.men.title}</h2>
-          <Link href="/men/bags">
+          <Link href="/men/clothing">
             <button className={style.button}>Shop Now</button>
           </Link>
         </div>
